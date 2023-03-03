@@ -1,6 +1,7 @@
 package com.example.personalexpenditure.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,12 +28,13 @@ class OnBoardingViewPagerAdapter(
         container.removeView(`object` as View)
     }
 
-
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view : View = LayoutInflater.from(context).inflate(R.layout.onboarding_layout, null)
         val imageView : ImageView
         val title : TextView
         val desc : TextView
+
+        Log.d("OnBoardingViewPagerAdapter", onBoardingDataList.size.toString())
 
         imageView = view.findViewById(R.id.imageView)
         title = view.findViewById(R.id.title)

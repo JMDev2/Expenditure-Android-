@@ -1,6 +1,7 @@
 package com.example.personalexpenditure
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,16 +39,24 @@ class OnboardingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val onBoardingData: MutableList<OnBoardingData> = ArrayList()
-        onBoardingData.add(OnBoardingData("Miana", "he is a cool guy", R.drawable.download))
-        onBoardingData.add(OnBoardingData("Joseph", "he is a cool guy", R.drawable.download))
-        onBoardingData.add(OnBoardingData("Mwangi", "he is a cool guy", R.drawable.download))
+        onBoardingData.add(OnBoardingData("Make a budget", "Make a monthly small budget to ensure\n" +
+                "you are spending your money wisely. \n" +
+                "This way you will be able to save", R.drawable.onboardingone))
+        onBoardingData.add(OnBoardingData("Track your spending", "Easily keep track of your spending as\n" +
+                "they happen. Have a record of how\n" +
+                "you spend.", R.drawable.onboardingtwo))
+        onBoardingData.add(OnBoardingData("Get rewarded", "For every penny you\n" +
+                "save you will get 20% airtime reward", R.drawable.onboardingthree))
+        Log.d("OnboardingFragment", onBoardingData.size.toString())
 
         setOnBoardingViewPagerAdapter(onBoardingData)
     }
 
 
     private fun setOnBoardingViewPagerAdapter(onBoardingData: List<OnBoardingData>){
+
         onBoardingViewPagerAdapter = OnBoardingViewPagerAdapter(requireContext(), onBoardingData)
+        viewPager = binding.viewpager
         viewPager?.adapter = onBoardingViewPagerAdapter
         binding.tabIndicator.setupWithViewPager(binding.viewpager)
     }
