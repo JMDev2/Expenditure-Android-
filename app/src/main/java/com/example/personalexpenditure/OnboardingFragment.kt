@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.personalexpenditure.adapter.OnBoardingViewPagerAdapter
@@ -35,9 +38,42 @@ class OnboardingFragment : Fragment() {
         return binding.root
         }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        onboardingData()
+        moveNext()
+        skipNext()
+
+    }
+
+    private fun skipNext() {
+        binding.skipText.setOnClickListener {
+            val homeFragment = HomeFragment()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, homeFragment)
+            transaction.commit()
+
+        }
+    }
+
+    private fun moveNext() {
+        binding.moveNext.setOnClickListener {
+            if (binding.viewpager.currentItem + 1 < onBoardingViewPagerAdapter!!.count){
+                binding.viewpager.currentItem += 1
+            }else{
+                binding.moveNext.text = "Get Started"
+                val homeFragment = HomeFragment()
+                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView, homeFragment)
+                transaction.commit()
+            }
+        }
+
+    }
+
+    private fun onboardingData() {
         val onBoardingData: MutableList<OnBoardingData> = ArrayList()
         onBoardingData.add(OnBoardingData("Make a budget", "Make a monthly small budget to ensure\n" +
                 "you are spending your money wisely. \n" +
@@ -51,7 +87,6 @@ class OnboardingFragment : Fragment() {
 
         setOnBoardingViewPagerAdapter(onBoardingData)
     }
-
 
     private fun setOnBoardingViewPagerAdapter(onBoardingData: List<OnBoardingData>){
 
