@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.NewIncomeFragment">
 
-    <include
-        layout="@layout/apptoolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/date_text"
@@ -19,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="82dp"
         android:layout_marginEnd="133dp"
-        android:text="2, Thursadya, 2023"
+        android:text="2, Thursaday, 2023"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/calender_picker"
@@ -100,7 +94,7 @@
 
                     <View
                         android:id="@+id/view"
-                        android:layout_width="2dp"
+                        android:layout_width="1dp"
                         android:layout_height="50dp"
                         android:background="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,11 +106,12 @@
                     <EditText
                         android:id="@+id/editText"
                         android:layout_width="115dp"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
                         android:hint="30,0000.00"
                         android:textColor="@color/black"
                         android:textStyle="bold"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintBottom_toBottomOf="@+id/view"
                         app:layout_constraintEnd_toStartOf="@+id/imageView5"
                         app:layout_constraintStart_toEndOf="@+id/view"
@@ -127,10 +122,11 @@
                         android:id="@+id/imageView5"
                         android:layout_width="32dp"
                         android:layout_height="27dp"
+                        android:layout_marginEnd="8dp"
                         android:src="@drawable/backspace"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/editText"
-                        tools:layout_editor_absoluteX="188dp" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/editText" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.NewIncomeFragment">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/apptoolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/date_text"
@@ -50,7 +43,7 @@
             android:layout_width="248dp"
             android:layout_height="75dp"
             android:layout_marginStart="68dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="170dp"
             android:layout_marginEnd="61dp"
             android:background="@drawable/borders"
             android:orientation="horizontal"
@@ -92,9 +85,10 @@
                 <EditText
                     android:id="@+id/editText"
                     android:layout_width="115dp"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:hint="500.00"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/view"
@@ -147,7 +141,7 @@
 
                 <LinearLayout
                     android:id="@+id/transport_linear_layout"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/category_background"
                     android:gravity="center"
@@ -158,19 +152,13 @@
 
                     <ImageView
                         android:id="@+id/transport_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_marginBottom="10dp"
                         android:layout_weight="1"
-                        android:src="@drawable/illustrationshoppingcart" />
+                        android:src="@drawable/oncoming" />
 
-                    <View
-                        android:id="@+id/divider"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_weight="1"
-                        android:background="?android:attr/listDivider" />
+
 
                     <TextView
                         android:id="@+id/transport_text"
@@ -182,12 +170,12 @@
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="57dp"
+                    android:layout_width="53dp"
                     android:layout_height="match_parent" />
 
                 <LinearLayout
                     android:id="@+id/shopping_linear_layout"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/category_background"
                     android:gravity="center"
@@ -198,8 +186,8 @@
 
                     <ImageView
                         android:id="@+id/shopping_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_weight="1"
                         android:src="@drawable/illustrationshoppingcart" />
 
@@ -213,13 +201,13 @@
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="48dp"
+                    android:layout_width="5dp"
                     android:layout_height="match_parent" />
 
 
                 <LinearLayout
                     android:id="@+id/school_feees_linear_layout"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/category_background"
                     android:gravity="center"
@@ -230,10 +218,10 @@
 
                     <ImageView
                         android:id="@+id/shool_fees_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:src="@drawable/illustrationshoppingcart" />
+                        android:src="@drawable/iconschool" />
 
                     <TextView
                         android:id="@+id/school_feees_text"
@@ -253,7 +241,7 @@
 
                 <LinearLayout
                     android:id="@+id/food_linear_layout"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/category_background"
                     android:gravity="center"
@@ -264,18 +252,12 @@
 
                     <ImageView
                         android:id="@+id/image_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_marginBottom="10dp"
                         android:layout_weight="1"
-                        android:src="@drawable/illustrationshoppingcart" />
+                        android:src="@drawable/iconfood" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_weight="1"
-                        android:background="?android:attr/listDivider" />
 
                     <TextView
                         android:id="@+id/food_text"
@@ -287,12 +269,12 @@
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="61dp"
+                    android:layout_width="53dp"
                     android:layout_height="match_parent" />
 
                 <LinearLayout
                     android:id="@+id/Entertainment_linear_layout"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/category_background"
                     android:gravity="center"
@@ -303,10 +285,10 @@
 
                     <ImageView
                         android:id="@+id/entertainment_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:src="@drawable/illustrationshoppingcart" />
+                        android:src="@drawable/group" />
 
                     <TextView
                         android:id="@+id/entertainment_text"
@@ -318,13 +300,13 @@
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="61dp"
+                    android:layout_width="50dp"
                     android:layout_height="match_parent" />
 
 
                 <LinearLayout
                     android:id="@+id/health_linear_layout"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/category_background"
                     android:gravity="center"
@@ -335,10 +317,10 @@
 
                     <ImageView
                         android:id="@+id/health_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:src="@drawable/illustrationshoppingcart" />
+                        android:src="@drawable/emojithermometer" />
 
                     <TextView
                         android:id="@+id/health_text"
@@ -357,7 +339,7 @@
 
                 <LinearLayout
                     android:id="@+id/home_layout"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/category_background"
                     android:gravity="center"
@@ -368,18 +350,12 @@
 
                     <ImageView
                         android:id="@+id/home_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_marginBottom="10dp"
                         android:layout_weight="1"
-                        android:src="@drawable/illustrationshoppingcart" />
+                        android:src="@drawable/iconhome" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_weight="1"
-                        android:background="?android:attr/listDivider" />
 
                     <TextView
                         android:id="@+id/home_text"
@@ -391,12 +367,12 @@
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="61dp"
+                    android:layout_width="53dp"
                     android:layout_height="match_parent" />
 
                 <LinearLayout
                     android:id="@+id/miscellenious_layout"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/category_background"
                     android:gravity="center"
@@ -407,10 +383,10 @@
 
                     <ImageView
                         android:id="@+id/miscellenious_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:src="@drawable/illustrationshoppingcart" />
+                        android:src="@drawable/addsquare" />
 
                     <TextView
                         android:id="@+id/miscellenious_text"
