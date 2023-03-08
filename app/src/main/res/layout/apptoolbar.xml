@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/cta_300">
+
+    <ImageView
+        android:id="@+id/arrow_back"
+        android:layout_width="52dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
+
+</RelativeLayout>
