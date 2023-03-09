@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.personalexpenditure.adapter.OnBoardingViewPagerAdapter
 import com.example.personalexpenditure.databinding.FragmentOnboardingBinding
-import com.example.personalexpenditure.fragments.HomeFragment
 import com.example.personalexpenditure.fragments.MainFragment
 import com.example.personalexpenditure.model.OnBoardingData
 import com.google.android.material.tabs.TabLayout
@@ -49,9 +48,9 @@ class OnboardingFragment : Fragment() {
 
     private fun skipNext() {
         binding.skipText.setOnClickListener {
-            val homeFragment = HomeFragment()
+            val mainFragment = MainFragment()
             val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, homeFragment)
+            transaction.replace(R.id.fragmentContainerView, mainFragment)
             transaction.commit()
 
         }
@@ -75,10 +74,8 @@ class OnboardingFragment : Fragment() {
                     binding.viewpager.currentItem += 1
                 }else{
                     binding.moveNext.text = "Get Started"
-                    val mainFragment = MainFragment()
-                    val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView, mainFragment)
-                    transaction.commit()
+                    val action = OnboardingFragmentDirections.actionOnboardingFragmentToMainFragment()
+                    findNavController().navigate(action)
                 }
             }
         }

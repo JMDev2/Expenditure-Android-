@@ -7,10 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import com.example.personalexpenditure.R
+import com.example.personalexpenditure.databinding.FragmentNewBudgetBinding
 
 
 class NewBudgetFragment : Fragment() {
+    private lateinit var binding: FragmentNewBudgetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +25,8 @@ class NewBudgetFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_budget, container, false)
+        binding = FragmentNewBudgetBinding.inflate(inflater, container, false)
+        return  binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,5 +35,16 @@ class NewBudgetFragment : Fragment() {
         //actionbar
         activity?.setTitle((Html.fromHtml("<font color=\"#0000\">" + getString(R.string.budget) + "</font>")));
 
+        openMainFragment()
+    }
+
+    //This ,method opens the main fragment
+    private fun openMainFragment() {
+        binding.imready.setOnClickListener {
+            val mainFragment = MainFragment()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, mainFragment)
+            transaction.commit()
+        }
     }
 }

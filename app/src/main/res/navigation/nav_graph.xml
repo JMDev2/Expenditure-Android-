@@ -48,6 +48,17 @@
         <action
             android:id="@+id/action_newExpensesFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_newExpensesFragment_to_newExpensesCategoryFragment"
+            app:destination="@id/newExpensesCategoryFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newExpensesCategoryFragment"
+        android:name="com.example.personalexpenditure.fragments.NewExpensesCategoryFragment"
+        android:label="fragment_new_income"
+        tools:layout="@layout/fragment_new_expenses_category" >
 
     </fragment>
 

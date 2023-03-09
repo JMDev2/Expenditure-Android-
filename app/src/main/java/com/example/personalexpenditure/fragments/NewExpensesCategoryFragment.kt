@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.example.personalexpenditure.R
+import com.example.personalexpenditure.databinding.FragmentNewExpensesCategoryBinding
 
 
 class NewExpensesCategoryFragment : Fragment() {
+    private lateinit var binding: FragmentNewExpensesCategoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +24,8 @@ class NewExpensesCategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_expenses_category, container, false)
+        binding = FragmentNewExpensesCategoryBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,5 +36,9 @@ class NewExpensesCategoryFragment : Fragment() {
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         assert(actionBar != null) // null check
         actionBar?.setDisplayHomeAsUpEnabled(true)
+
+
     }
+
+
 }

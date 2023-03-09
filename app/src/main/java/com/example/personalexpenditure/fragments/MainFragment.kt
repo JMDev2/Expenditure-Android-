@@ -2,6 +2,7 @@ package com.example.personalexpenditure.fragments
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -50,24 +51,16 @@ class MainFragment : Fragment() {
 
     private fun openIncome() {
         binding.incomeLinearLayout.setOnClickListener {
-            val newIncomeFragment = NewIncomeFragment()
-            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, newIncomeFragment)
-            transaction.commit()
-//            val action = MainFragmentDirections.actionMainFragmentToNewIncomeFragment()
-//            findNavController().navigate(R.id.action_mainFragment_to_newIncomeFragment)
+            val action = MainFragmentDirections.actionMainFragmentToNewIncomeFragment()
+            findNavController().navigate(action)
         }
 
     }
 
     private fun openExpenses() {
         binding.expenseLinearLayout.setOnClickListener {
-            val newExpensesFragment = NewExpensesFragment()
-            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, newExpensesFragment)
-            transaction.commit()
-//            val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
-//            requireView().findNavController().navigate(action)
+            val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+            findNavController().navigate(action)
         }
 
     }

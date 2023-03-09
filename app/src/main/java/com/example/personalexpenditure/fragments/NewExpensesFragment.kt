@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
+import com.example.personalexpenditure.databinding.FragmentNewExpensesBinding
 
 
 class NewExpensesFragment : Fragment() {
+    private lateinit var binding: FragmentNewExpensesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +27,8 @@ class NewExpensesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_expenses, container, false)
+        binding = FragmentNewExpensesBinding.inflate(inflater, container, false)
+        return  binding.root
     }
 
 
@@ -32,5 +36,16 @@ class NewExpensesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //actionbar
         activity?.setTitle((Html.fromHtml("<font color=\"#333333\">" + getString(R.string.expenses) + "</font>")));
+
+        openCategoryFragment()
+    }
+
+    private fun openCategoryFragment() {
+        binding.category.setOnClickListener {
+            val newExpensesCategoryFragment = NewExpensesCategoryFragment()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, newExpensesCategoryFragment)
+            transaction.commit()
+        }
     }
 }
