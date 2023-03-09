@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.personalexpenditure.adapter.OnBoardingViewPagerAdapter
 import com.example.personalexpenditure.databinding.FragmentOnboardingBinding
@@ -57,19 +58,48 @@ class OnboardingFragment : Fragment() {
     }
 
     private fun moveNext() {
-        binding.moveNext.setOnClickListener {
-            if (binding.viewpager.currentItem + 1 < onBoardingViewPagerAdapter!!.count){
-                binding.viewpager.currentItem += 1
-            }else{
-                binding.moveNext.text = "Get Started"
-                val mainFragment = MainFragment()
-                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView, mainFragment)
-                transaction.commit()
+            // set page change listener
+    binding.viewpager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
+        private var settled = false
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+
+        }
+
+        override fun onPageSelected(position: Int) {
+            binding.moveNext.setOnClickListener {
+                if (binding.viewpager.currentItem + 1 < onBoardingViewPagerAdapter!!.count){
+                    binding.viewpager.currentItem += 1
+                }else{
+                    binding.moveNext.text = "Get Started"
+                    val mainFragment = MainFragment()
+                    val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainerView, mainFragment)
+                    transaction.commit()
+                }
             }
         }
 
-    }
+        override fun onPageScrollStateChanged(state: Int) {
+
+            if (state == ViewPager.SCROLL_STATE_DRAGGING) {
+                settled = false
+            }
+            if (state == ViewPager.SCROLL_STATE_SETTLING) {
+                settled = true
+            }
+            if (state == ViewPager.SCROLL_STATE_IDLE && !settled) {
+                // set the current position
+                findNavController().navigate(R.id.action_onboardingFragment_to_mainFragment)
+            }
+        }
+
+    })
+
+        }
 
     private fun onboardingData() {
         val onBoardingData: MutableList<OnBoardingData> = ArrayList()

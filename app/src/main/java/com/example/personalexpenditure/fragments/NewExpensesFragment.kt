@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 
 
@@ -29,9 +31,6 @@ class NewExpensesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //actionbar
-        activity?.setTitle((Html.fromHtml("<font color=\"#0000\">" + getString(R.string.expenses) + "</font>")));
-        val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
-        assert(actionBar != null) // null check
-        actionBar?.setDisplayHomeAsUpEnabled(true)
+        activity?.setTitle((Html.fromHtml("<font color=\"#333333\">" + getString(R.string.expenses) + "</font>")));
     }
 }

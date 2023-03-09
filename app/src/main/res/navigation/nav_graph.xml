@@ -9,10 +9,46 @@
         android:id="@+id/onboardingFragment"
         android:name="com.example.personalexpenditure.OnboardingFragment"
         android:label="fragment_onboarding"
-        tools:layout="@layout/fragment_onboarding" />
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.personalexpenditure.fragments.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_newExpensesFragment"
+            app:destination="@id/newExpensesFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_newIncomeFragment"
+            app:destination="@id/newIncomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newIncomeFragment"
+        android:name="com.example.personalexpenditure.fragments.NewIncomeFragment"
+        android:label="fragment_new_income"
+        tools:layout="@layout/fragment_new_income" >
+        <action
+            android:id="@+id/action_newIncomeFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newExpensesFragment"
+        android:name="com.example.personalexpenditure.fragments.NewExpensesFragment"
+        android:label="fragment_new_expense"
+        tools:layout="@layout/fragment_new_expenses" >
+        <action
+            android:id="@+id/action_newExpensesFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+
+    </fragment>
+
 </navigation>
