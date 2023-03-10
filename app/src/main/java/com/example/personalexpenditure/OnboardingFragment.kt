@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
@@ -44,8 +46,19 @@ class OnboardingFragment : Fragment() {
         moveNext()
         skipNext()
 
-    }
+        setupOnBackPressedCallback()
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false) //remove the onback stack arrow
 
+
+    }
+    //disable the onback ack
+    private fun setupOnBackPressedCallback() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Do nothing to prevent navigating back to the onboarding screen
+            }
+        })
+    }
     private fun skipNext() {
         binding.skipText.setOnClickListener {
             val mainFragment = MainFragment()

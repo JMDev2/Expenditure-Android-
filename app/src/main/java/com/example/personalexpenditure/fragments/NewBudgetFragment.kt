@@ -36,6 +36,8 @@ class NewBudgetFragment : Fragment() {
         activity?.setTitle((Html.fromHtml("<font color=\"#0000\">" + getString(R.string.budget) + "</font>")));
 
         openMainFragment()
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 
     //This ,method opens the main fragment

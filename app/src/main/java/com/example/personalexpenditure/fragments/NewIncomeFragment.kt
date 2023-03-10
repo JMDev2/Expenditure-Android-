@@ -40,6 +40,8 @@ class NewIncomeFragment : Fragment() {
         //actionbar
         activity?.setTitle((Html.fromHtml("<font color=\"#333333\">" + getString(R.string.newincome) + "</font>")));
         openBudgetFragment()
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 
     //This method opens the budget fragment

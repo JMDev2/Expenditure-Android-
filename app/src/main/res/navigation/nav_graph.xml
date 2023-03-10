@@ -20,14 +20,16 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_onboardingFragment"
-            app:destination="@id/onboardingFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_newExpensesFragment"
             app:destination="@id/newExpensesFragment" />
         <action
             android:id="@+id/action_mainFragment_to_newIncomeFragment"
             app:destination="@id/newIncomeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -60,6 +62,9 @@
         android:label="fragment_new_income"
         tools:layout="@layout/fragment_new_expenses_category" >
 
+        <action
+            android:id="@+id/action_newExpensesCategoryFragment_to_newExpensesFragment"
+            app:destination="@id/newExpensesFragment" />
     </fragment>
 
 </navigation>

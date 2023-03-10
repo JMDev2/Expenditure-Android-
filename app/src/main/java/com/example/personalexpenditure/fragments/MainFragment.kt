@@ -15,11 +15,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentMainBinding
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
 
 class MainFragment : Fragment() {
+   // private lateinit var navController: NavController
 
     private lateinit var binding: FragmentMainBinding
 
@@ -30,12 +32,12 @@ class MainFragment : Fragment() {
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMainBinding.inflate(inflater, container, false)
+
 
         return binding.root
     }
@@ -46,7 +48,67 @@ class MainFragment : Fragment() {
         openIncome()
         openExpenses()
 
+        home()
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
+        setupOnBackPressedCallback()
+
     }
+    private fun setupOnBackPressedCallback() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Do nothing to prevent navigating back to the onboarding screen
+            }
+        })
+    }
+
+
+    private fun home() {
+        binding.apply {
+            home.setOnClickListener {
+                    val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                    findNavController().navigate(action)
+                }
+            hospital.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                findNavController().navigate(action)
+
+            }
+            transport.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                findNavController().navigate(action)
+
+            }
+            entertainment.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                findNavController().navigate(action)
+
+            }
+            education.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                findNavController().navigate(action)
+
+            }
+            food.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                findNavController().navigate(action)
+
+            }
+            miscellenious.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                findNavController().navigate(action)
+
+            }
+            glocery.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                findNavController().navigate(action)
+
+            }
+        }
+
+        }
+
+
 
 
     private fun openIncome() {

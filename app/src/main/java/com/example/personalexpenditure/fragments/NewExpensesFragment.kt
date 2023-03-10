@@ -38,14 +38,15 @@ class NewExpensesFragment : Fragment() {
         activity?.setTitle((Html.fromHtml("<font color=\"#333333\">" + getString(R.string.expenses) + "</font>")));
 
         openCategoryFragment()
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 
     private fun openCategoryFragment() {
         binding.category.setOnClickListener {
-            val newExpensesCategoryFragment = NewExpensesCategoryFragment()
-            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, newExpensesCategoryFragment)
-            transaction.commit()
+            val action = NewExpensesFragmentDirections.actionNewExpensesFragmentToNewExpensesCategoryFragment()
+            findNavController().navigate(action)
+//            
         }
     }
 }
