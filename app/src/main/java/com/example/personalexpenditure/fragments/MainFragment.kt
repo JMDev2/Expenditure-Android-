@@ -104,6 +104,10 @@ class MainFragment : Fragment() {
                 findNavController().navigate(action)
 
             }
+            userProfile.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToProfileFragment()
+                findNavController().navigate(action)
+            }
         }
 
         }

@@ -30,6 +30,9 @@
             app:destination="@id/onboardingFragment"
             app:popUpTo="@id/onboardingFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -65,6 +68,20 @@
         <action
             android:id="@+id/action_newExpensesCategoryFragment_to_newExpensesFragment"
             app:destination="@id/newExpensesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.personalexpenditure.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+
+        <action
+            android:id="@+id/action_profileFragment_to_newExpensesCategoryFragment"
+            app:destination="@id/newExpensesCategoryFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
 </navigation>

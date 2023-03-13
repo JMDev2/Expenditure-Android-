@@ -15,6 +15,8 @@
     <color name="green">#00B894</color>
     <color name="greentop">#3A9A6E</color>
     <color name="greentop1">#005f87</color>
+    <color name="profile">#3A9A6E</color>
+    <color name="background">#FAFAFA</color>
 
 
 </resources>
