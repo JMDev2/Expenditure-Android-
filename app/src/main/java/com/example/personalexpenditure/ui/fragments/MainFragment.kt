@@ -1,4 +1,4 @@
-package com.example.personalexpenditure.fragments
+package com.example.personalexpenditure.ui.fragments
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
@@ -18,8 +18,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainFragment : Fragment() {
    // private lateinit var navController: NavController
 

@@ -1,4 +1,4 @@
-package com.example.personalexpenditure.fragments
+package com.example.personalexpenditure.ui.fragments
 
 import android.os.Bundle
 import android.text.Html
@@ -12,8 +12,9 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentNewExpensesBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class NewExpensesFragment : Fragment() {
     private lateinit var binding: FragmentNewExpensesBinding
 

@@ -1,4 +1,4 @@
-package com.example.personalexpenditure
+package com.example.personalexpenditure.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
+import com.example.personalexpenditure.R
 import com.example.personalexpenditure.adapter.OnBoardingViewPagerAdapter
 import com.example.personalexpenditure.databinding.FragmentOnboardingBinding
-import com.example.personalexpenditure.fragments.MainFragment
 import com.example.personalexpenditure.model.OnBoardingData
 import com.google.android.material.tabs.TabLayout
 
@@ -115,12 +115,15 @@ class OnboardingFragment : Fragment() {
         val onBoardingData: MutableList<OnBoardingData> = ArrayList()
         onBoardingData.add(OnBoardingData("Make a budget", "Make a monthly small budget to ensure\n" +
                 "you are spending your money wisely. \n" +
-                "This way you will be able to save", R.drawable.onboardingone))
+                "This way you will be able to save", R.drawable.onboardingone
+        ))
         onBoardingData.add(OnBoardingData("Track your spending", "Easily keep track of your spending as\n" +
                 "they happen. Have a record of how\n" +
-                "you spend.", R.drawable.onboardingtwo))
+                "you spend.", R.drawable.onboardingtwo
+        ))
         onBoardingData.add(OnBoardingData("Get rewarded", "For every penny you\n" +
-                "save you will get 20% airtime reward", R.drawable.onboardingthree))
+                "save you will get 20% airtime reward", R.drawable.onboardingthree
+        ))
         Log.d("OnboardingFragment", onBoardingData.size.toString())
 
         setOnBoardingViewPagerAdapter(onBoardingData)

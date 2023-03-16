@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.example.personalexpenditure.OnboardingFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.personalexpenditure.fragments.MainFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/newIncomeFragment"
-        android:name="com.example.personalexpenditure.fragments.NewIncomeFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewIncomeFragment"
         android:label="fragment_new_income"
         tools:layout="@layout/fragment_new_income" >
         <action
@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/newExpensesFragment"
-        android:name="com.example.personalexpenditure.fragments.NewExpensesFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewExpensesFragment"
         android:label="fragment_new_expense"
         tools:layout="@layout/fragment_new_expenses" >
         <action
@@ -61,7 +61,7 @@
 
     <fragment
         android:id="@+id/newExpensesCategoryFragment"
-        android:name="com.example.personalexpenditure.fragments.NewExpensesCategoryFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewExpensesCategoryFragment"
         android:label="fragment_new_income"
         tools:layout="@layout/fragment_new_expenses_category" >
 
@@ -72,7 +72,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.personalexpenditure.fragments.ProfileFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
 
