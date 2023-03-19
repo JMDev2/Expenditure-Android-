@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_newIncomeFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_newIncomeFragment_to_newBudgetFragment"
+            app:destination="@id/newBudgetFragment" />
     </fragment>
 
     <fragment
@@ -82,6 +85,22 @@
         <action
             android:id="@+id/action_profileFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newBudgetFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewBudgetFragment"
+        android:label="fragment_new_budget"
+        tools:layout="@layout/fragment_new_budget" >
+
+        <action
+            android:id="@+id/action_newBudgetFragment_to_newIncomeFragment"
+            app:destination="@id/newIncomeFragment" />
+        <argument
+            android:name="income"
+            app:argType="integer"
+            android:defaultValue="0" />
+
     </fragment>
 
 </navigation>

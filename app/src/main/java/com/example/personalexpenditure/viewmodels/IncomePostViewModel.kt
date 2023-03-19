@@ -14,12 +14,10 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class IncomePostViewModel @Inject constructor(private val repository: IncomeRepository, postData: PostData): ViewModel(){
+class IncomePostViewModel @Inject constructor(private val repository: IncomeRepository): ViewModel(){
+
     private val incomeLiveData = MutableLiveData<Resource<PostData?>>()
 
-    init {
-        postIncome(postData)
-    }
 
     fun postIncome(postData: PostData) = viewModelScope.launch {
         repository.createPost(postData).collect(){

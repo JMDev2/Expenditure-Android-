@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentNewIncomeBinding
@@ -54,6 +55,7 @@ class NewIncomeFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         postData()
+        observeIncomePost()
 
     }
 
@@ -72,11 +74,19 @@ class NewIncomeFragment : Fragment() {
 
     private fun postData() {
         binding.setBudget.setOnClickListener {
-            val income = binding.setIncome.text.toString().toInt()
-            viewModel.postIncome(PostData(income))
-            observeIncomePost()
-        }
+            val income = binding.setIncome.text.toString()
+            if (income.isNotBlank()) {
+                //viewModel.postIncome(PostData(income))
+                val action =
+                    NewIncomeFragmentDirections.actionNewIncomeFragmentToNewBudgetFragment(income.toInt())
+                requireView().findNavController().navigate(action)
+            } else {
 
+                Toast.makeText(requireContext(), "Input must not be null", Toast.LENGTH_LONG).show()
+
+            }
+
+        }
     }
 
     private fun observeIncomePost() {
@@ -85,6 +95,7 @@ class NewIncomeFragment : Fragment() {
         ){ response ->
             when (response.status) {
                 Status.SUCCESS ->{
+                    Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
 
                 }
                 Status.ERROR ->{

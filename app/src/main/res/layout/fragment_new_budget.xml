@@ -104,7 +104,7 @@
 
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/budgetText"
                         android:layout_width="115dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
@@ -135,7 +135,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/imready"
+                android:id="@+id/setBudget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
