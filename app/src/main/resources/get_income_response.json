@@ -1,0 +1,238 @@
+[
+  {
+    "id": 3,
+    "title": "MPESA",
+    "description": "Bank to mobile transactions will be charged",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-02-01",
+    "endDate": "2023-03-28",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "https://campaign.imbank.com/new",
+    "image": [
+      {
+        "downloadUri": "https://omni-control-panel.azurewebsites.net/api/v1/campaigns/download-file/A0hkl1gKP90T.jpeg"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "OTG",
+    "description": "OTG Business is now available",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-03-01",
+    "endDate": "2023-04-28",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "https://campaign.imbank.com/new",
+    "image": [
+      {
+        "downloadUri": "https://omni-control-panel.azurewebsites.net/api/v1/campaigns/download-file/FbF0aUvKrHvb.png"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "OTG",
+    "description": "OTG",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-11",
+    "endDate": "2023-01-17",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 8,
+    "title": "OTG",
+    "description": "OTG",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-12",
+    "endDate": "2023-01-13",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 12,
+    "title": "SAFOCM ",
+    "description": "BANKING MADE EASIER",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-10",
+    "endDate": "2023-01-11",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 14,
+    "title": "BANK",
+    "description": "BANK Campiagn",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-10",
+    "endDate": "2023-01-18",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "https://campaign.imbank.com/bank",
+    "image": [
+      {
+        "downloadUri": "https://omni-control-panel.azurewebsites.net/api/v1/campaigns/download-file/5EgpoymfdQNL.webp"
+      },
+      {
+        "downloadUri": "https://omni-control-panel.azurewebsites.net/api/v1/campaigns/download-file/Hb2KIubbfvlP.jpeg"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "OTG MPEWAS",
+    "description": "OMPESA",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-11",
+    "endDate": "2023-01-12",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 18,
+    "title": "OTG",
+    "description": "OTG",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-09",
+    "endDate": "2023-01-10",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 19,
+    "title": "OTG",
+    "description": "OTG",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-18",
+    "endDate": "2023-01-11",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 20,
+    "title": "OTG MPESA",
+    "description": "OTG WAIT",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-11",
+    "endDate": "2023-01-12",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 21,
+    "title": "otg",
+    "description": "otg",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-12",
+    "endDate": "2023-01-14",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 24,
+    "title": "MPESA TRANSFER",
+    "description": "MPESA TRANSFER",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-10",
+    "endDate": "2023-01-12",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 26,
+    "title": "OTGS MPESA",
+    "description": "MPESA BANKING",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-09",
+    "endDate": "2023-01-14",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 27,
+    "title": "MPESA SUPPORT",
+    "description": "SUPPORT BANKING",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-11",
+    "endDate": "2023-01-12",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 28,
+    "title": "MPESA SUPPORT",
+    "description": "SUPPORT BANKING",
+    "createdDate": "2023-01-09",
+    "startDate": "2023-01-11",
+    "endDate": "2023-01-12",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 32,
+    "title": "New Campign",
+    "description": "Join us today",
+    "createdDate": "2023-01-10",
+    "startDate": "2023-01-25",
+    "endDate": "2023-01-25",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  },
+  {
+    "id": 33,
+    "title": "New Campign",
+    "description": "Join us today",
+    "createdDate": "2023-01-10",
+    "startDate": "2023-01-25",
+    "endDate": "2023-01-25",
+    "platformOptions": [
+      "RETAIL"
+    ],
+    "deepLink": "",
+    "image": []
+  }
+]
