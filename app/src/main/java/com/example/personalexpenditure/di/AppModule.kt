@@ -6,6 +6,8 @@ import com.example.personalexpenditure.api.IncomePostApiService
 import com.example.personalexpenditure.constant.Constants.BASE_URL
 import com.example.personalexpenditure.model.PostData
 import com.example.personalexpenditure.repository.IncomeRepository
+import com.example.personalexpenditure.repository.getIncomeRepository
+import com.example.personalexpenditure.utils.NetworkInterceptor
 import com.example.personalexpenditure.utils.Resource
 import dagger.Module
 import dagger.Provides
@@ -25,6 +27,7 @@ object AppModule  {
     @Provides
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient
         .Builder()
+        .addInterceptor(NetworkInterceptor())
         .build()
 
     @Singleton
@@ -48,4 +51,6 @@ object AppModule  {
         return IncomeRepository((incomeApiImpl))
     }
 
+
 }
+

@@ -11,10 +11,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentNewBudgetBinding
 import com.example.personalexpenditure.model.PostData
+import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.IncomePostViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,7 +52,34 @@ class NewBudgetFragment : Fragment() {
         Log.d("NewBudgetFragment","passedIncome:${args.income}")
 
 
+       // observeExpenditurePost()
+
+        viewModel.incomeLiveData.observe(
+            viewLifecycleOwner
+        ){ response ->
+            when (response.status) {
+                Status.SUCCESS ->{
+                    val response = response.data
+
+
+                        Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+                        Log.d("NewBudgetFragment","response: ${response}")
+
+
+                }
+                Status.ERROR ->{
+                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+                        .show()
+
+                }
+                Status.LOADING ->{
+
+                }
+
+            }
+        }
         postBudget(args.income)
+
 
     }
 
@@ -59,15 +88,52 @@ class NewBudgetFragment : Fragment() {
             val budget = binding.budgetText.text.toString()
             if (budget.isNotBlank()){
                 Log.d("NewBudgetFragment","budget:${budget}")
+                //Log.d("NewBudgetFragment","id:${id}")
                 viewModel.postIncome(PostData(income, budget.toInt()))
-                Toast.makeText(requireContext(), "saved Succesfully", Toast.LENGTH_LONG).show()
+
+                val action = NewBudgetFragmentDirections.actionNewBudgetFragmentToMainFragment()
+                findNavController().navigate(action)
+
+                //Toast.makeText(requireContext(), "saved Succesfully", Toast.LENGTH_LONG).show()
 
             }else{
                 Toast.makeText(requireContext(), "Input must not be null", Toast.LENGTH_LONG).show()
 
             }
 
+
         }
+
     }
+
+
+//    private fun observeExpenditurePost() {
+//        viewModel.incomeLiveData.observe(
+//            viewLifecycleOwner
+//        ){ response ->
+//            when (response.status) {
+//                Status.SUCCESS ->{
+//                    val response = response.data
+//
+//                    response.let {
+//
+//                        Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+//                        Log.d("NewBudgetFragment","response: ${response}")
+//
+//                    }
+//                }
+//                Status.ERROR ->{
+//                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+//                        .show()
+//
+//                }
+//                Status.LOADING ->{
+//
+//                }
+//
+//            }
+//        }
+
+
 
 }

@@ -33,6 +33,13 @@
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_newBudgetFragment"
+            app:destination="@id/newBudgetFragment" />
+        <argument
+            android:name="incomeIdToHome"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
     <fragment
@@ -100,6 +107,9 @@
             android:name="income"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_newBudgetFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
 
     </fragment>
 

@@ -90,7 +90,7 @@ class NewIncomeFragment : Fragment() {
     }
 
     private fun observeIncomePost() {
-        viewModel.obserePostIncomeLiveData().observe(
+        viewModel.incomeLiveData.observe(
             viewLifecycleOwner
         ){ response ->
             when (response.status) {

@@ -9,15 +9,19 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentMainBinding
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.personalexpenditure.utils.Status
+import com.example.personalexpenditure.viewmodels.GetIncomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,6 +29,7 @@ class MainFragment : Fragment() {
    // private lateinit var navController: NavController
 
     private lateinit var binding: FragmentMainBinding
+    private val viewModel: GetIncomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,8 +59,39 @@ class MainFragment : Fragment() {
 
         setupOnBackPressedCallback()
 
+        observeIncome()
+
     }
-    private fun setupOnBackPressedCallback() {
+
+    private fun observeIncome() {
+        viewModel.observeIncomeLiveData().observe(
+            viewLifecycleOwner
+        ) { response ->
+            when (response.status) {
+                Status.SUCCESS -> {
+                    val response = response.data?.get(0)
+
+
+                    response?.let {
+                        binding.income.text = response.income.toString()
+                    }
+                }
+                // if error state
+                Status.ERROR -> {
+                    // TODO Dismiss progress dialog
+                    // TODO Show error message in dialog.
+                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+                        .show()
+                }
+                // if still loading
+                Status.LOADING -> {
+                    // TODO Show progress dialog
+                }
+            }
+        }
+    }
+
+private fun setupOnBackPressedCallback() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // Do nothing to prevent navigating back to the onboarding screen

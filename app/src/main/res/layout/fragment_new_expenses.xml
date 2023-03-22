@@ -98,13 +98,13 @@
                         android:layout_height="50dp"
                         android:background="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/editText"
+                        app:layout_constraintEnd_toStartOf="@+id/expenditureText"
                         app:layout_constraintStart_toEndOf="@+id/textView3"
                         app:layout_constraintTop_toTopOf="parent" />
 
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/expenditureText"
                         android:layout_width="115dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
@@ -126,7 +126,7 @@
                         android:src="@drawable/img_2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/editText" />
+                        app:layout_constraintTop_toTopOf="@+id/expenditureText" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
