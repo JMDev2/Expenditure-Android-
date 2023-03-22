@@ -31,11 +31,12 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
     }
 
     //get income
-     suspend fun getIncome(): Resource<IncomeResponse?> {
+     override suspend fun getIncomes(): Resource<IncomeResponse?> {
         val response = api.getIncome()
         return if (response.isSuccessful){
             Resource.success(response.body())
         }else{
+
             Resource.error("Income not Found", null)
         }
     }

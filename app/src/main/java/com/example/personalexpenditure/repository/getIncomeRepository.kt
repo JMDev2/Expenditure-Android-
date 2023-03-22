@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class getIncomeRepository @Inject constructor(private val api: IncomeApiImpl) {
+class getIncomeRepository @Inject constructor(private val api: IncomePostApi) {
     suspend fun getIncome()= flow {
         emit(Resource.loading(null))
-        emit(api.getIncome())
+        emit(api.getIncomes())
     }.flowOn(Dispatchers.IO)
 }

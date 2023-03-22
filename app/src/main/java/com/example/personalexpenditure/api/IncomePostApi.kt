@@ -7,7 +7,7 @@ import com.example.personalexpenditure.utils.Resource
 
 interface IncomePostApi {
 
-  ///  suspend fun getIncome(): Resource<IncomeResponse?>
+    suspend fun getIncomes(): Resource<IncomeResponse?>
 
    // suspend fun postExpenditure(): Resource<Expenditure?>
 }

@@ -51,6 +51,12 @@ object AppModule  {
         return IncomeRepository((incomeApiImpl))
     }
 
+    @Singleton
+    @Provides
+    fun getIncomeApi(campaignApiService: IncomePostApiService): IncomePostApi {
+        return IncomeApiImpl(campaignApiService)
+    }
+
 
 }
 
