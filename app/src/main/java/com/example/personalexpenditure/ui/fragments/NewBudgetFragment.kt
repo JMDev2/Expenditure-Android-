@@ -52,32 +52,9 @@ class NewBudgetFragment : Fragment() {
         Log.d("NewBudgetFragment","passedIncome:${args.income}")
 
 
-       // observeExpenditurePost()
-
-        viewModel.incomeLiveData.observe(
-            viewLifecycleOwner
-        ){ response ->
-            when (response.status) {
-                Status.SUCCESS ->{
-                    val response = response.data
+        observeExpenditurePost()
 
 
-                        Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-                        Log.d("NewBudgetFragment","response: ${response}")
-
-
-                }
-                Status.ERROR ->{
-                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-                        .show()
-
-                }
-                Status.LOADING ->{
-
-                }
-
-            }
-        }
         postBudget(args.income)
 
 
@@ -100,40 +77,40 @@ class NewBudgetFragment : Fragment() {
                 Toast.makeText(requireContext(), "Input must not be null", Toast.LENGTH_LONG).show()
 
             }
-
+            Log.d("NewBudgetFragment","id:${id}")
 
         }
 
     }
 
 
-//    private fun observeExpenditurePost() {
-//        viewModel.incomeLiveData.observe(
-//            viewLifecycleOwner
-//        ){ response ->
-//            when (response.status) {
-//                Status.SUCCESS ->{
-//                    val response = response.data
-//
-//                    response.let {
-//
-//                        Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-//                        Log.d("NewBudgetFragment","response: ${response}")
-//
-//                    }
-//                }
-//                Status.ERROR ->{
-//                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-//                        .show()
-//
-//                }
-//                Status.LOADING ->{
-//
-//                }
-//
-//            }
-//        }
+    private fun observeExpenditurePost() {
+        viewModel.incomeLiveData.observe(
+            viewLifecycleOwner
+        ){ response ->
+            when (response.status) {
+                Status.SUCCESS ->{
+                    val response = response.data?.id
+
+                    response.let {
 
 
+                        Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+                        Log.d("NewBudgetFragment","response: ${response}")
 
+                    }
+                }
+                Status.ERROR ->{
+                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+                        .show()
+
+                }
+                Status.LOADING ->{
+
+                }
+
+            }
+        }
+
+    }
 }
