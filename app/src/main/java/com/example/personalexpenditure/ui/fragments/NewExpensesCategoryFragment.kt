@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentNewExpensesCategoryBinding
 import com.example.personalexpenditure.model.Expenditure
@@ -21,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class NewExpensesCategoryFragment : Fragment() {
     private lateinit var binding: FragmentNewExpensesCategoryBinding
     private val viewModel: IncomePostViewModel by viewModels()
+    private val args: NewExpensesCategoryFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +47,7 @@ class NewExpensesCategoryFragment : Fragment() {
         assert(actionBar != null) // null check
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
-
+        Log.d("NewExpensesCategoryFragment", "id:${args.id}")
         postExpenditure()
 
 
@@ -53,32 +55,111 @@ class NewExpensesCategoryFragment : Fragment() {
 
     private fun postExpenditure() {
 
-        binding.transportLinearLayout.setOnClickListener {
-            val transport = binding.expenditureText.text.toString()
-            if (transport.isNotBlank()) {
-                Log.d("NewExpensesCategoryFragment", "transport:${transport}")
-           //     viewModel.postExpenditure(
-//                    Expenditure(
-//                        "2023-3-1",
-//                        0,
-//                        0,
-//                        0,
-//                        0,
-//                        postData = PostData(0, 0),
-//                        0,
-//                        0,
-//                        0,
-//                        0
-//                    )
-                //)
+        binding.done.setOnClickListener {
 
-                Toast.makeText(requireContext(), "saved Succesfully", Toast.LENGTH_LONG).show()
-            }else{
-                Toast.makeText(requireContext(), "Please indicate the amount spent", Toast.LENGTH_LONG).show()
+                val expenditure = buildExpenditure()
+                viewModel.postExpenditure(args.id.toString(), expenditure)
 
-            }
+              //  Toast.makeText(requireContext(), "saved Succesfully", Toast.LENGTH_LONG).show()
+
+        }
+
+
+    }
+    fun captureExpenditure() : Int{
+        val expenditure = binding.expenditureText.text.toString()
+        return when(expenditure.isNotBlank()){
+            true -> expenditure.toInt()
+            false -> 0
+
         }
     }
+    fun captureTransport(): Int{
+        var transport: Int = 0
+        binding.transportLinearLayout.setOnClickListener{
+            transport = captureExpenditure()
+        }
+        return transport
+    }
+
+
+    fun captureShopping() : Int{
+        var shopping : Int = 0
+        binding.shoppingLinearLayout.setOnClickListener {
+            shopping = captureExpenditure()
+        }
+            return shopping
+        }
+
+
+    fun captureFood() : Int{
+        var food : Int = 0
+        binding.foodLinearLayout.setOnClickListener{
+            food = captureExpenditure()
+        }
+            return food
+        }
+
+    fun captureEntertainment() : Int{
+        var entertainment : Int = 0
+        binding.EntertainmentLinearLayout.setOnClickListener{
+            entertainment = captureExpenditure()
+        }
+            return entertainment
+        }
+
+
+    fun captureRent() : Int{
+        var rent : Int = 0
+//        binding.re.setOnClickListener{
+//            rent = captureExpenditure()
+//        }
+            return rent;
+    }
+
+    fun captureFee() : Int{
+        var fee : Int = 0
+        binding.schoolFeeesLinearLayout.setOnClickListener {
+            fee = captureExpenditure()
+        }
+            return fee
+
+    }
+
+    fun captureHealth() : Int{
+        var health : Int = 0
+        binding.healthLinearLayout.setOnClickListener {
+            health = captureExpenditure()
+        }
+            return health
+        }
+
+    fun captureMisc() : Int{
+        var misc : Int = 0
+        binding.miscelleniousLayout.setOnClickListener{
+            misc = captureExpenditure()
+
+        }
+        return misc;
+    }
+
+
+    fun buildExpenditure() : Expenditure{
+        val transport = captureTransport()
+        val shopping = captureShopping()
+        val food = captureFood()
+        val entertainment = captureEntertainment()
+        val rent = captureRent()
+        val fee = captureFee()
+        val health = captureHealth()
+        val misc = captureMisc()
+
+        val postData = PostData(0,0)
+
+
+        return Expenditure(entertainment, food, health, postData, rent, fee, shopping, transport)
+    }
+
 
 
 }

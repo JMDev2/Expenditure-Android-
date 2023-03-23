@@ -52,7 +52,6 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         openIncome()
-        openExpenses()
 
         home()
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
@@ -69,11 +68,14 @@ class MainFragment : Fragment() {
         ) { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                    val response = response.data?.get(0)
+                    val total = response.data?.size
+                    val response = response.data?.get(total!! - 1)
 
 
                     response?.let {
                         binding.income.text = response.income.toString()
+                        openExpenses(response.id)
+
                     }
                 }
                 // if error state
@@ -91,7 +93,9 @@ class MainFragment : Fragment() {
         }
     }
 
-private fun setupOnBackPressedCallback() {
+
+
+    private fun setupOnBackPressedCallback() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // Do nothing to prevent navigating back to the onboarding screen
@@ -103,41 +107,41 @@ private fun setupOnBackPressedCallback() {
     private fun home() {
         binding.apply {
             home.setOnClickListener {
-                    val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                    val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
                     findNavController().navigate(action)
                 }
             hospital.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
                 findNavController().navigate(action)
 
             }
             transport.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
                 findNavController().navigate(action)
 
             }
             entertainment.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
                 findNavController().navigate(action)
 
             }
             education.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
                 findNavController().navigate(action)
 
             }
             food.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
                 findNavController().navigate(action)
 
             }
             miscellenious.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
                 findNavController().navigate(action)
 
             }
             glocery.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
                 findNavController().navigate(action)
 
             }
@@ -160,9 +164,9 @@ private fun setupOnBackPressedCallback() {
 
     }
 
-    private fun openExpenses() {
+    private fun openExpenses(incomeId: Int) {
         binding.expenseLinearLayout.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToNewExpensesFragment()
+            val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment(incomeId)
             findNavController().navigate(action)
         }
 

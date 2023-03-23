@@ -44,10 +44,10 @@ class NewExpensesFragment : Fragment() {
     }
 
     private fun openCategoryFragment() {
-        binding.category.setOnClickListener {
-            val action = NewExpensesFragmentDirections.actionNewExpensesFragmentToNewExpensesCategoryFragment()
-            findNavController().navigate(action)
-//            
-        }
+//        binding.category.setOnClickListener {
+//            val action = NewExpensesFragmentDirections.actionNewExpensesFragmentToNewExpensesCategoryFragment()
+//            findNavController().navigate(action)
+////
+//        }
     }
 }
