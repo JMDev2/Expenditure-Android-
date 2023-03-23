@@ -7,12 +7,110 @@
 
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.example.personalexpenditure.OnboardingFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.OnboardingFragment"
         android:label="fragment_onboarding"
-        tools:layout="@layout/fragment_onboarding" />
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.personalexpenditure.fragments.MainFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_newExpensesFragment"
+            app:destination="@id/newExpensesFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_newIncomeFragment"
+            app:destination="@id/newIncomeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_newBudgetFragment"
+            app:destination="@id/newBudgetFragment" />
+        <argument
+            android:name="incomeIdToHome"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newIncomeFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewIncomeFragment"
+        android:label="fragment_new_income"
+        tools:layout="@layout/fragment_new_income" >
+        <action
+            android:id="@+id/action_newIncomeFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_newIncomeFragment_to_newBudgetFragment"
+            app:destination="@id/newBudgetFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newExpensesFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewExpensesFragment"
+        android:label="fragment_new_expense"
+        tools:layout="@layout/fragment_new_expenses" >
+        <action
+            android:id="@+id/action_newExpensesFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_newExpensesFragment_to_newExpensesCategoryFragment"
+            app:destination="@id/newExpensesCategoryFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newExpensesCategoryFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewExpensesCategoryFragment"
+        android:label="fragment_new_income"
+        tools:layout="@layout/fragment_new_expenses_category" >
+
+        <action
+            android:id="@+id/action_newExpensesCategoryFragment_to_newExpensesFragment"
+            app:destination="@id/newExpensesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+
+        <action
+            android:id="@+id/action_profileFragment_to_newExpensesCategoryFragment"
+            app:destination="@id/newExpensesCategoryFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newBudgetFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewBudgetFragment"
+        android:label="fragment_new_budget"
+        tools:layout="@layout/fragment_new_budget" >
+
+        <action
+            android:id="@+id/action_newBudgetFragment_to_newIncomeFragment"
+            app:destination="@id/newIncomeFragment" />
+        <argument
+            android:name="income"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_newBudgetFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+
+    </fragment>
+
 </navigation>

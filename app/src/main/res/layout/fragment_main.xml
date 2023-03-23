@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainFragment">
+    tools:context=".ui.fragments.MainFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,9 +45,9 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:id="@+id/userProfile"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="21dp"
             android:src="@drawable/ic_baseline_perm_identity_24"
@@ -56,8 +56,8 @@
 
         <ImageView
             android:id="@+id/imageView12"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:layout_marginTop="21dp"
             android:layout_marginEnd="18dp"
             android:src="@drawable/img_1"
@@ -79,7 +79,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/textview"
-            android:gravity="center"
             android:orientation="vertical"
             android:padding="55dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,25 +88,51 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.623">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ksh.0"
-                android:textColor="@color/circle_income"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ksh."
+                    android:textColor="@color/circle_income"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/circle_income"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ksh.0"
-                android:textColor="@color/circle_expenses"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ksh."
+                    android:textColor="@color/circle_expenses"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/circle_expenses"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
 
 
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/miscellenious"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="28dp"
@@ -120,7 +145,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/home"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="132dp"
@@ -130,7 +155,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/transport"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="132dp"
@@ -140,7 +165,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/hospital"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="25dp"
@@ -153,7 +178,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/entertainment"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="25dp"
@@ -163,10 +188,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.58"
             app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+            app:layout_constraintTop_toBottomOf="@+id/hospital" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/food"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="35dp"
@@ -176,7 +201,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/education"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="132dp"
@@ -186,7 +211,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/glocery"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="28dp"
@@ -196,7 +221,7 @@
             app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
             app:layout_constraintHorizontal_bias="0.281"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/miscellenious" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
