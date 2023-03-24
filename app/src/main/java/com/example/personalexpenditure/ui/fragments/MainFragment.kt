@@ -72,8 +72,10 @@ class MainFragment : Fragment() {
                     val response = response.data?.get(total!! - 1)
 
 
+
                     response?.let {
                         binding.income.text = response.income.toString()
+                        binding.expenses.text = response.budget.toString()
                         openExpenses(response.id)
 
                     }

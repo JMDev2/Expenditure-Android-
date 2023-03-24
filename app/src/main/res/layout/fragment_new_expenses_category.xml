@@ -402,6 +402,32 @@
                     android:layout_height="match_parent" />
 
 
+                <LinearLayout
+                    android:id="@+id/rent_layout"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/category_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:id="@+id/rent_image"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/addsquare" />
+
+                    <TextView
+                        android:id="@+id/rent_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Micesl.." />
+                </LinearLayout>
             </TableRow>
 
 

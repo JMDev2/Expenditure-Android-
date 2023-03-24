@@ -79,7 +79,7 @@ class NewExpensesCategoryFragment : Fragment() {
         var transport: Int = 0
         binding.transportLinearLayout.setOnClickListener{
             transport = captureExpenditure()
-              Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
         }
         return transport
     }
@@ -89,6 +89,7 @@ class NewExpensesCategoryFragment : Fragment() {
         var shopping : Int = 0
         binding.shoppingLinearLayout.setOnClickListener {
             shopping = captureExpenditure()
+            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
         }
             return shopping
         }
@@ -98,6 +99,7 @@ class NewExpensesCategoryFragment : Fragment() {
         var food : Int = 0
         binding.foodLinearLayout.setOnClickListener{
             food = captureExpenditure()
+            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
         }
             return food
         }
@@ -106,6 +108,7 @@ class NewExpensesCategoryFragment : Fragment() {
         var entertainment : Int = 0
         binding.EntertainmentLinearLayout.setOnClickListener{
             entertainment = captureExpenditure()
+            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
         }
             return entertainment
         }
@@ -113,9 +116,9 @@ class NewExpensesCategoryFragment : Fragment() {
 
     fun captureRent() : Int{
         var rent : Int = 0
-//        binding.re.setOnClickListener{
-//            rent = captureExpenditure()
-//        }
+        binding.rentLayout.setOnClickListener{
+            rent = captureExpenditure()
+        }
             return rent;
     }
 

@@ -99,6 +99,8 @@ class NewIncomeFragment : Fragment() {
 
                 }
                 Status.ERROR ->{
+                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+                        .show()
 
                 }
                 Status.LOADING ->{
