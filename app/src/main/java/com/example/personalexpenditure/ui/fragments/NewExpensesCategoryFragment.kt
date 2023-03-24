@@ -68,16 +68,18 @@ class NewExpensesCategoryFragment : Fragment() {
     }
     fun captureExpenditure() : Int{
         val expenditure = binding.expenditureText.text.toString()
-        return when(expenditure.isNotBlank()){
+       return when(expenditure.isNotBlank()){
             true -> expenditure.toInt()
             false -> 0
 
         }
+
     }
     fun captureTransport(): Int{
         var transport: Int = 0
         binding.transportLinearLayout.setOnClickListener{
             transport = captureExpenditure()
+              Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
         }
         return transport
     }
