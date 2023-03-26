@@ -35,39 +35,39 @@ class SignUpFragment : Fragment() {
         registerUser()
     }
 
-    //validating the inputs
+   // validating the inputs
     private fun registerUser(){
         binding.signUp.setOnClickListener {
-            val name = binding.username.text.toString().trim()
-            val email = binding.email.text.toString().trim()
-            val password = binding.password.text.toString().trim()
+            val name = binding.signUpUsername.text.toString().trim()
+            val email = binding.signUpemail.text.toString().trim()
+            val password = binding.signUpPassword.text.toString().trim()
 
 
             if (name.isEmpty()){
-                binding.username.error = "Name is required"
-                binding.username.requestFocus()
+                binding.signUpUsername.error = "Name is required"
+                binding.signUpUsername.requestFocus()
                 return@setOnClickListener
             }
 
             if (email.isEmpty()){
-                binding.email.error = "Email is required"
-                binding.email.requestFocus()
+                binding.signUpemail.error = "Email is required"
+                binding.signUpemail.requestFocus()
                 return@setOnClickListener
             }
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                binding.email.error = "Please provide a valid email address"
-                binding.email.requestFocus()
+                binding.signUpemail.error = "Please provide a valid email address"
+                binding.signUpemail.requestFocus()
                 return@setOnClickListener
             }
 
             if(password.isEmpty()){
-                binding.password.error = "Password is required"
-                binding.password.requestFocus();
+                binding.signUpPassword.error = "Password is required"
+                binding.signUpPassword.requestFocus();
                 return@setOnClickListener
             }
             if(password.length < 6 && password.isEmpty()){
-                binding.password.error = "Min Password length should be 6 characters"
-                binding.password.requestFocus();
+                binding.signUpPassword.error = "Min Password length should be 6 characters"
+                binding.signUpPassword.requestFocus();
                 return@setOnClickListener
             }
         }

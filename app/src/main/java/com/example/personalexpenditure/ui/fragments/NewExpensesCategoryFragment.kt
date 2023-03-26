@@ -1,11 +1,13 @@
 package com.example.personalexpenditure.ui.fragments
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -48,6 +50,13 @@ class NewExpensesCategoryFragment : Fragment() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
         Log.d("NewExpensesCategoryFragment", "id:${args.id}")
+        captureTransport()
+        captureEntertainment()
+        captureFee()
+        captureFood()
+        captureHealth()
+        captureRent()
+        captureShopping()
         postExpenditure()
 
 
@@ -59,112 +68,187 @@ class NewExpensesCategoryFragment : Fragment() {
 
                 val expenditure = buildExpenditure()
                 viewModel.postExpenditure(args.id.toString(), expenditure)
+            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
 
-              //  Toast.makeText(requireContext(), "saved Succesfully", Toast.LENGTH_LONG).show()
+
 
         }
-
 
     }
     fun captureExpenditure() : Int{
         val expenditure = binding.expenditureText.text.toString()
-       return when(expenditure.isNotBlank()){
-            true -> expenditure.toInt()
-            false -> 0
+        Log.d("NewExpensesCategoryFragment", "expenditure${expenditure}")
+       if (expenditure.isNotBlank()) {
+           return expenditure.toInt()
+       }
+        else{
+            return 0
 
         }
 
     }
-    fun captureTransport(): Int{
-        var transport: Int = 0
-        binding.transportLinearLayout.setOnClickListener{
-            transport = captureExpenditure()
-            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+    fun captureTransport(){
+        val checkIcon = ImageView(requireContext()) // create a new ImageView
+        checkIcon.setImageResource(R.drawable.ic_baseline_check_circle_24) // set the icon drawable
+        checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
+
+        var isTransportSaved = false
+
+        binding.transportLinearLayout.setOnClickListener {
+            val transport = captureExpenditure()
+            buildExpenditure(transport = transport)
+
+            Toast.makeText(requireContext(), " transportsaved", Toast.LENGTH_LONG).show()
+
+            if (!isTransportSaved){
+                checkIcon.visibility = View.VISIBLE
+                binding.transportLinearLayout.addView(checkIcon) // add the ImageView to the LinearLayout
+
+            }else{
+                checkIcon.visibility = View.INVISIBLE
+                binding.transportLinearLayout.removeView(checkIcon) // remove the ImageView from the LinearLayout
+
+            }
+            isTransportSaved = !isTransportSaved
         }
-        return transport
     }
 
-
-    fun captureShopping() : Int{
-        var shopping : Int = 0
-        binding.shoppingLinearLayout.setOnClickListener {
-            shopping = captureExpenditure()
-            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-        }
-            return shopping
-        }
+        fun captureShopping() {
+            val checkIcon = ImageView(requireContext()) // create a new ImageView
+            checkIcon.setImageResource(R.drawable.ic_baseline_check_circle_24) // set the icon drawable
+            checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
 
 
-    fun captureFood() : Int{
-        var food : Int = 0
-        binding.foodLinearLayout.setOnClickListener{
-            food = captureExpenditure()
-            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-        }
-            return food
+            binding.shoppingLinearLayout.setOnClickListener {
+               val shopping = captureExpenditure()
+                buildExpenditure(shopping =shopping)
+
+                Toast.makeText(requireContext(), "shoppping saved", Toast.LENGTH_LONG).show()
+                checkIcon.visibility = View.VISIBLE
+                binding.transportText.visibility = View.GONE
+                binding.shoppingLinearLayout.addView(checkIcon) // add the ImageView to the LinearLayout
+
+            }
+
         }
 
-    fun captureEntertainment() : Int{
-        var entertainment : Int = 0
-        binding.EntertainmentLinearLayout.setOnClickListener{
-            entertainment = captureExpenditure()
-            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+
+        fun captureFood(){
+            binding.foodLinearLayout.setOnClickListener {
+               val food = captureExpenditure()
+                buildExpenditure(food = food)
+                Toast.makeText(requireContext(), "food saved", Toast.LENGTH_LONG).show()
+            }
         }
+
+        fun captureEntertainment() {
+            binding.EntertainmentLinearLayout.setOnClickListener {
+               val entertainment = captureExpenditure()
+                buildExpenditure(entertainment = entertainment)
+                Toast.makeText(requireContext(), "Entertainment saved", Toast.LENGTH_LONG).show()
+            }
+
+        }
+
+
+        fun captureRent() {
+            binding.rentLayout.setOnClickListener {
+               val rent = captureExpenditure()
+                buildExpenditure(rent = rent)
+                Toast.makeText(requireContext(), "rent saved", Toast.LENGTH_LONG).show()
+
+            }
+        }
+
+        fun captureFee(){
+            binding.schoolFeeesLinearLayout.setOnClickListener {
+               val fee = captureExpenditure()
+                buildExpenditure(fee = fee)
+                Toast.makeText(requireContext(), "fee saved", Toast.LENGTH_LONG).show()
+
+            }
+
+        }
+
+        fun captureHealth(){
+            binding.healthLinearLayout.setOnClickListener {
+              val health = captureExpenditure()
+                buildExpenditure(health = health)
+                Toast.makeText(requireContext(), "health saved", Toast.LENGTH_LONG).show()
+
+            }
+
+        }
+
+
+
+
+
+        fun buildExpenditure(
+            transport: Int? = null,
+            entertainment: Int?= null,
+            food: Int?= null,
+            health: Int?= null,
+            rent: Int?= null,
+            fee: Int?= null,
+            shopping: Int?= null
+
+        ): Expenditure {
+            var expenditure = Expenditure()
+
+            val postData = PostData(0, 0)
+            expenditure.transport = buildTransport(transport)
+            expenditure.entertainment = buidlEntertainment(entertainment)
+            expenditure.food = buildFood(food)
+            expenditure.rent = buildRent(rent)
+            expenditure.shopping = buildShopping(shopping)
+            expenditure.health = buildHealth(health)
+            expenditure.schoolFee = buildFee(fee)
+            expenditure.postData = postData
+
+
+            return expenditure
+        }
+    }
+
+        fun buildTransport(transport : Int?): Int{
+            if (transport != null){
+                return transport
+            }else{
+                return 0
+            }
+
+        }
+
+    fun buidlEntertainment(entertainment : Int?): Int{
+        if (entertainment != null){
             return entertainment
+        }else{
+            return 0
         }
-
-
-    fun captureRent() : Int{
-        var rent : Int = 0
-        binding.rentLayout.setOnClickListener{
-            rent = captureExpenditure()
-        }
-            return rent;
     }
 
-    fun captureFee() : Int{
-        var fee : Int = 0
-        binding.schoolFeeesLinearLayout.setOnClickListener {
-            fee = captureExpenditure()
-        }
-            return fee
+   fun buildFee(fee : Int?): Int{
+       return 0
+   }
 
+
+    fun buildFood(food : Int?): Int{
+    return 0
     }
 
-    fun captureHealth() : Int{
-        var health : Int = 0
-        binding.healthLinearLayout.setOnClickListener {
-            health = captureExpenditure()
-        }
-            return health
-        }
-
-    fun captureMisc() : Int{
-        var misc : Int = 0
-        binding.miscelleniousLayout.setOnClickListener{
-            misc = captureExpenditure()
-
-        }
-        return misc;
+    fun buildHealth(health : Int?): Int{
+        return 0
     }
 
+    fun buildRent(rent : Int?): Int{
+        return 0
+    }
 
-    fun buildExpenditure() : Expenditure{
-        val transport = captureTransport()
-        val shopping = captureShopping()
-        val food = captureFood()
-        val entertainment = captureEntertainment()
-        val rent = captureRent()
-        val fee = captureFee()
-        val health = captureHealth()
-        val misc = captureMisc()
-
-        val postData = PostData(0,0)
-
-
-        return Expenditure(entertainment, food, health, postData, rent, fee, shopping, transport)
+    fun buildShopping(shopping : Int?): Int{
+        return 0
     }
 
 
 
-}
+

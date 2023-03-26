@@ -75,7 +75,7 @@ class MainFragment : Fragment() {
 
                     response?.let {
                         binding.income.text = response.income.toString()
-                        binding.expenses.text = response.budget.toString()
+                      //  binding.expenses.text = response.budget.toString()
                         openExpenses(response.id)
 
                     }

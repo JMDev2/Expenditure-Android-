@@ -43,7 +43,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/loginUsername"
+                android:id="@+id/signUpUsername"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
@@ -80,7 +80,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/signUpemail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
@@ -117,7 +117,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/loginPassword"
+                android:id="@+id/signUpPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
