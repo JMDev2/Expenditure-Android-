@@ -50,6 +50,7 @@ class NewExpensesCategoryFragment : Fragment() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
         Log.d("NewExpensesCategoryFragment", "id:${args.id}")
+        cancelBtn()
         captureTransport()
         captureEntertainment()
         captureFee()
@@ -62,15 +63,17 @@ class NewExpensesCategoryFragment : Fragment() {
 
     }
 
+    private fun cancelBtn() {
+        binding.cancel.setOnClickListener {
+            binding.expenditureText.setText("")
+        }
+    }
+
     private fun postExpenditure() {
-
         binding.done.setOnClickListener {
-
-                val expenditure = buildExpenditure()
-                viewModel.postExpenditure(args.id.toString(), expenditure)
+            val expenditure = buildExpenditure()
+            viewModel.postExpenditure(args.id.toString(), expenditure)
             Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-
-
 
         }
 
@@ -85,7 +88,6 @@ class NewExpensesCategoryFragment : Fragment() {
             return 0
 
         }
-
     }
     fun captureTransport(){
         val checkIcon = ImageView(requireContext()) // create a new ImageView
@@ -102,11 +104,14 @@ class NewExpensesCategoryFragment : Fragment() {
 
             if (!isTransportSaved){
                 checkIcon.visibility = View.VISIBLE
+                binding.transportText.visibility = View.GONE
                 binding.transportLinearLayout.addView(checkIcon) // add the ImageView to the LinearLayout
 
             }else{
                 checkIcon.visibility = View.INVISIBLE
                 binding.transportLinearLayout.removeView(checkIcon) // remove the ImageView from the LinearLayout
+                binding.expenditureText.setText("")
+                binding.transportText.visibility = View.VISIBLE
 
             }
             isTransportSaved = !isTransportSaved
@@ -181,9 +186,6 @@ class NewExpensesCategoryFragment : Fragment() {
         }
 
 
-
-
-
         fun buildExpenditure(
             transport: Int? = null,
             entertainment: Int?= null,
@@ -205,7 +207,6 @@ class NewExpensesCategoryFragment : Fragment() {
             expenditure.health = buildHealth(health)
             expenditure.schoolFee = buildFee(fee)
             expenditure.postData = postData
-
 
             return expenditure
         }
@@ -229,24 +230,46 @@ class NewExpensesCategoryFragment : Fragment() {
     }
 
    fun buildFee(fee : Int?): Int{
-       return 0
+       if (fee != null){
+           return fee
+       }else{
+           return 0
+       }
+
    }
 
 
     fun buildFood(food : Int?): Int{
-    return 0
+        if (food != null){
+            return food
+        }else{
+            return 0
+        }
+
     }
 
     fun buildHealth(health : Int?): Int{
-        return 0
+        if (health != null){
+            return health
+        }else{
+            return 0
+        }
     }
 
     fun buildRent(rent : Int?): Int{
-        return 0
+        if (rent != null){
+            return rent
+        }else{
+            return 0
+        }
     }
 
     fun buildShopping(shopping : Int?): Int{
-        return 0
+        if (shopping != null){
+            return shopping
+        }else{
+            return 0
+        }
     }
 
 

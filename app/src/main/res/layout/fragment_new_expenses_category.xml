@@ -92,13 +92,13 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/view"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                    app:layout_constraintEnd_toStartOf="@+id/cancel"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toTopOf="@+id/view"
                     app:layout_constraintVertical_bias="0.4" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/cancel"
                     android:layout_width="32dp"
                     android:layout_height="27dp"
                     android:layout_marginEnd="8dp"

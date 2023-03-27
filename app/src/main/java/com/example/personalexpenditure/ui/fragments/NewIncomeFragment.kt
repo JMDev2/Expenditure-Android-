@@ -56,7 +56,14 @@ class NewIncomeFragment : Fragment() {
 
         postData()
         observeIncomePost()
+        cancelBtn()
 
+    }
+
+    private fun cancelBtn() {
+        binding.cancel.setOnClickListener {
+            binding.setIncome.setText("")
+        }
     }
 
 

@@ -56,8 +56,14 @@ class NewBudgetFragment : Fragment() {
 
 
         postBudget(args.income)
+        cancelBtn()
 
 
+    }
+    private fun cancelBtn() {
+        binding.cancel.setOnClickListener {
+            binding.budgetText.setText("")
+        }
     }
 
     private fun postBudget(income: Int) {
