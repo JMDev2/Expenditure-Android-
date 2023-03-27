@@ -1,6 +1,5 @@
 package com.example.personalexpenditure.ui.fragments
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -12,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentNewExpensesCategoryBinding
@@ -73,7 +73,11 @@ class NewExpensesCategoryFragment : Fragment() {
         binding.done.setOnClickListener {
             val expenditure = buildExpenditure()
             viewModel.postExpenditure(args.id.toString(), expenditure)
+            Log.d("NewExpensesCategoryFragment", "expendi${expenditure}")
             Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+
+            val action = NewExpensesCategoryFragmentDirections.actionNewExpensesCategoryFragmentToMainFragment()
+            findNavController().navigate(action)
 
         }
 
@@ -98,7 +102,7 @@ class NewExpensesCategoryFragment : Fragment() {
 
         binding.transportLinearLayout.setOnClickListener {
             val transport = captureExpenditure()
-            buildExpenditure(transport = transport)
+            buildExpenditure(transport)
 
             Toast.makeText(requireContext(), " transportsaved", Toast.LENGTH_LONG).show()
 

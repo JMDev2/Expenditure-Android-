@@ -60,13 +60,13 @@
         android:name="com.example.personalexpenditure.ui.fragments.NewExpensesCategoryFragment"
         android:label="fragment_new_income"
         tools:layout="@layout/fragment_new_expenses_category" >
-        <action
-            android:id="@+id/action_newExpensesCategoryFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
         <argument
             android:name="id"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_newExpensesCategoryFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
     <fragment

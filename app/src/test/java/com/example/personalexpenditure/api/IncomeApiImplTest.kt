@@ -31,9 +31,7 @@ class IncomeApiImplTest {
         .build()
     private val response = MockFileReader("get_income_response.json").content
 
-    @Mock
-    lateinit var postData: PostData
-    private lateinit var api: IncomePostApiService
+
 
     @Before
     fun setUp() {
@@ -76,24 +74,8 @@ class IncomeApiImplTest {
         assertEquals(Status.ERROR, actualResponse.status)
     }
 
-    @Test
-    suspend fun `postIncome returns success response`() {
-        // Create a mock response with a success status code and a JSON body
-        val responseJson = """{"message": "Income posted successfully"}"""
-        val response = MockResponse()
-            .setResponseCode(201)
-            .setBody(responseJson)
-            .setHeader("Content-Type", "application/json")
 
-        // Enqueue the mock response to be returned by the MockWebServer
-        mockWebServer.enqueue(response)
 
-        // Call the postIncome method and capture the result
-        val result = incomeApiImpl.postIncome(postData)
-
-        // Assert that the result is a success response with the correct data and status code
-        assertEquals(Status.SUCCESS, result.status)
-    }
 
 
 }

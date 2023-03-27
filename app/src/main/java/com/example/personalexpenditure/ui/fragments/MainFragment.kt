@@ -70,12 +70,12 @@ class MainFragment : Fragment() {
                 Status.SUCCESS -> {
                     val total = response.data?.size
                     val response = response.data?.get(total!! - 1)
-
-
+                    binding.progressBar.visibility = View.GONE
 
                     response?.let {
+                        binding.constraint.visibility = View.VISIBLE
                         binding.income.text = response.income.toString()
-                      //  binding.expenses.text = response.budget.toString()
+                        binding.expenses.text = response.budget.toString()
                         openExpenses(response.id)
 
                     }
@@ -89,6 +89,9 @@ class MainFragment : Fragment() {
                 }
                 // if still loading
                 Status.LOADING -> {
+                    binding.constraint.visibility = View.GONE
+                    binding.progressBar.visibility = View.VISIBLE
+
                     // TODO Show progress dialog
                 }
             }
