@@ -1,5 +1,6 @@
 package com.example.personalexpenditure.ui.fragments
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -72,6 +73,7 @@ class NewExpensesCategoryFragment : Fragment() {
     private fun postExpenditure() {
         binding.done.setOnClickListener {
             val expenditure = buildExpenditure()
+            val transport = captureTransport()
             viewModel.postExpenditure(args.id.toString(), expenditure)
             Log.d("NewExpensesCategoryFragment", "expendi${expenditure}")
             Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
@@ -102,7 +104,7 @@ class NewExpensesCategoryFragment : Fragment() {
 
         binding.transportLinearLayout.setOnClickListener {
             val transport = captureExpenditure()
-            buildExpenditure(transport)
+            buildExpenditure(transport = transport)
 
             Toast.makeText(requireContext(), " transportsaved", Toast.LENGTH_LONG).show()
 
@@ -211,6 +213,8 @@ class NewExpensesCategoryFragment : Fragment() {
             expenditure.health = buildHealth(health)
             expenditure.schoolFee = buildFee(fee)
             expenditure.postData = postData
+            Log.d("NewExpensesCategoryFragment", "jaributu${expenditure}")
+            Log.d("NewExpensesCategoryFragment", "hatawewe${expenditure}")
 
             return expenditure
         }
