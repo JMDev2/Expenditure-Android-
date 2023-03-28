@@ -2,14 +2,14 @@ package com.example.personalexpenditure.model
 
 
 data class Expenditure(
-    var entertainment: Int?,
-    var food: Int?,
-    var health: Int?,
+    var entertainment: Int? = 0,
+    var food: Int? = 0,
+    var health: Int? = 0,
     var postData: PostData?,
-    var rent: Int?,
-    var schoolFee: Int?,
-    var shopping: Int?,
-    var transport: Int?,
+    var rent: Int? = 0,
+    var schoolFee: Int? = 0,
+    var shopping: Int? = 0,
+    var transport: Int? = 0,
     var id: Int? = null,
     var createdDate: String? = null
 ) {

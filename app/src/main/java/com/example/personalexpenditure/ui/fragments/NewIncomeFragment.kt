@@ -63,6 +63,9 @@ class NewIncomeFragment : Fragment() {
 
     }
 
+    /*
+    display date
+     */
     private fun displayDate() {
         val currentDate = Date()
         val dateFormat = SimpleDateFormat("d, EEEE, yyyy", Locale.getDefault())
@@ -77,7 +80,9 @@ class NewIncomeFragment : Fragment() {
     }
 
 
-    //This method opens the budget fragment
+    /*
+    This method opens the budget fragment
+     */
     private fun openBudgetFragment() {
         binding.setBudget.setOnClickListener {
             val newBudgetFragment = NewBudgetFragment()
@@ -89,6 +94,9 @@ class NewIncomeFragment : Fragment() {
     }
 
 
+    /*
+    post income
+     */
     private fun postData() {
         binding.setBudget.setOnClickListener {
             val income = binding.setIncome.text.toString()
