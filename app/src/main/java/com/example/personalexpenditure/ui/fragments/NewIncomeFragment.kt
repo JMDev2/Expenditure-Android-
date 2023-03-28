@@ -23,6 +23,8 @@ import com.example.personalexpenditure.utils.Resource
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.IncomePostViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class NewIncomeFragment : Fragment() {
@@ -57,7 +59,15 @@ class NewIncomeFragment : Fragment() {
         postData()
         observeIncomePost()
         cancelBtn()
+        displayDate()
 
+    }
+
+    private fun displayDate() {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("d, EEEE, yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+        binding.dateText.text = formattedDate
     }
 
     private fun cancelBtn() {

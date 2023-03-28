@@ -19,6 +19,8 @@ import com.example.personalexpenditure.model.PostData
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.IncomePostViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class NewBudgetFragment : Fragment() {
@@ -52,6 +54,7 @@ class NewBudgetFragment : Fragment() {
         Log.d("NewBudgetFragment","passedIncome:${args.income}")
 
 
+        displayDate()
         observeExpenditurePost()
 
 
@@ -59,6 +62,13 @@ class NewBudgetFragment : Fragment() {
         cancelBtn()
 
 
+    }
+
+    private fun displayDate() {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("d, EEEE, yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+        binding.dateText.text = formattedDate
     }
     private fun cancelBtn() {
         binding.cancel.setOnClickListener {

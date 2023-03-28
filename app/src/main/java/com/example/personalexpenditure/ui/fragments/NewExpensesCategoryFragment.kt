@@ -20,6 +20,8 @@ import com.example.personalexpenditure.model.Expenditure
 import com.example.personalexpenditure.model.PostData
 import com.example.personalexpenditure.viewmodels.IncomePostViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class NewExpensesCategoryFragment : Fragment() {
@@ -49,6 +51,7 @@ class NewExpensesCategoryFragment : Fragment() {
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         assert(actionBar != null) // null check
         actionBar?.setDisplayHomeAsUpEnabled(true)
+        displayDate()
 
         Log.d("NewExpensesCategoryFragment", "id:${args.id}")
         cancelBtn()
@@ -62,6 +65,13 @@ class NewExpensesCategoryFragment : Fragment() {
         postExpenditure()
 
 
+
+    }
+    private fun displayDate() {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("d, EEEE, yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+        binding.dateText.text = formattedDate
     }
 
     private fun cancelBtn() {
