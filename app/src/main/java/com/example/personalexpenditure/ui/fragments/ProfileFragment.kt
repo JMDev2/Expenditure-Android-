@@ -34,8 +34,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //actionbar
-        activity?.setTitle((Html.fromHtml("<font color=\"#333333\">" + getString(R.string.budget) + "</font>")));
-        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        activity?.setTitle((Html.fromHtml("<font color=\"#333333\">" + getString(R.string.profile) + "</font>")));
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         imageClicks()
     }

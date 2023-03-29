@@ -20,9 +20,6 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_newExpensesFragment"
-            app:destination="@id/newExpensesFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_newIncomeFragment"
             app:destination="@id/newIncomeFragment" />
         <action
@@ -40,6 +37,9 @@
             android:name="incomeIdToHome"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_mainFragment_to_newExpensesCategoryFragment"
+            app:destination="@id/newExpensesCategoryFragment" />
     </fragment>
 
     <fragment
@@ -56,28 +56,17 @@
     </fragment>
 
     <fragment
-        android:id="@+id/newExpensesFragment"
-        android:name="com.example.personalexpenditure.ui.fragments.NewExpensesFragment"
-        android:label="fragment_new_expense"
-        tools:layout="@layout/fragment_new_expenses" >
-        <action
-            android:id="@+id/action_newExpensesFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_newExpensesFragment_to_newExpensesCategoryFragment"
-            app:destination="@id/newExpensesCategoryFragment" />
-
-    </fragment>
-
-    <fragment
         android:id="@+id/newExpensesCategoryFragment"
         android:name="com.example.personalexpenditure.ui.fragments.NewExpensesCategoryFragment"
         android:label="fragment_new_income"
         tools:layout="@layout/fragment_new_expenses_category" >
-
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
         <action
-            android:id="@+id/action_newExpensesCategoryFragment_to_newExpensesFragment"
-            app:destination="@id/newExpensesFragment" />
+            android:id="@+id/action_newExpensesCategoryFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
     <fragment

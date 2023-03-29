@@ -11,9 +11,7 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
    suspend fun postIncome(postData: PostData): Resource<PostData?> {
         val response = api.postIncome(postData)
         return if (response.isSuccessful){
-            //Resource.success(response.body(), 201)
-
-            val success = Resource.success(response.body(), 201)
+            val success = Resource.success(response.body())
             success
         }else{
             Resource.error("Not posted", null)

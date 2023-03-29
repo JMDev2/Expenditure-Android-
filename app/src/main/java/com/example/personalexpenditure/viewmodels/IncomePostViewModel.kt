@@ -42,7 +42,7 @@ class IncomePostViewModel @Inject constructor(private val repository: IncomeRepo
     */
     fun postExpenditure(incomeId: String, expenditure: Expenditure) = viewModelScope.launch {
         repository.postExpenditure(incomeId, expenditure).collect(){
-            expenditureLiveData.postValue(it)
+            expenditureLiveData.setValue(it)
         }
     }
     fun observeExpenditureLiveData(): LiveData<Resource<Expenditure?>>{

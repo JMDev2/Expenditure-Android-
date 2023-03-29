@@ -23,6 +23,8 @@ import com.example.personalexpenditure.utils.Resource
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.IncomePostViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class NewIncomeFragment : Fragment() {
@@ -56,11 +58,31 @@ class NewIncomeFragment : Fragment() {
 
         postData()
         observeIncomePost()
+        cancelBtn()
+        displayDate()
 
     }
 
+    /*
+    display date
+     */
+    private fun displayDate() {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("d, EEEE, yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+        binding.dateText.text = formattedDate
+    }
 
-    //This method opens the budget fragment
+    private fun cancelBtn() {
+        binding.cancel.setOnClickListener {
+            binding.setIncome.setText("")
+        }
+    }
+
+
+    /*
+    This method opens the budget fragment
+     */
     private fun openBudgetFragment() {
         binding.setBudget.setOnClickListener {
             val newBudgetFragment = NewBudgetFragment()
@@ -72,11 +94,16 @@ class NewIncomeFragment : Fragment() {
     }
 
 
+    /*
+    post income
+     */
     private fun postData() {
         binding.setBudget.setOnClickListener {
             val income = binding.setIncome.text.toString()
             if (income.isNotBlank()) {
-                //viewModel.postIncome(PostData(income))
+                /*
+                this action passes the argument income to the next destination
+                 */
                 val action =
                     NewIncomeFragmentDirections.actionNewIncomeFragmentToNewBudgetFragment(income.toInt())
                 requireView().findNavController().navigate(action)
@@ -99,6 +126,8 @@ class NewIncomeFragment : Fragment() {
 
                 }
                 Status.ERROR ->{
+                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+                        .show()
 
                 }
                 Status.LOADING ->{

@@ -82,29 +82,32 @@ class OnboardingFragment : Fragment() {
         }
 
         override fun onPageSelected(position: Int) {
-            binding.moveNext.setOnClickListener {
-                if (binding.viewpager.currentItem + 1 < onBoardingViewPagerAdapter!!.count){
-                    binding.viewpager.currentItem += 1
-                }else{
-                    binding.moveNext.text = "Get Started"
+            if (position == onBoardingViewPagerAdapter!!.count - 1) {
+                binding.moveNext.text = "Get Started"
+                binding.moveNext.setOnClickListener {
                     val action = OnboardingFragmentDirections.actionOnboardingFragmentToMainFragment()
                     findNavController().navigate(action)
+                }
+            } else {
+                binding.moveNext.text = "Next"
+                binding.moveNext.setOnClickListener {
+                    binding.viewpager.currentItem += 1
                 }
             }
         }
 
         override fun onPageScrollStateChanged(state: Int) {
 
-            if (state == ViewPager.SCROLL_STATE_DRAGGING) {
-                settled = false
-            }
-            if (state == ViewPager.SCROLL_STATE_SETTLING) {
-                settled = true
-            }
-            if (state == ViewPager.SCROLL_STATE_IDLE && !settled) {
-                // set the current position
-                findNavController().navigate(R.id.action_onboardingFragment_to_mainFragment)
-            }
+//            if (state == ViewPager.SCROLL_STATE_DRAGGING) {
+//                settled = false
+//            }
+//            if (state == ViewPager.SCROLL_STATE_SETTLING) {
+//                settled = true
+//            }
+//            if (state == ViewPager.SCROLL_STATE_IDLE && !settled) {
+//                // set the current position
+//                findNavController().navigate(R.id.action_onboardingFragment_to_mainFragment)
+//            }
         }
 
     })
