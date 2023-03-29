@@ -1,5 +1,6 @@
 package com.example.personalexpenditure.ui.fragments
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.text.Html
@@ -60,6 +61,7 @@ class MainFragment : Fragment() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observeIncome() {
         viewModel.observeIncomeLiveData().observe(
             viewLifecycleOwner
@@ -69,6 +71,7 @@ class MainFragment : Fragment() {
                     val total = response.data?.size
                     val response = response.data?.get(total!! - 1)
                     binding.progressBar.visibility = View.GONE
+                    binding.errorText.visibility = View.GONE
 
                     response?.let {
                         binding.constraint.visibility = View.VISIBLE
@@ -81,13 +84,15 @@ class MainFragment : Fragment() {
                 // if error state
                 Status.ERROR -> {
                     // TODO Dismiss progress dialog
+                    binding.progressBar.visibility = View.GONE
                     // TODO Show error message in dialog.
-                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-                        .show()
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = "set income"
                 }
                 // if still loading
                 Status.LOADING -> {
                     binding.constraint.visibility = View.GONE
+                    binding.errorText.visibility = View.GONE
                     binding.progressBar.visibility = View.VISIBLE
 
                     // TODO Show progress dialog
@@ -154,8 +159,6 @@ class MainFragment : Fragment() {
         }
 
         }
-
-
 
 
     private fun openIncome() {

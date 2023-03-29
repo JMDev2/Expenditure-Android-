@@ -74,10 +74,6 @@ class IncomeApiImplTest {
         assertEquals(Status.ERROR, actualResponse.status)
     }
 
-
-
-
-
 }
 
 

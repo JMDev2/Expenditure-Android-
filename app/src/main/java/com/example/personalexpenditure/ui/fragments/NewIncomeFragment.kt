@@ -101,7 +101,9 @@ class NewIncomeFragment : Fragment() {
         binding.setBudget.setOnClickListener {
             val income = binding.setIncome.text.toString()
             if (income.isNotBlank()) {
-                //viewModel.postIncome(PostData(income))
+                /*
+                this action passes the argument income to the next destination
+                 */
                 val action =
                     NewIncomeFragmentDirections.actionNewIncomeFragmentToNewBudgetFragment(income.toInt())
                 requireView().findNavController().navigate(action)

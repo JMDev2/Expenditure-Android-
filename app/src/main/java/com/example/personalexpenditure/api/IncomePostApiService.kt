@@ -18,7 +18,6 @@ interface IncomePostApiService {
     ): Response<PostData>
 
     //post expenditure
-
     @POST("expenditure/{incomeId}")
     suspend fun postExpenditure(@Path("incomeId") incomeId: String,
         @Body expenditure: Expenditure

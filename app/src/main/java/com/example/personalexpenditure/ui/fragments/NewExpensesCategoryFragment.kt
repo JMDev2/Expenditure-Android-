@@ -31,12 +31,14 @@ class NewExpensesCategoryFragment : Fragment() {
     private val args: NewExpensesCategoryFragmentArgs by navArgs()
 
     private var transportClicked = false
-    private var entertainmentClicked = false
     private var shoppingClicked = false
+    private var feeClicked = false
+    private var foodClicked = false
+    private var entertainmentClicked = false
     private var healthClicked = false
     private var rentClicked = false
-    private var foodClicked = false
-    private var feeClicked = false
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,6 +100,21 @@ class NewExpensesCategoryFragment : Fragment() {
             if (shoppingClicked){
                 expenditure.shopping = input
             }
+            if(healthClicked){
+                expenditure.health= input
+            }
+            if (feeClicked){
+                expenditure.schoolFee = input
+            }
+            if (foodClicked){
+                expenditure.food = input
+            }
+            if (entertainmentClicked){
+                expenditure.entertainment = input
+            }
+            if (rentClicked){
+                expenditure.rent = input
+            }
             viewModel.postExpenditure(args.id.toString(), expenditure)
             Log.d("NewExpensesCategoryFragment", "Posting${expenditure}")
             Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
@@ -124,7 +141,7 @@ class NewExpensesCategoryFragment : Fragment() {
         checkIcon.setImageResource(R.drawable.ic_baseline_check_circle_24) // set the icon drawable
         checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
         binding.transportLinearLayout.setOnClickListener {
-            transportClicked = true
+            transportClicked = !transportClicked
             if (transportClicked){
                 checkIcon.visibility = View.VISIBLE
                 binding.transportText.visibility = View.GONE
@@ -210,7 +227,7 @@ class NewExpensesCategoryFragment : Fragment() {
             checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
 
             binding.EntertainmentLinearLayout.setOnClickListener {
-                entertainmentClicked = ! entertainmentClicked
+                entertainmentClicked = !entertainmentClicked
                 if (entertainmentClicked){
                     checkIcon.visibility = View.VISIBLE
                     binding.entertainmentText.visibility = View.GONE
@@ -238,7 +255,7 @@ class NewExpensesCategoryFragment : Fragment() {
             checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
 
             binding.rentLayout.setOnClickListener {
-               rentClicked = ! rentClicked
+               rentClicked = !rentClicked
                 if (rentClicked){
                     checkIcon.visibility = View.VISIBLE
                     binding.rentText.visibility = View.GONE
@@ -268,7 +285,7 @@ class NewExpensesCategoryFragment : Fragment() {
             checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
 
             binding.schoolFeeesLinearLayout.setOnClickListener {
-               feeClicked != feeClicked
+               feeClicked = !feeClicked
                 if (feeClicked){
                     checkIcon.visibility = View.VISIBLE
                     binding.schoolFeeesText.visibility = View.GONE
@@ -298,7 +315,7 @@ class NewExpensesCategoryFragment : Fragment() {
             checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
 
             binding.healthLinearLayout.setOnClickListener {
-              healthClicked != healthClicked
+              healthClicked = !healthClicked
                 if (healthClicked){
                     checkIcon.visibility = View.VISIBLE
                     binding.healthText.visibility = View.GONE
