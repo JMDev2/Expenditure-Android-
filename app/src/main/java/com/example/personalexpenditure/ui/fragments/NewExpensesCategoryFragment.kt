@@ -73,8 +73,6 @@ class NewExpensesCategoryFragment : Fragment() {
         captureShopping()
         postExpenditure()
 
-
-
     }
     private fun displayDate() {
         val currentDate = Date()
@@ -125,12 +123,8 @@ class NewExpensesCategoryFragment : Fragment() {
         val checkIcon = ImageView(requireContext()) // create a new ImageView
         checkIcon.setImageResource(R.drawable.ic_baseline_check_circle_24) // set the icon drawable
         checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
-
         binding.transportLinearLayout.setOnClickListener {
             transportClicked = true
-
-            Toast.makeText(requireContext(), " transportsaved", Toast.LENGTH_LONG).show()
-
             if (transportClicked){
                 checkIcon.visibility = View.VISIBLE
                 binding.transportText.visibility = View.GONE
@@ -183,30 +177,85 @@ class NewExpensesCategoryFragment : Fragment() {
 
         }
 
-
-
-
         fun captureFood(){
-            binding.foodLinearLayout.setOnClickListener {
-               val food = captureExpenditure()
+            val checkIcon = ImageView(requireContext()) // create a new ImageView
+            checkIcon.setImageResource(R.drawable.ic_baseline_check_circle_24) // set the icon drawable
+            checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
 
-                Toast.makeText(requireContext(), "food saved", Toast.LENGTH_LONG).show()
+            binding.foodLinearLayout.setOnClickListener {
+                foodClicked = !foodClicked
+               if (foodClicked){
+                   checkIcon.visibility = View.VISIBLE
+                   binding.foodText.visibility = View.GONE
+                   binding.foodLinearLayout.addView(checkIcon) // add the ImageView to the LinearLayout
+
+                   binding.transportLinearLayout.isClickable = false
+                   binding.healthLinearLayout.isClickable = false
+                   binding.schoolFeeesLinearLayout.isClickable = false
+                   binding.rentLayout.isClickable = false
+                   binding.EntertainmentLinearLayout.isClickable = false
+                   binding.shoppingLinearLayout.isClickable = false
+               }else{
+                   checkIcon.visibility = View.INVISIBLE
+                   binding.foodLinearLayout.removeView(checkIcon) // remove the ImageView from the LinearLayout
+                   binding.expenditureText.setText("")
+                   binding.foodText.visibility = View.VISIBLE
+               }
             }
         }
 
         fun captureEntertainment() {
-            binding.EntertainmentLinearLayout.setOnClickListener {
-               val entertainment = captureExpenditure()
+            val checkIcon = ImageView(requireContext()) // create a new ImageView
+            checkIcon.setImageResource(R.drawable.ic_baseline_check_circle_24) // set the icon drawable
+            checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
 
-                Toast.makeText(requireContext(), "Entertainment saved", Toast.LENGTH_LONG).show()
+            binding.EntertainmentLinearLayout.setOnClickListener {
+                entertainmentClicked = ! entertainmentClicked
+                if (entertainmentClicked){
+                    checkIcon.visibility = View.VISIBLE
+                    binding.entertainmentText.visibility = View.GONE
+                    binding.EntertainmentLinearLayout.addView(checkIcon) // add the ImageView to the LinearLayout
+
+                    binding.transportLinearLayout.isClickable = false
+                    binding.healthLinearLayout.isClickable = false
+                    binding.schoolFeeesLinearLayout.isClickable = false
+                    binding.rentLayout.isClickable = false
+                    binding.shoppingLinearLayout.isClickable = false
+                    binding.foodLinearLayout.isClickable = false
+                }else{
+                    checkIcon.visibility = View.INVISIBLE
+                    binding.EntertainmentLinearLayout.removeView(checkIcon) // remove the ImageView from the LinearLayout
+                    binding.expenditureText.setText("")
+                    binding.entertainmentText.visibility = View.VISIBLE
+                }
             }
 
         }
 
-
         fun captureRent() {
+            val checkIcon = ImageView(requireContext()) // create a new ImageView
+            checkIcon.setImageResource(R.drawable.ic_baseline_check_circle_24) // set the icon drawable
+            checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
+
             binding.rentLayout.setOnClickListener {
-               val rent = captureExpenditure()
+               rentClicked = ! rentClicked
+                if (rentClicked){
+                    checkIcon.visibility = View.VISIBLE
+                    binding.rentText.visibility = View.GONE
+                    binding.rentLayout.addView(checkIcon) // add the ImageView to the LinearLayout
+
+                    binding.transportLinearLayout.isClickable = false
+                    binding.healthLinearLayout.isClickable = false
+                    binding.schoolFeeesLinearLayout.isClickable = false
+                    binding.shoppingLinearLayout.isClickable = false
+                    binding.EntertainmentLinearLayout.isClickable = false
+                    binding.foodLinearLayout.isClickable = false
+                }else{
+                    checkIcon.visibility = View.INVISIBLE
+                    binding.rentLayout.removeView(checkIcon) // remove the ImageView from the LinearLayout
+                    binding.expenditureText.setText("")
+                    binding.rentText.visibility = View.VISIBLE
+                }
 
                 Toast.makeText(requireContext(), "rent saved", Toast.LENGTH_LONG).show()
 
@@ -214,18 +263,59 @@ class NewExpensesCategoryFragment : Fragment() {
         }
 
         fun captureFee(){
-            binding.schoolFeeesLinearLayout.setOnClickListener {
-               val fee = captureExpenditure()
+            val checkIcon = ImageView(requireContext()) // create a new ImageView
+            checkIcon.setImageResource(R.drawable.ic_baseline_check_circle_24) // set the icon drawable
+            checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
 
-                Toast.makeText(requireContext(), "fee saved", Toast.LENGTH_LONG).show()
+            binding.schoolFeeesLinearLayout.setOnClickListener {
+               feeClicked != feeClicked
+                if (feeClicked){
+                    checkIcon.visibility = View.VISIBLE
+                    binding.schoolFeeesText.visibility = View.GONE
+                    binding.schoolFeeesLinearLayout.addView(checkIcon) // add the ImageView to the LinearLayout
+
+                    binding.transportLinearLayout.isClickable = false
+                    binding.healthLinearLayout.isClickable = false
+                    binding.shoppingLinearLayout.isClickable = false
+                    binding.rentLayout.isClickable = false
+                    binding.EntertainmentLinearLayout.isClickable = false
+                    binding.foodLinearLayout.isClickable = false
+                }else{
+                    checkIcon.visibility = View.INVISIBLE
+                    binding.schoolFeeesLinearLayout.removeView(checkIcon) // remove the ImageView from the LinearLayout
+                    binding.expenditureText.setText("")
+                    binding.schoolFeeesText.visibility = View.VISIBLE
+                }
+
 
             }
 
         }
 
         fun captureHealth(){
+            val checkIcon = ImageView(requireContext()) // create a new ImageView
+            checkIcon.setImageResource(R.drawable.ic_baseline_check_circle_24) // set the icon drawable
+            checkIcon.visibility = View.INVISIBLE // initially set the visibility to invisible
+
             binding.healthLinearLayout.setOnClickListener {
-              val health = captureExpenditure()
+              healthClicked != healthClicked
+                if (healthClicked){
+                    checkIcon.visibility = View.VISIBLE
+                    binding.healthText.visibility = View.GONE
+                    binding.healthLinearLayout.addView(checkIcon) // add the ImageView to the LinearLayout
+
+                    binding.transportLinearLayout.isClickable = false
+                    binding.shoppingLinearLayout.isClickable = false
+                    binding.schoolFeeesLinearLayout.isClickable = false
+                    binding.rentLayout.isClickable = false
+                    binding.EntertainmentLinearLayout.isClickable = false
+                    binding.foodLinearLayout.isClickable = false
+                }else{
+                    checkIcon.visibility = View.INVISIBLE
+                    binding.healthLinearLayout.removeView(checkIcon) // remove the ImageView from the LinearLayout
+                    binding.expenditureText.setText("")
+                    binding.healthText.visibility = View.VISIBLE
+                }
 
                 Toast.makeText(requireContext(), "health saved", Toast.LENGTH_LONG).show()
 
@@ -233,35 +323,6 @@ class NewExpensesCategoryFragment : Fragment() {
 
         }
 
-
-//        fun buildExpenditure(
-//            transport: Int? = null,
-//            entertainment: Int?= null,
-//            food: Int?= null,
-//            health: Int?= null,
-//            rent: Int?= null,
-//            fee: Int?= null,
-//            shopping: Int?= null
-//
-//        ): Expenditure {
-//            val postData = PostData(0, 0)
-//            val expenditure = Expenditure(
-//                buidlEntertainment(entertainment),
-//                buildFood(food),
-//                buildHealth(health),
-//                postData,
-//                buildRent(rent),
-//                buildFee(fee),
-//                buildShopping(shopping),
-//                buildTransport(transport)
-
-          //  )
-
-//            Log.d("NewExpensesCategoryFragment", "jaributu${expenditure}")
-//            Log.d("NewExpensesCategoryFragment", "hatawewe${expenditure}")
-//
-//            return expenditure
-        //}
     }
 
         fun buildTransport(transport : Int): Int{
