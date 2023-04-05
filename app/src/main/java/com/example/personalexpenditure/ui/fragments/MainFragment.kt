@@ -113,51 +113,51 @@ class MainFragment : Fragment() {
     }
 
     private fun home() {
-        binding.apply {
-            home.setOnClickListener {
-                    val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-                    findNavController().navigate(action)
-                }
-            hospital.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-                findNavController().navigate(action)
-
-            }
-            transport.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-                findNavController().navigate(action)
-
-            }
-            entertainment.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-                findNavController().navigate(action)
-
-            }
-            education.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-                findNavController().navigate(action)
-
-            }
-            food.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-                findNavController().navigate(action)
-
-            }
-            miscellenious.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-                findNavController().navigate(action)
-
-            }
-            glocery.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-                findNavController().navigate(action)
-
-            }
-            userProfile.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToProfileFragment()
-                findNavController().navigate(action)
-            }
-        }
+//        binding.apply {
+//            home.setOnClickListener {
+//                    val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
+//                    findNavController().navigate(action)
+//                }
+//            hospital.setOnClickListener {
+//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
+//                findNavController().navigate(action)
+//
+//            }
+//            transport.setOnClickListener {
+//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
+//                findNavController().navigate(action)
+//
+//            }
+//            entertainment.setOnClickListener {
+//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
+//                findNavController().navigate(action)
+//
+//            }
+//            education.setOnClickListener {
+//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
+//                findNavController().navigate(action)
+//
+//            }
+//            food.setOnClickListener {
+//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
+//                findNavController().navigate(action)
+//
+//            }
+//            miscellenious.setOnClickListener {
+//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
+//                findNavController().navigate(action)
+//
+//            }
+//            glocery.setOnClickListener {
+//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
+//                findNavController().navigate(action)
+//
+//            }
+//            userProfile.setOnClickListener {
+//                val action = MainFragmentDirections.actionMainFragmentToProfileFragment()
+//                findNavController().navigate(action)
+//            }
+//        }
 
         }
 
@@ -172,7 +172,7 @@ class MainFragment : Fragment() {
 
     private fun openExpenses(incomeId: Int) {
         binding.expenseLinearLayout.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment(incomeId)
+            val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment(incomeId)
             findNavController().navigate(action)
         }
 

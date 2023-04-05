@@ -38,8 +38,8 @@
             app:argType="integer"
             android:defaultValue="0" />
         <action
-            android:id="@+id/action_mainFragment_to_newExpensesCategoryFragment"
-            app:destination="@id/newExpensesCategoryFragment" />
+            android:id="@+id/action_mainFragment_to_testCategoryFragment"
+            app:destination="@id/testCategoryFragment" />
     </fragment>
 
     <fragment
@@ -56,16 +56,16 @@
     </fragment>
 
     <fragment
-        android:id="@+id/newExpensesCategoryFragment"
-        android:name="com.example.personalexpenditure.ui.fragments.NewExpensesCategoryFragment"
-        android:label="fragment_new_income"
-        tools:layout="@layout/fragment_new_expenses_category" >
+        android:id="@+id/testCategoryFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.TestCategoryFragment"
+        android:label="fragment_test_category"
+        tools:layout="@layout/fragment_test_category" >
         <argument
             android:name="id"
             app:argType="integer"
             android:defaultValue="0" />
         <action
-            android:id="@+id/action_newExpensesCategoryFragment_to_mainFragment"
+            android:id="@+id/action_testCategoryFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 
@@ -77,7 +77,7 @@
 
         <action
             android:id="@+id/action_profileFragment_to_newExpensesCategoryFragment"
-            app:destination="@id/newExpensesCategoryFragment" />
+            app:destination="@id/testCategoryFragment" />
         <action
             android:id="@+id/action_profileFragment_to_mainFragment"
             app:destination="@id/mainFragment" />

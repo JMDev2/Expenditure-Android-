@@ -10,9 +10,7 @@ import com.example.personalexpenditure.model.PostData
 import com.example.personalexpenditure.repository.IncomeRepository
 import com.example.personalexpenditure.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import javax.inject.Inject
 
 
@@ -21,7 +19,7 @@ class IncomePostViewModel @Inject constructor(private val repository: IncomeRepo
 
     private val _incomeLiveData = MutableLiveData<Resource<PostData?>>()
     val incomeLiveData: LiveData<Resource<PostData?>> get() = Transformations.map(_incomeLiveData){
-        response -> Resource<PostData>(response.status, response.data, response.message)
+            response -> Resource<PostData>(response.status, response.data, response.message)
     }
     private val expenditureLiveData = MutableLiveData<Resource<Expenditure?>>()
 
@@ -48,7 +46,6 @@ class IncomePostViewModel @Inject constructor(private val repository: IncomeRepo
     fun observeExpenditureLiveData(): LiveData<Resource<Expenditure?>>{
         return expenditureLiveData
     }
-
 
 
 }

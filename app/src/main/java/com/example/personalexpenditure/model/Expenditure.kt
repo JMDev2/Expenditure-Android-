@@ -2,20 +2,34 @@ package com.example.personalexpenditure.model
 
 
 data class Expenditure(
-    var entertainment: Int? = 0,
-    var food: Int? = 0,
-    var health: Int? = 0,
+    var entertainment: Int,
+    var food: Int,
+    var health: Int,
     var postData: PostData?,
-    var rent: Int? = 0,
-    var schoolFee: Int? = 0,
-    var shopping: Int? = 0,
-    var transport: Int? = 0,
+    var rent: Int,
+    var schoolFee: Int,
+    var shopping: Int,
+    var transport: Int,
     var id: Int? = null,
     var createdDate: String? = null
-) {
-    constructor() : this(null, null, null, null, null, null, null, null, null, null)
-
+){
+    constructor() : this(
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+    )
 }
+//) {
+//    constructor() : this(null, null, null, null, null, null, null, null, null, null)
+//
+//}
 //{
 //    data class Builder(
 //        var entertainment: Int? = null,
