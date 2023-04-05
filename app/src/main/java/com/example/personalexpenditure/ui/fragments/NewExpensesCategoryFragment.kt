@@ -182,6 +182,7 @@ class NewExpensesCategoryFragment : Fragment() {
                     binding.rentLayout.isClickable = false
                     binding.EntertainmentLinearLayout.isClickable = false
                     binding.foodLinearLayout.isClickable = false
+
                 }else{
                     checkIcon.visibility = View.INVISIBLE
                     binding.shoppingLinearLayout.removeView(checkIcon) // remove the ImageView from the LinearLayout

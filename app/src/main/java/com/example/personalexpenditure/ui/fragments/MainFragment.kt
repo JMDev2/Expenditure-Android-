@@ -86,6 +86,7 @@ class MainFragment : Fragment() {
                     // TODO Dismiss progress dialog
                     binding.progressBar.visibility = View.GONE
                     // TODO Show error message in dialog.
+                    binding.constraint.visibility = View.GONE
                     binding.errorText.visibility = View.VISIBLE
                     binding.errorText.text = "set income"
                 }
