@@ -9,12 +9,14 @@ import com.example.personalexpenditure.repository.GetIncomeRepository
 import com.example.personalexpenditure.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.ResponseBody
 import javax.inject.Inject
 
 @HiltViewModel
 class GetIncomeViewModel @Inject constructor(private val repository: GetIncomeRepository): ViewModel() {
 
     private var incomeLiveData = MutableLiveData<Resource<IncomeResponse?>>()
+    private var expenditureLiveData = MutableLiveData<Resource<Int?>>()
 
 
     init {
@@ -32,4 +34,18 @@ class GetIncomeViewModel @Inject constructor(private val repository: GetIncomeRe
     fun observeIncomeLiveData(): LiveData<Resource<IncomeResponse?>>{
         return incomeLiveData
     }
+
+
+
+    fun getExpenditure(expenditureId: String) = viewModelScope.launch {
+        repository.getExpenditure(expenditureId).collect() {
+            expenditureLiveData.postValue(it)
+        }
+    }
+
+
+        fun observeExpenditureLiveData(): LiveData<Resource<Int?>> {
+            return expenditureLiveData
+        }
+
 }

@@ -12,4 +12,10 @@ class GetIncomeRepository @Inject constructor(private val api: IncomePostApi) {
         emit(Resource.loading(null))
         emit(api.getIncomes())
     }.flowOn(Dispatchers.IO)
+
+
+    suspend fun getExpenditure(expenditureId: String)= flow {
+        emit(Resource.loading(null))
+        emit(api.getTotalExpenditure(expenditureId))
+    }.flowOn(Dispatchers.IO)
 }

@@ -3,6 +3,8 @@ package com.example.personalexpenditure.api
 import com.example.personalexpenditure.model.Expenditure
 import com.example.personalexpenditure.model.IncomeResponse
 import com.example.personalexpenditure.model.PostData
+import okhttp3.ResponseBody
+
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -27,5 +29,9 @@ interface IncomePostApiService {
 
     @GET("income")
     suspend fun getIncome(): Response<IncomeResponse>
+
+    @GET("expenditure/totalExpenditure/{expenditureId}")
+    suspend fun getExpenditure(@Path("expenditureId") expenditureId: String
+    ): Response<Int>
 
 }

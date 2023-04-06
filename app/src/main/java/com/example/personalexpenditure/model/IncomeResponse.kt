@@ -7,4 +7,6 @@ data class IncomeResponseItem(
     val createdDate: String,
     val id: Int,
     val income: Int
+
 )
+
