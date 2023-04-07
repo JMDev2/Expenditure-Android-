@@ -54,41 +54,85 @@ class TestCategoryFragment : Fragment() {
         Log.d("NewExpensesCategoryFragment", "id:${args.id}")
 
         postExpenditure()
+        validation()
     }
 
 
+
+
     private fun postExpenditure() {
+        val isClicked = true
         binding.sendBtn.setOnClickListener {
-            val expenditure = captureExpenditure()
-            val incomeId = args.id.toString()
 
-            viewModel.postExpenditure(incomeId, expenditure)
-           Log.d("NewExpensesCategoryFragment", "Posting${expenditure}")
-            Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+           try {
+               val expenditure = captureExpenditure()
+               val incomeId = args.id.toString()
 
-            val action = TestCategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
-            findNavController().navigate(action)
+               viewModel.postExpenditure(incomeId, expenditure)
+               Log.d("NewExpensesCategoryFragment", "Posting${expenditure}")
+               Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
 
+               val action =
+                   TestCategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
+               findNavController().navigate(action)
+           }catch (e: Exception) {
+               Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG).show()
+           }
         }
 
     }
 
-    private fun captureExpenditure() : Expenditure {
+    private fun captureExpenditure(): Expenditure {
         val transport = binding.transport.text.toString().toIntOrNull() ?: 0
-        val entertainment = binding.entertainment.text.toString().toIntOrNull() ?: 0
+
+        val entertainment = binding.entertainmentText.text.toString().toIntOrNull() ?: 0
         val fee = binding.fee.text.toString().toIntOrNull() ?: 0
         val food = binding.food.text.toString().toIntOrNull() ?: 0
         val shopping = binding.shopping.text.toString().toIntOrNull() ?: 0
         val rent = binding.rent.text.toString().toIntOrNull() ?: 0
         val health = binding.health.text.toString().toIntOrNull() ?: 0
 
-        Log.d("NewExpensesCategoryFragment", "Posting${transport}")
-        Log.d("NewExpensesCategoryFragment", "Posting${entertainment}")
-        Log.d("NewExpensesCategoryFragment", "Posting${fee}")
-        Log.d("NewExpensesCategoryFragment", "Posting${food}")
-        Log.d("NewExpensesCategoryFragment", "Posting${shopping}")
-        Log.d("NewExpensesCategoryFragment", "Posting${rent}")
-        Log.d("NewExpensesCategoryFragment", "Posting${health}")
+
+        if (transport == null || transport == 0) {
+            binding.transport.error = "Transport is required and cannot be zero"
+            binding.transport.requestFocus()
+            return Expenditure()
+        }
+        if (entertainment == null || entertainment == 0) {
+            binding.entertainmentText.error = "Entertainment is required and cannot be zero"
+            binding.entertainmentText.requestFocus()
+            return Expenditure()
+        }
+
+        if (fee == null || fee == 0) {
+            binding.fee.error = "Fee is required and cannot be zero"
+            binding.fee.requestFocus()
+            return Expenditure()
+        }
+
+        if (food == null || food == 0) {
+            binding.food.error = "Food is required and cannot be zero"
+            binding.food.requestFocus()
+            return Expenditure()
+        }
+
+        if (shopping == null || shopping == 0) {
+            binding.shopping.error = "Shopping is required and cannot be zero"
+            binding.shopping.requestFocus()
+            return Expenditure()
+        }
+
+        if (rent == null || rent == 0) {
+            binding.rent.error = "Rent is required and cannot be zero"
+            binding.rent.requestFocus()
+            return Expenditure()
+        }
+
+        if (health == null || health == 0) {
+            binding.health.error = "Health is required and cannot be zero"
+            binding.health.requestFocus()
+            return Expenditure()
+        }
 
         return Expenditure(
             entertainment = entertainment,
@@ -105,6 +149,11 @@ class TestCategoryFragment : Fragment() {
 
 
     }
+    private fun validation() {
+
+    }
+
+
 
 }
 

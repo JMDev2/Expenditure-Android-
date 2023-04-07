@@ -133,8 +133,6 @@ class MainFragment : Fragment() {
         }
     }
 
-
-
     private fun setupOnBackPressedCallback() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -144,51 +142,52 @@ class MainFragment : Fragment() {
     }
 
     private fun home() {
-//        binding.apply {
-//            home.setOnClickListener {
-//                    val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-//                    findNavController().navigate(action)
-//                }
-//            hospital.setOnClickListener {
-//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-//                findNavController().navigate(action)
-//
-//            }
-//            transport.setOnClickListener {
-//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-//                findNavController().navigate(action)
-//
-//            }
-//            entertainment.setOnClickListener {
-//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-//                findNavController().navigate(action)
-//
-//            }
-//            education.setOnClickListener {
-//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-//                findNavController().navigate(action)
-//
-//            }
-//            food.setOnClickListener {
-//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-//                findNavController().navigate(action)
-//
-//            }
-//            miscellenious.setOnClickListener {
-//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-//                findNavController().navigate(action)
-//
-//            }
-//            glocery.setOnClickListener {
-//                val action = MainFragmentDirections.actionMainFragmentToNewExpensesCategoryFragment()
-//                findNavController().navigate(action)
-//
-//            }
-//            userProfile.setOnClickListener {
-//                val action = MainFragmentDirections.actionMainFragmentToProfileFragment()
-//                findNavController().navigate(action)
-//            }
-//        }
+
+        binding.apply {
+            home.setOnClickListener {
+                    val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+                    findNavController().navigate(action)
+                }
+            hospital.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+                findNavController().navigate(action)
+
+            }
+            transport.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+                findNavController().navigate(action)
+
+            }
+            entertainmentImage.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+                findNavController().navigate(action)
+
+            }
+            education.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+                findNavController().navigate(action)
+
+            }
+            food.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+                findNavController().navigate(action)
+
+            }
+            miscellenious.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+                findNavController().navigate(action)
+
+            }
+            glocery.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+                findNavController().navigate(action)
+
+            }
+            userProfile.setOnClickListener {
+                val action = MainFragmentDirections.actionMainFragmentToProfileFragment()
+                findNavController().navigate(action)
+            }
+        }
 
         }
 

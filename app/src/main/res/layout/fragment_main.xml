@@ -213,7 +213,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/fee"
+            android:id="@+id/entertainmentImage"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="25dp"

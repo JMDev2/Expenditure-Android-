@@ -18,45 +18,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/transport" />
 
+
     <EditText
         android:id="@+id/transport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="99dp"
         android:layout_marginEnd="76dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Enter Transport"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/food"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textTransport"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/rent" />
 
     <TextView
         android:id="@+id/textFee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="48dp"
         android:text="School Fees"
         app:layout_constraintBottom_toBottomOf="@+id/fee"
         app:layout_constraintEnd_toStartOf="@+id/fee"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fee"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintTop_toTopOf="@+id/fee" />
 
     <EditText
         android:id="@+id/fee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="76dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Enter School Fees"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/health"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textFee"
-        app:layout_constraintTop_toBottomOf="@+id/transport" />
-
+        app:layout_constraintTop_toBottomOf="@+id/food" />
 
     <TextView
         android:id="@+id/textEnter"
@@ -64,23 +64,27 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
         android:text="Entertainment"
-        app:layout_constraintBottom_toBottomOf="@+id/entertainment"
-        app:layout_constraintEnd_toStartOf="@+id/entertainment"
+        app:layout_constraintBottom_toBottomOf="@+id/entertainmentText"
+        app:layout_constraintEnd_toStartOf="@+id/entertainmentText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/entertainment" />
+        app:layout_constraintTop_toTopOf="@+id/entertainmentText" />
+
 
     <EditText
-        android:id="@+id/entertainment"
+        android:id="@+id/entertainmentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="76dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Enter Entertainment"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/rent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fee" />
-
+        app:layout_constraintStart_toEndOf="@+id/textEnter"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textRent"
@@ -93,19 +97,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rent" />
 
+
     <EditText
         android:id="@+id/rent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="76dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Enter Rent"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/transport"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textRent"
-        app:layout_constraintTop_toBottomOf="@+id/entertainment" />
-
+        app:layout_constraintTop_toBottomOf="@+id/entertainmentText" />
 
     <TextView
         android:id="@+id/textView14"
@@ -122,14 +127,15 @@
         android:id="@+id/food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="76dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Enter Food"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/fee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/rent" />
+        app:layout_constraintTop_toBottomOf="@+id/transport" />
 
     <TextView
         android:id="@+id/textHealth"
@@ -140,20 +146,22 @@
         app:layout_constraintBottom_toBottomOf="@+id/health"
         app:layout_constraintEnd_toStartOf="@+id/health"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/health" />
+        app:layout_constraintTop_toTopOf="@+id/health"
+        app:layout_constraintVertical_bias="0.538" />
 
     <EditText
         android:id="@+id/health"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="76dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Enter Health"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/shopping"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textHealth"
-        app:layout_constraintTop_toBottomOf="@+id/food" />
+        app:layout_constraintTop_toBottomOf="@+id/fee" />
 
     <TextView
         android:id="@+id/texShopping"
@@ -170,11 +178,11 @@
         android:id="@+id/shopping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="76dp"
         android:ems="10"
         android:hint="Enter Shopping"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/sendBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/texShopping"
         app:layout_constraintTop_toBottomOf="@+id/health" />
