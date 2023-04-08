@@ -103,12 +103,10 @@
                     android:id="@+id/income"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="63dp"
                     android:text="0"
                     android:textColor="@color/circle_income"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/textView13"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView13"
                     app:layout_constraintTop_toTopOf="@+id/textView13" />
 
@@ -116,11 +114,14 @@
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:text="Ksh."
                     android:textColor="@color/circle_income"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/textView12"
-                    app:layout_constraintEnd_toStartOf="@+id/income" />
+                    app:layout_constraintEnd_toStartOf="@+id/income"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -212,7 +213,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/entertainment"
+            android:id="@+id/entertainmentImage"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="25dp"

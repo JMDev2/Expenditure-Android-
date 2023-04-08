@@ -1,8 +1,6 @@
 package com.example.personalexpenditure.repository
 
 import com.example.personalexpenditure.api.IncomeApiImpl
-import com.example.personalexpenditure.api.IncomePostApiService
-import com.example.personalexpenditure.di.AppModule
 import com.example.personalexpenditure.model.Expenditure
 import com.example.personalexpenditure.model.PostData
 import com.example.personalexpenditure.utils.Resource

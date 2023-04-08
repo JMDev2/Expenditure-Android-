@@ -1,9 +1,12 @@
 package com.example.personalexpenditure.api
 
 import com.example.personalexpenditure.model.Expenditure
-import com.example.personalexpenditure.model.IncomeResponse
+
+import com.example.personalexpenditure.model.IncomeResponseItem
 import com.example.personalexpenditure.model.PostData
+
 import com.example.personalexpenditure.utils.Resource
+import okhttp3.ResponseBody
 import retrofit2.http.Body
 import javax.inject.Inject 
 
@@ -29,13 +32,23 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
     }
 
     //get income
-     override suspend fun getIncomes(): Resource<IncomeResponse?> {
-        val response = api.getIncome()
+     override suspend fun getIncomes(incomeId: String): Resource<IncomeResponseItem?> {
+        val response = api.getIncome(incomeId)
         return if (response.isSuccessful){
             Resource.success(response.body())
         }else{
 
             Resource.error("Income not Found", null)
+        }
+    }
+
+    //get total expenditure
+    override suspend fun getTotalExpenditure(expenditureId: String): Resource<Expenditure?> {
+        val response = api.getExpenditure(expenditureId)
+        return if (response.isSuccessful){
+            Resource.success(response.body())
+        }else{
+            Resource.error("no expenditure", null)
         }
     }
 
