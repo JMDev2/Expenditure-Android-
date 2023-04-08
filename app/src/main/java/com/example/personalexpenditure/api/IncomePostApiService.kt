@@ -1,7 +1,8 @@
 package com.example.personalexpenditure.api
 
 import com.example.personalexpenditure.model.Expenditure
-import com.example.personalexpenditure.model.IncomeResponse
+
+import com.example.personalexpenditure.model.IncomeResponseItem
 import com.example.personalexpenditure.model.PostData
 import okhttp3.ResponseBody
 
@@ -27,11 +28,12 @@ interface IncomePostApiService {
 
 
 
-    @GET("income")
-    suspend fun getIncome(): Response<IncomeResponse>
+    @GET("income/{incomeId}")
+    suspend fun getIncome(@Path("incomeId") incomeId: String
+    ): Response<IncomeResponseItem>
 
-    @GET("expenditure/totalExpenditure/{expenditureId}")
+    @GET("expenditure/{expenditureId}")
     suspend fun getExpenditure(@Path("expenditureId") expenditureId: String
-    ): Response<Int>
+    ): Response<Expenditure>
 
 }

@@ -40,6 +40,10 @@
         <action
             android:id="@+id/action_mainFragment_to_testCategoryFragment"
             app:destination="@id/testCategoryFragment" />
+        <argument
+            android:name="expenditureId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
     <fragment

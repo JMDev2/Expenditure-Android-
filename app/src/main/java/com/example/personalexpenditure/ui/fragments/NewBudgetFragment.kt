@@ -55,10 +55,9 @@ class NewBudgetFragment : Fragment() {
 
 
         displayDate()
-        observeExpenditurePost()
-
 
         postBudget(args.income)
+        observeExpenditurePost()
         cancelBtn()
 
 
@@ -84,8 +83,6 @@ class NewBudgetFragment : Fragment() {
                 //Log.d("NewBudgetFragment","id:${id}")
                 viewModel.postIncome(PostData(income, budget.toInt()))
 
-                val action = NewBudgetFragmentDirections.actionNewBudgetFragmentToMainFragment()
-                findNavController().navigate(action)
 
                 //Toast.makeText(requireContext(), "saved Succesfully", Toast.LENGTH_LONG).show()
 
@@ -101,19 +98,22 @@ class NewBudgetFragment : Fragment() {
 
 
     private fun observeExpenditurePost() {
-        viewModel.incomeLiveData.observe(
+        viewModel.observePostIncomeLiveData().observe(
             viewLifecycleOwner
         ){ response ->
             when (response.status) {
                 Status.SUCCESS ->{
                     val response = response.data?.id
 
-                    response.let {
+                    if (response != null){
+                        val action = NewBudgetFragmentDirections.actionNewBudgetFragmentToMainFragment(incomeIdToHome = response)
+                        findNavController().navigate(action)
+                    }
 
                         Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
                         Log.d("NewBudgetFragment","response: ${response}")
 
-                    }
+
                 }
                 Status.ERROR ->{
                     Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)

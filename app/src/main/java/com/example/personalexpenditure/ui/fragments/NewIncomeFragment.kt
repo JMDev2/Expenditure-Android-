@@ -57,7 +57,7 @@ class NewIncomeFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         postData()
-        observeIncomePost()
+      //  observeIncomePost()
         cancelBtn()
         displayDate()
 
@@ -116,27 +116,27 @@ class NewIncomeFragment : Fragment() {
         }
     }
 
-    private fun observeIncomePost() {
-        viewModel.incomeLiveData.observe(
-            viewLifecycleOwner
-        ){ response ->
-            when (response.status) {
-                Status.SUCCESS ->{
-                    Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-
-                }
-                Status.ERROR ->{
-                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-                        .show()
-
-                }
-                Status.LOADING ->{
-
-                }
-
-            }
-        }
-    }
+//    private fun observeIncomePost() {
+//        viewModel.incomeLiveData.observe(
+//            viewLifecycleOwner
+//        ){ response ->
+//            when (response.status) {
+//                Status.SUCCESS ->{
+//                    Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+//
+//                }
+//                Status.ERROR ->{
+//                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+//                        .show()
+//
+//                }
+//                Status.LOADING ->{
+//
+//                }
+//
+//            }
+//        }
+//    }
 
 
 }

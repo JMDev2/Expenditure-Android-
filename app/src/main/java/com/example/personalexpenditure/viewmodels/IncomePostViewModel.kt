@@ -17,22 +17,19 @@ import javax.inject.Inject
 @HiltViewModel
 class IncomePostViewModel @Inject constructor(private val repository: IncomeRepository): ViewModel(){
 
-    private val _incomeLiveData = MutableLiveData<Resource<PostData?>>()
-    val incomeLiveData: LiveData<Resource<PostData?>> get() = Transformations.map(_incomeLiveData){
-            response -> Resource<PostData>(response.status, response.data, response.message)
-    }
+    private val incomeLiveData = MutableLiveData<Resource<PostData?>>()
     private val expenditureLiveData = MutableLiveData<Resource<Expenditure?>>()
 
     //income post
     fun postIncome(postData: PostData) = viewModelScope.launch {
         repository.createPost(postData).collect(){ response ->
-            _incomeLiveData.setValue(response)
+            incomeLiveData.setValue(response)
         }
     }
 
-//    fun obserePostIncomeLiveData(): LiveData<Resource<PostData?>> {
-//        return incomeLiveData
-//    }
+    fun observePostIncomeLiveData(): LiveData<Resource<PostData?>> {
+        return incomeLiveData
+    }
 
 
     /*
@@ -43,7 +40,7 @@ class IncomePostViewModel @Inject constructor(private val repository: IncomeRepo
             expenditureLiveData.setValue(it)
         }
     }
-    fun observeExpenditureLiveData(): LiveData<Resource<Expenditure?>>{
+    fun observePostExpenditureLiveData(): LiveData<Resource<Expenditure?>>{
         return expenditureLiveData
     }
 

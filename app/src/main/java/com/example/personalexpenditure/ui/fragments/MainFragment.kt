@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.databinding.FragmentMainBinding
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.GetIncomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,7 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private val viewModel: GetIncomeViewModel by viewModels()
+    private val args: MainFragmentArgs by navArgs()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +50,10 @@ class MainFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         setupOnBackPressedCallback()
+        Log.d("MainFragment","expenditureId:${args.expenditureId}")
+        viewModel.getExpenditure(args.expenditureId.toString())
+
+        viewModel.getIncome(args.incomeIdToHome.toString()) //call this when no init method in viewmodel
 
         observeIncome()
         observeExpenditure()
@@ -60,13 +66,13 @@ class MainFragment : Fragment() {
         ) { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                   val res = response.responseCode
+                   val res = response.data
                     binding.progressBar.visibility = View.GONE
                     binding.errorText.visibility = View.GONE
 
                     res?.let {
                         binding.constraint.visibility = View.VISIBLE
-                        binding.expenses.text = it.toString()
+                        binding.expenses.text = res.total.toString()
                         Log.d("MainFragment", "response ${it}")
 
                     }
@@ -92,23 +98,24 @@ class MainFragment : Fragment() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
+
     private fun observeIncome() {
         viewModel.observeIncomeLiveData().observe(
             viewLifecycleOwner
         ) { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                    val total = response.data?.size
-                    val response = response.data?.get(total!! - 1)
+                   // val total = response.data
+                    val totalIncome = response.data
+
                     binding.progressBar.visibility = View.GONE
                     binding.errorText.visibility = View.GONE
 
-                    response?.let {
+                    totalIncome?.let {
                         binding.constraint.visibility = View.VISIBLE
-                        binding.income.text = response.income.toString()
+                        binding.income.text = totalIncome.income.toString()
 
-                        openExpenses(response.id)
+                        openExpenses(totalIncome.id)
 
                     }
                 }
