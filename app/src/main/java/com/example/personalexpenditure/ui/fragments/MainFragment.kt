@@ -17,6 +17,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.GetIncomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -61,7 +63,15 @@ class MainFragment : Fragment() {
 
         observeIncome()
         observeExpenditure()
+        displayDate()
 
+    }
+
+    private fun displayDate() {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("d yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+        binding.dateText.text = formattedDate
     }
 
     private fun observeExpenditure() {

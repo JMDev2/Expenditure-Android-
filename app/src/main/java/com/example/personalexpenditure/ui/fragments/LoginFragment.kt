@@ -11,7 +11,7 @@ import com.example.personalexpenditure.databinding.FragmentLoginBinding
 import com.example.personalexpenditure.databinding.FragmentSignUpBinding
 
 
-class LoginFragment : Fragment() {
+class  LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
