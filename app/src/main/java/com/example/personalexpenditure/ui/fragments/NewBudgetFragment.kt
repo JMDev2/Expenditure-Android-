@@ -111,7 +111,7 @@ class NewBudgetFragment : Fragment() {
                     }
 
                         Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-                        Log.d("NewBudgetFragment","response: ${response}")
+                        Log.d("NewBudgetFragment","incomeIdToHome: ${response}")
 
 
                 }
