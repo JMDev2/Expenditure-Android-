@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.databinding.FragmentMainBinding
@@ -16,6 +17,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.GetIncomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -50,14 +53,25 @@ class MainFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         setupOnBackPressedCallback()
-        Log.d("MainFragment","expenditureId:${args.expenditureId}")
+
+
+        Log.d("MainFragment","checkexpenditureId:${args.expenditureId}")
         viewModel.getExpenditure(args.expenditureId.toString())
 
         viewModel.getIncome(args.incomeIdToHome.toString()) //call this when no init method in viewmodel
+        Log.d("MainFragment","incomeIdToHome mainaF:${args.incomeIdToHome}")
 
         observeIncome()
         observeExpenditure()
+        displayDate()
 
+    }
+
+    private fun displayDate() {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("d yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+        binding.dateText.text = formattedDate
     }
 
     private fun observeExpenditure() {
@@ -73,7 +87,8 @@ class MainFragment : Fragment() {
                     res?.let {
                         binding.constraint.visibility = View.VISIBLE
                         binding.expenses.text = res.total.toString()
-                        Log.d("MainFragment", "response ${it}")
+                        Log.d("MainFragment", "expendureId ${it.id}")
+                        Log.d("MainFragment", "totalExpenditure ${it.total}")
 
                     }
                 }
@@ -85,6 +100,8 @@ class MainFragment : Fragment() {
                     binding.constraint.visibility = View.GONE
                     binding.errorText.visibility = View.VISIBLE
                     binding.errorText.text = "set income"
+                //    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+//                        .show()
                 }
                 // if still loading
                 Status.LOADING -> {
@@ -114,6 +131,8 @@ class MainFragment : Fragment() {
                     totalIncome?.let {
                         binding.constraint.visibility = View.VISIBLE
                         binding.income.text = totalIncome.income.toString()
+                        Log.d("MainFragment", "incomeId ${it.id}")
+                        Log.d("MainFragment", "income ${it.income}")
 
                         openExpenses(totalIncome.id)
 
@@ -126,7 +145,7 @@ class MainFragment : Fragment() {
                     // TODO Show error message in dialog.
                     binding.constraint.visibility = View.GONE
                     binding.errorText.visibility = View.VISIBLE
-                    binding.errorText.text = "set income"
+
                 }
                 // if still loading
                 Status.LOADING -> {

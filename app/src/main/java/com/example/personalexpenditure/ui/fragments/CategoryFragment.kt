@@ -13,18 +13,21 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.personalexpenditure.R
-import com.example.personalexpenditure.databinding.FragmentTestCategoryBinding
+import com.example.personalexpenditure.databinding.FragmentcategoryBinding
+
 import com.example.personalexpenditure.model.Expenditure
 import com.example.personalexpenditure.model.PostData
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.IncomePostViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
-class TestCategoryFragment : Fragment() {
-    private lateinit var binding: FragmentTestCategoryBinding
+class CategoryFragment : Fragment() {
+    private lateinit var binding: FragmentcategoryBinding
     private val viewModel: IncomePostViewModel by viewModels()
-    private val args: TestCategoryFragmentArgs by navArgs()
+    private val args: CategoryFragmentArgs by navArgs()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +40,7 @@ class TestCategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentTestCategoryBinding.inflate(inflater, container, false)
+        binding = FragmentcategoryBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -56,7 +59,15 @@ class TestCategoryFragment : Fragment() {
 
         postExpenditure()
         observeExpenditure()
+        displayDate()
 
+    }
+
+    private fun displayDate() {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("d, EEEE, yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+        binding.dateText.text = formattedDate
     }
 
 
@@ -160,7 +171,7 @@ class TestCategoryFragment : Fragment() {
                     Log.d("TestCategoryFragment", "ID${expenditureId}")
                     if (expenditureId != null){
                         val action =
-                            TestCategoryFragmentDirections.actionTestCategoryFragmentToMainFragment(expenditureId = expenditureId)
+                            CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment(expenditureId = expenditureId)
                         findNavController().navigate(action)
                         Log.d("TestCategoryFragment", "ID1:${expenditureId}")
                     }

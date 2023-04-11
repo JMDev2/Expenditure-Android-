@@ -61,9 +61,9 @@
 
     <fragment
         android:id="@+id/testCategoryFragment"
-        android:name="com.example.personalexpenditure.ui.fragments.TestCategoryFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.CategoryFragment"
         android:label="fragment_test_category"
-        tools:layout="@layout/fragment_test_category" >
+        tools:layout="@layout/fragmentcategory" >
         <argument
             android:name="id"
             app:argType="integer"
@@ -102,6 +102,9 @@
             android:defaultValue="0" />
         <action
             android:id="@+id/action_newBudgetFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_newBudgetFragment_to_mainFragment2"
             app:destination="@id/mainFragment" />
 
     </fragment>
