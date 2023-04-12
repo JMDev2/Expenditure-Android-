@@ -87,8 +87,16 @@ class MainFragment : Fragment() {
                     res?.let {
                         binding.constraint.visibility = View.VISIBLE
                         binding.expenses.text = res.total.toString()
+                        binding.rentPercentage.text = res.rentPercentage.toString()
+                        binding.foodPercentage.text = res.foodPercentage.toString()
+                        binding.healthPercentage.text = res.healthPercentage.toString()
+                        binding.entertainmentPercentage.text = res.entertainmentPercentage.toString()
+                        binding.transportPercentage.text = res.transportPercentage.toString()
+                        binding.feePercentage.text = res.schoolFeePercentage.toString()
+                        binding.shoppingPercentage.text = res.shoppingPercentage.toString()
                         Log.d("MainFragment", "expendureId ${it.id}")
                         Log.d("MainFragment", "totalExpenditure ${it.total}")
+                        Log.d("MainFragment", "fee ${it.foodPercentage}")
 
                     }
                 }
@@ -199,11 +207,7 @@ class MainFragment : Fragment() {
                 findNavController().navigate(action)
 
             }
-            miscellenious.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
-                findNavController().navigate(action)
 
-            }
             glocery.setOnClickListener {
                 val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
                 findNavController().navigate(action)

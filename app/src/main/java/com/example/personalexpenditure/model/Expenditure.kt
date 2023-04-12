@@ -14,4 +14,14 @@ data class Expenditure(
     var createdDate: String? = null,
     val total: Int? = null,
 
+
+
+    val entertainmentPercentage: Int? = null,
+    val foodPercentage: Int? = null,
+    val healthPercentage: Int? = null,
+    val rentPercentage: Int? = null,
+    val schoolFeePercentage: Int? = null,
+    val shoppingPercentage: Int? = null,
+    val transportPercentage: Int? = null
+
 )
