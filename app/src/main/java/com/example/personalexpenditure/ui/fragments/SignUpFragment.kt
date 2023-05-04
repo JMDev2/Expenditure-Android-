@@ -25,6 +25,7 @@ class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
     private lateinit var auth : FirebaseAuth
     private lateinit var database: FirebaseDatabase
+    private var mAuthListener: FirebaseAuth.AuthStateListener? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,10 +46,25 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        registerUser()
-
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
+
+        authStateListener()
+        registerUser()
+
+    }
+
+
+    //authestate listener
+    private fun authStateListener() {
+        mAuthListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            if (user != null) {
+                // Navigate to main fragment
+                val action = LoginFragmentDirections.actionLoginFragmentToMainFragment()
+                findNavController().navigate(action)
+            }
+        }
     }
 
    // validating the inputs
@@ -89,6 +105,7 @@ class SignUpFragment : Fragment() {
                return@setOnClickListener
            }
 
+           binding.progressBar3.visibility = View.VISIBLE
            auth.createUserWithEmailAndPassword(email, password)
                .addOnCompleteListener { task ->
                    if (task.isSuccessful) {
@@ -105,6 +122,7 @@ class SignUpFragment : Fragment() {
 
                            } else {
                                Toast.makeText(activity, "Failed to save user data to database", Toast.LENGTH_SHORT).show()
+                               binding.progressBar3.visibility = View.GONE
                            }
                        }
                    } else {

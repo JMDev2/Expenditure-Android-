@@ -61,10 +61,8 @@ class OnboardingFragment : Fragment() {
     }
     private fun skipNext() {
         binding.skipText.setOnClickListener {
-            val mainFragment = MainFragment()
-            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, mainFragment)
-            transaction.commit()
+            val action = OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment()
+            findNavController().navigate(action)
 
         }
     }
