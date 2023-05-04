@@ -96,7 +96,7 @@ class MainFragment : Fragment() {
                         binding.shoppingPercentage.text = res.shoppingPercentage.toString()
                         Log.d("MainFragment", "expendureId ${it.id}")
                         Log.d("MainFragment", "totalExpenditure ${it.total}")
-                        Log.d("MainFragment", "fee ${it.foodPercentage}")
+
 
                     }
                 }
@@ -140,7 +140,7 @@ class MainFragment : Fragment() {
                         binding.constraint.visibility = View.VISIBLE
                         binding.income.text = totalIncome.income.toString()
                         Log.d("MainFragment", "incomeId ${it.id}")
-                        Log.d("MainFragment", "income ${it.income}")
+                       // Log.d("MainFragment", "income ${it.income}")
 
                         openExpenses(totalIncome.id)
 
