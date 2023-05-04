@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentLoginBinding
 import com.example.personalexpenditure.databinding.FragmentSignUpBinding
@@ -31,12 +32,21 @@ class  LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navigation()
         validateUser()
+    }
+
+    private fun navigation(){
+        binding.navogateToSignup.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+            findNavController().navigate(action)
+        }
+
     }
 
     //validating the inputs
     private fun validateUser(){
-        binding.signUp.setOnClickListener {
+        binding.signButton.setOnClickListener {
             val name = binding.loginUsername.text.toString().trim()
             val password = binding.loginPassword.text.toString().trim()
 

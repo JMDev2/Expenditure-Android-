@@ -85,7 +85,7 @@ class OnboardingFragment : Fragment() {
             if (position == onBoardingViewPagerAdapter!!.count - 1) {
                 binding.moveNext.text = "Get Started"
                 binding.moveNext.setOnClickListener {
-                    val action = OnboardingFragmentDirections.actionOnboardingFragmentToMainFragment()
+                    val action = OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment()
                     findNavController().navigate(action)
                 }
             } else {
