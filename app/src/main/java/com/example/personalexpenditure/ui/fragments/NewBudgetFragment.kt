@@ -80,7 +80,7 @@ class NewBudgetFragment : Fragment() {
             val budget = binding.budgetText.text.toString()
             if (budget.isNotBlank() && budget < income.toString()){
                 Log.d("NewBudgetFragment","budget:${budget}")
-                //Log.d("NewBudgetFragment","id:${id}")
+                Log.d("NewBudgetFragment","myincomeid:${id}")
                 viewModel.postIncome(PostData(income, budget.toInt()))
 
 
@@ -90,7 +90,7 @@ class NewBudgetFragment : Fragment() {
                 Toast.makeText(requireContext(), "Put accurate data", Toast.LENGTH_LONG).show()
 
             }
-            Log.d("NewBudgetFragment","id:${id}")
+            Log.d("NewBudgetFragment","id:${args.income}")
 
         }
 
@@ -111,7 +111,7 @@ class NewBudgetFragment : Fragment() {
                     }
 
                         Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-                        Log.d("NewBudgetFragment","incomeIdToHome: ${response}")
+                        Log.d("NewBudgetFragment","incomeIdToHomeId: ${response}")
 
 
                 }

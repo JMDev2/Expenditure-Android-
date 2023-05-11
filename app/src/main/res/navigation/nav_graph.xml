@@ -2,7 +2,9 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/nav_grapp"
+
+
     app:startDestination="@id/onboardingFragment">
 
     <fragment
@@ -11,9 +13,34 @@
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" >
         <action
-            android:id="@+id/action_onboardingFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_onboardingFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+
+
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.personalexpenditure.ui.fragments.MainFragment"
@@ -22,11 +49,6 @@
         <action
             android:id="@+id/action_mainFragment_to_newIncomeFragment"
             app:destination="@id/newIncomeFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_onboardingFragment"
-            app:destination="@id/onboardingFragment"
-            app:popUpTo="@id/onboardingFragment"
-            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -108,5 +130,6 @@
             app:destination="@id/mainFragment" />
 
     </fragment>
+
 
 </navigation>

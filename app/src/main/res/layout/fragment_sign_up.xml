@@ -15,6 +15,7 @@
         android:layout_marginTop="84dp"
         android:text="Sign Up"
         android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,11 +23,11 @@
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7">
 
@@ -37,7 +38,7 @@
             android:text="Name" />
 
         <LinearLayout
-            android:layout_width="248dp"
+            android:layout_width="350dp"
             android:layout_height="50dp"
             android:background="@drawable/signing"
             android:orientation="horizontal">
@@ -74,7 +75,7 @@
             android:text="Email" />
 
         <LinearLayout
-            android:layout_width="248dp"
+            android:layout_width="350dp"
             android:layout_height="50dp"
             android:background="@drawable/signing"
             android:orientation="horizontal">
@@ -98,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="131dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/signUp"
+        app:layout_constraintBottom_toTopOf="@+id/sign_button"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/linearLayout4"
@@ -111,7 +112,8 @@
             android:text="password" />
 
         <LinearLayout
-            android:layout_width="248dp"
+            android:id="@+id/passwordLayout"
+            android:layout_width="350dp"
             android:layout_height="50dp"
             android:background="@drawable/signing"
             android:orientation="horizontal">
@@ -122,19 +124,21 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
+
 
 
         </LinearLayout>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/signUp"
+        android:id="@+id/sign_button"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
         android:layout_marginStart="105dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="124dp"
         android:background="@drawable/onboarding_text"
         android:paddingStart="66dp"
@@ -147,6 +151,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
