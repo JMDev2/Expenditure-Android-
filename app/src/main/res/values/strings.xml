@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PersonalExpenditure</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="budget">New Budget</string>
+    <string name="newincome">New Income</string>
+
+
+    <string name="expenses">New Expenses</string>
+    <string name="profile">User Profile</string>
+</resources>

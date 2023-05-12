@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_grapp"
+
+
+    app:startDestination="@id/onboardingFragment">
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_newIncomeFragment"
+            app:destination="@id/newIncomeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_newBudgetFragment"
+            app:destination="@id/newBudgetFragment" />
+        <argument
+            android:name="incomeIdToHome"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_mainFragment_to_testCategoryFragment"
+            app:destination="@id/testCategoryFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newIncomeFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewIncomeFragment"
+        android:label="fragment_new_income"
+        tools:layout="@layout/fragment_new_income" >
+        <action
+            android:id="@+id/action_newIncomeFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_newIncomeFragment_to_newBudgetFragment"
+            app:destination="@id/newBudgetFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testCategoryFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.CategoryFragment"
+        android:label="fragment_test_category"
+        tools:layout="@layout/fragmentcategory" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_testCategoryFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+
+        <action
+            android:id="@+id/action_profileFragment_to_newExpensesCategoryFragment"
+            app:destination="@id/testCategoryFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newBudgetFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.NewBudgetFragment"
+        android:label="fragment_new_budget"
+        tools:layout="@layout/fragment_new_budget" >
+
+        <action
+            android:id="@+id/action_newBudgetFragment_to_newIncomeFragment"
+            app:destination="@id/newIncomeFragment" />
+        <argument
+            android:name="income"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_newBudgetFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+
+
+    </fragment>
+
+
+</navigation>
