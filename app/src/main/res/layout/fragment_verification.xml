@@ -61,7 +61,7 @@
 
 
             <EditText
-                android:id="@+id/setIncome"
+                android:id="@+id/phone_number"
                 android:layout_width="147dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
@@ -82,7 +82,7 @@
 
 
     <TextView
-        android:id="@+id/submit"
+        android:id="@+id/submit_phone"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
         android:layout_marginStart="105dp"
@@ -113,9 +113,9 @@
         android:text="Resend"
         android:textColor="#333333"
         android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/submit"
-        app:layout_constraintStart_toStartOf="@+id/submit"
-        app:layout_constraintTop_toBottomOf="@+id/submit" />
+        app:layout_constraintEnd_toEndOf="@+id/submit_phone"
+        app:layout_constraintStart_toStartOf="@+id/submit_phone"
+        app:layout_constraintTop_toBottomOf="@+id/submit_phone" />
 
     <TextView
         android:id="@+id/textView8"

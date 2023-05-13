@@ -22,10 +22,37 @@
         android:name="com.example.personalexpenditure.ui.fragments.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
+
+        <action
+            android:id="@+id/action_signUpFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/verificationFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.VerificationFragment"
+        android:label="fragment_verification"
+        tools:layout="@layout/fragment_verification" >
+
+        <action
+            android:id="@+id/action_verificationFragment_to_verifyCodeFragment"
+            app:destination="@id/verifyCodeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/verifyCodeFragment"
+        android:name="com.example.personalexpenditure.ui.fragments.VerifyCodeFragment"
+        android:label="fragment_verify_code"
+        tools:layout="@layout/fragment_verify_code" >
+        <action
+            android:id="@+id/action_verifyCodeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/loginFragment"
@@ -35,9 +62,7 @@
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+
     </fragment>
 
 
@@ -125,6 +150,7 @@
 
 
     </fragment>
+
 
 
 </navigation>

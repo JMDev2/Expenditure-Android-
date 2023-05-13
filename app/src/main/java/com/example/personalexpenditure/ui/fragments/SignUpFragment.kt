@@ -58,12 +58,13 @@ class SignUpFragment : Fragment() {
       // authStateListener()
         registerUser()
 
-        navigateToLin()
+        navigateToLigin()
 
     }
 
-    private fun navigateToLin() {
+    private fun navigateToLigin() {
         binding.snUpText.setOnClickListener {
+
             val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
             findNavController().navigate(action)
         }
@@ -140,8 +141,8 @@ class SignUpFragment : Fragment() {
                            if (dbTask.isSuccessful) {
                                Toast.makeText(activity, "User registered successfully", Toast.LENGTH_SHORT).show()
 
-                               // Navigate to login fragment
-                               val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+                               // Navigate to verification fragment
+                               val action = SignUpFragmentDirections.actionSignUpFragmentToVerificationFragment()
                                findNavController().navigate(action)
 
                            } else {

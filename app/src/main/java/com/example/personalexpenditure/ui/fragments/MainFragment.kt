@@ -14,9 +14,15 @@ import com.example.personalexpenditure.databinding.FragmentMainBinding
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.example.personalexpenditure.model.User
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.GetIncomeViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -29,6 +35,9 @@ class MainFragment : Fragment() {
     private val viewModel: GetIncomeViewModel by viewModels()
     private val args: MainFragmentArgs by navArgs()
     private lateinit var auth : FirebaseAuth
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var user: User
+    private lateinit var uid: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,9 +59,14 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
+        uid = auth.currentUser!!.uid
+        databaseReference = FirebaseDatabase
+            .getInstance()
+            .getReference("users")
 
         openIncome()
         openExpenses()
+
 
         home()
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
@@ -72,8 +86,34 @@ class MainFragment : Fragment() {
         observeExpenditure()
         displayDate()
 
+        if (uid.isNotEmpty()){
+            getUserData()
+        }
+
     }
 
+    private fun getUserData() {
+        try {
+            databaseReference.child(uid).addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    Log.d("mainFragment", "DataSnapshot value: $snapshot")
+                    user = snapshot.getValue(User::class.java) ?: return
+                    binding.name.text = "Hello ${user.name},"
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle the error.
+
+                }
+
+            })
+        } catch (e: Exception) {
+            // Handle the error.
+            println("Error: $e")
+        }
+    }
     private fun displayDate() {
         val currentDate = Date()
         val dateFormat = SimpleDateFormat("d yyyy", Locale.getDefault())
