@@ -22,6 +22,7 @@ class OnboardingFragment : Fragment() {
 
     val firebaseAuth = FirebaseAuth.getInstance()
 
+
     var onBoardingViewPagerAdapter : OnBoardingViewPagerAdapter? = null
     val tabLayout : TabLayout? = null
     private var viewPager : ViewPager? = null
@@ -161,5 +162,7 @@ class OnboardingFragment : Fragment() {
         viewPager?.adapter = onBoardingViewPagerAdapter
         binding.tabIndicator.setupWithViewPager(binding.viewpager)
     }
+
+
 
 }
