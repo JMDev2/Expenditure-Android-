@@ -2,6 +2,9 @@ package com.example.personalexpenditure.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentSignUpBinding
 import com.example.personalexpenditure.model.User
 import com.example.personalexpenditure.ui.activities.MainActivity
@@ -21,6 +25,7 @@ class SignUpFragment : Fragment() {
     private lateinit var auth : FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private var mAuthListener: FirebaseAuth.AuthStateListener? = null
+
 
 
     val firebaseAuth = FirebaseAuth.getInstance()
@@ -50,10 +55,14 @@ class SignUpFragment : Fragment() {
 
       // authStateListener()
         registerUser()
+        eyeToggle()
+        eyeOffToggle()
 
         navigateToLigin()
 
     }
+
+
 
     private fun navigateToLigin() {
         binding.snUpText.setOnClickListener {
@@ -131,6 +140,7 @@ class SignUpFragment : Fragment() {
                return@setOnClickListener
            }
 
+
            binding.progressBar3.visibility = View.VISIBLE
            auth.createUserWithEmailAndPassword(email, password)
                .addOnCompleteListener { task ->
@@ -171,6 +181,47 @@ class SignUpFragment : Fragment() {
                }
        }
    }
+    private fun eyeToggle() {
+        var isPasswordVisible = false
+        binding.imageToggle.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+                // Show password
+                binding.confirmPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.imageToggle.setImageResource(R.drawable.baseline_visibility_off_24)
+            } else {
+                // Hide password
+                binding.confirmPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.imageToggle.setImageResource(R.drawable.baseline_visibility_24)
+            }
+
+            // Move the cursor to the end of the text
+            binding.confirmPassword.setSelection(binding.confirmPassword.text.length)
+        }
+    }
+
+    private fun eyeOffToggle() {
+        var isPasswordVisible = false
+        binding.imageToggle1.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+                // Show password
+                binding.signUpPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.imageToggle1.setImageResource(R.drawable.baseline_visibility_off_24)
+            } else {
+                // Hide password
+                binding.signUpPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.imageToggle1.setImageResource(R.drawable.baseline_visibility_24)
+            }
+
+            // Move the cursor to the end of the text
+            binding.signUpPassword.setSelection(binding.signUpPassword.text.length)
+        }
+    }
+
+
 
 
 

@@ -125,13 +125,19 @@
 
             <EditText
                 android:id="@+id/signUpPassword"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageToggle1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_visibility_24" />
 
 
         </LinearLayout>
@@ -163,7 +169,7 @@
 
             <EditText
                 android:id="@+id/confirmPassword"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:hint="Confirm Password"
@@ -171,6 +177,11 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
+            <ImageView
+                android:id="@+id/image_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_visibility_24" />
 
         </LinearLayout>
     </LinearLayout>
