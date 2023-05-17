@@ -1,6 +1,5 @@
 package com.example.personalexpenditure.ui.activities
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -11,8 +10,6 @@ import com.example.personalexpenditure.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import dagger.hilt.android.AndroidEntryPoint
-
-import com.example.personalexpenditure.ui.fragments.SignUpFragment
 
 
 @AndroidEntryPoint
@@ -98,4 +95,8 @@ class MainActivity : AppCompatActivity() {
 //            mAuth?.removeAuthStateListener(mAuthListener!!)
 //        }
 //    }
+
+
+    //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
+    //l3tm31n@h0m3
 }

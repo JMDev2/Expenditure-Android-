@@ -5,14 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentOnboardingBinding
 import com.example.personalexpenditure.databinding.FragmentVerificationBinding
+import com.google.firebase.auth.FirebaseAuth
 
 
 class VerificationFragment : Fragment() {
     private lateinit var binding: FragmentVerificationBinding
+
+    private lateinit var sendOTPBtn : TextView
+    private lateinit var phoneNumberET : EditText
+    private lateinit var auth : FirebaseAuth
+    private lateinit var number : String
+    private lateinit var mProgressBar : ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +50,8 @@ class VerificationFragment : Fragment() {
     private fun navigateToVerificationCode() {
         binding.submitPhone.setOnClickListener {
             // Navigate to verification code fragment
-            val action = VerificationFragmentDirections.actionVerificationFragmentToVerifyCodeFragment()
-            findNavController().navigate(action)
+//            val action = VerificationFragmentDirections.actionVerificationFragmentToVerifyCodeFragment()
+//            findNavController().navigate(action)
         }
 
     }

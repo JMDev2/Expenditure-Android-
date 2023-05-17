@@ -1,7 +1,8 @@
 package com.example.personalexpenditure.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -10,8 +11,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentLoginBinding
-import com.example.personalexpenditure.ui.activities.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 
@@ -53,9 +54,30 @@ class  LoginFragment : Fragment() {
 
         navigation()
         validateUser()
+        eyeToggle()
     }
 
-   // authestate listener
+    private fun eyeToggle() {
+        var isPasswordVisible = false
+        binding.imageToggle3.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+                // Show password
+                binding.loginPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.imageToggle3.setImageResource(R.drawable.baseline_visibility_off_24)
+            } else {
+                // Hide password
+                binding.loginPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.imageToggle3.setImageResource(R.drawable.baseline_visibility_24)
+            }
+
+            // Move the cursor to the end of the text
+            binding.loginPassword.setSelection(binding.loginPassword.text.length)
+        }
+    }
+
+    // authestate listener
 //    val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
 //        val firebaseUser = firebaseAuth.currentUser
 //        if (firebaseUser != null) {

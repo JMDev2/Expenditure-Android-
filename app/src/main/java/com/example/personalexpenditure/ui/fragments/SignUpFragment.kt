@@ -1,11 +1,10 @@
 package com.example.personalexpenditure.ui.fragments
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +16,6 @@ import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentSignUpBinding
 import com.example.personalexpenditure.model.User
 import com.example.personalexpenditure.ui.activities.MainActivity
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -28,6 +25,7 @@ class SignUpFragment : Fragment() {
     private lateinit var auth : FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private var mAuthListener: FirebaseAuth.AuthStateListener? = null
+
 
 
     val firebaseAuth = FirebaseAuth.getInstance()
@@ -57,16 +55,21 @@ class SignUpFragment : Fragment() {
 
       // authStateListener()
         registerUser()
+        eyeToggle()
+        eyeOffToggle()
 
         navigateToLigin()
 
     }
+
+
 
     private fun navigateToLigin() {
         binding.snUpText.setOnClickListener {
 
             val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
             findNavController().navigate(action)
+
         }
     }
 
@@ -99,63 +102,127 @@ class SignUpFragment : Fragment() {
            val name = binding.signUpUsername.text.toString().trim()
            val email = binding.signUpemail.text.toString().trim()
            val password = binding.signUpPassword.text.toString().trim()
+           val confirmPassword = binding.confirmPassword.text.toString().trim()
 
 
-           if (name.isEmpty()){
+           if (name.isEmpty()) {
                binding.signUpUsername.error = "Name is required"
                binding.signUpUsername.requestFocus()
                return@setOnClickListener
            }
 
-           if (email.isEmpty()){
+           if (email.isEmpty()) {
                binding.signUpemail.error = "Email is required"
                binding.signUpemail.requestFocus()
                return@setOnClickListener
            }
-           if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+           if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                binding.signUpemail.error = "Please provide a valid email address"
                binding.signUpemail.requestFocus()
                return@setOnClickListener
            }
 
-           if (password.isEmpty()){
+           if (password.isEmpty()) {
                binding.signUpPassword.error = "Password is required"
                binding.signUpPassword.requestFocus()
                return@setOnClickListener
            }
 
-           if (password.length < 6){
+           if (password.length < 6) {
                binding.signUpPassword.error = "Minimum password length should be 6 characters"
                binding.signUpPassword.requestFocus()
                return@setOnClickListener
            }
 
+           if (confirmPassword != password) {
+               binding.confirmPassword.error = "Passwords do not match"
+               binding.confirmPassword.requestFocus()
+               return@setOnClickListener
+           }
+
+
            binding.progressBar3.visibility = View.VISIBLE
            auth.createUserWithEmailAndPassword(email, password)
                .addOnCompleteListener { task ->
                    if (task.isSuccessful) {
-                       val databaseRef = database.reference.child("users").child(auth.currentUser!!.uid)
+                       val databaseRef =
+                           database.reference.child("users").child(auth.currentUser!!.uid)
                        val users = User(name, email, auth.currentUser!!.uid)
 
                        databaseRef.setValue(users).addOnCompleteListener { dbTask ->
                            if (dbTask.isSuccessful) {
-                               Toast.makeText(activity, "User registered successfully", Toast.LENGTH_SHORT).show()
+                               Toast.makeText(
+                                   activity,
+                                   "User registered successfully",
+                                   Toast.LENGTH_SHORT
+                               ).show()
 
                                // Navigate to verification fragment
-                               val action = SignUpFragmentDirections.actionSignUpFragmentToVerificationFragment()
+                               val action =
+                                   SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
                                findNavController().navigate(action)
 
                            } else {
-                               Toast.makeText(activity, "Failed to save user data to database", Toast.LENGTH_SHORT).show()
+                               Toast.makeText(
+                                   activity,
+                                   "Failed to save user data to database",
+                                   Toast.LENGTH_SHORT
+                               ).show()
                                binding.progressBar3.visibility = View.GONE
                            }
                        }
                    } else {
-                       Toast.makeText(activity, "Failed to register user: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                       Toast.makeText(
+                           activity,
+                           "Failed to register user: ${task.exception?.message}",
+                           Toast.LENGTH_SHORT
+                       ).show()
                    }
                }
        }
    }
+    private fun eyeToggle() {
+        var isPasswordVisible = false
+        binding.imageToggle.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+                // Show password
+                binding.confirmPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.imageToggle.setImageResource(R.drawable.baseline_visibility_off_24)
+            } else {
+                // Hide password
+                binding.confirmPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.imageToggle.setImageResource(R.drawable.baseline_visibility_24)
+            }
+
+            // Move the cursor to the end of the text
+            binding.confirmPassword.setSelection(binding.confirmPassword.text.length)
+        }
+    }
+
+    private fun eyeOffToggle() {
+        var isPasswordVisible = false
+        binding.imageToggle1.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+                // Show password
+                binding.signUpPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.imageToggle1.setImageResource(R.drawable.baseline_visibility_off_24)
+            } else {
+                // Hide password
+                binding.signUpPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.imageToggle1.setImageResource(R.drawable.baseline_visibility_24)
+            }
+
+            // Move the cursor to the end of the text
+            binding.signUpPassword.setSelection(binding.signUpPassword.text.length)
+        }
+    }
+
+
+
 
 
 }

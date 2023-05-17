@@ -70,7 +70,7 @@ class ProfileFragment : Fragment() {
                     user = snapshot.getValue(User::class.java) ?: return
                     binding.profilename.text = user.name
                     binding.profileEmail.text = user.email
-                    binding.profilePhone.text = user.phone
+                  //  binding.profilePhone.text = user.phone
                     Log.d("profilenFragment","name:${user.name}")
                     Log.d("profilenFragment","name:${user.email}")
                 }
