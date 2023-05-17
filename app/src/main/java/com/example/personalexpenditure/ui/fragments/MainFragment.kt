@@ -12,9 +12,12 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.databinding.FragmentMainBinding
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.example.personalexpenditure.R
 import com.example.personalexpenditure.model.User
+import com.example.personalexpenditure.testfragment.BlankFragment
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.GetIncomeViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -227,41 +230,70 @@ class MainFragment : Fragment() {
 
         binding.apply {
             home.setOnClickListener {
-                    val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
-                    findNavController().navigate(action)
+                val blankFragment = BlankFragment()
+                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.fill_fragment, blankFragment)
+                transaction.commit()
+//                    val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+//                    findNavController().navigate(action)
                 }
             hospital.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
-                findNavController().navigate(action)
+                val blankFragment = BlankFragment()
+                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.fill_fragment, blankFragment)
+                transaction.commit()
+//                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+//                findNavController().navigate(action)
 
             }
             transport.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
-                findNavController().navigate(action)
+                val blankFragment = BlankFragment()
+                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.fill_fragment, blankFragment)
+                transaction.commit()
+//                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+//                findNavController().navigate(action)
 
             }
             entertainmentImage.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
-                findNavController().navigate(action)
+                val blankFragment = BlankFragment()
+                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.fill_fragment, blankFragment)
+                transaction.commit()
+//                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+//                findNavController().navigate(action)
 
             }
             education.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
-                findNavController().navigate(action)
+                val blankFragment = BlankFragment()
+                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.fill_fragment, blankFragment)
+                transaction.commit()
+//                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+//                findNavController().navigate(action)
 
             }
             food.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
-                findNavController().navigate(action)
+                val blankFragment = BlankFragment()
+                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.fill_fragment, blankFragment)
+                transaction.commit()
+//                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+//                findNavController().navigate(action)
 
             }
 
             glocery.setOnClickListener {
-                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
-                findNavController().navigate(action)
+                val blankFragment = BlankFragment()
+                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.fill_fragment, blankFragment)
+                transaction.commit()
+//                val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
+//                findNavController().navigate(action)
 
             }
             userProfile.setOnClickListener {
+
                 val action = MainFragmentDirections.actionMainFragmentToProfileFragment()
                 findNavController().navigate(action)
             }

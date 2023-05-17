@@ -55,25 +55,6 @@ class OnboardingFragment : Fragment() {
 
     }
 
-    //authestate listener
-//    val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-//        val firebaseUser = firebaseAuth.currentUser
-//        if (firebaseUser != null) {
-//            val intent = Intent(activity, MainActivity::class.java)
-//            startActivity(intent)
-//        }
-//    }
-//
-//
-//    override fun onStart() {
-//        super.onStart()
-//        firebaseAuth!!.addAuthStateListener(this.authStateListener!!)
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        firebaseAuth!!.removeAuthStateListener(this.authStateListener!!)
-//    }
 
 
     //disable the onback ack
@@ -121,17 +102,8 @@ class OnboardingFragment : Fragment() {
 
         override fun onPageScrollStateChanged(state: Int) {
 
-//            if (state == ViewPager.SCROLL_STATE_DRAGGING) {
-//                settled = false
-//            }
-//            if (state == ViewPager.SCROLL_STATE_SETTLING) {
-//                settled = true
-//            }
-//            if (state == ViewPager.SCROLL_STATE_IDLE && !settled) {
-//                // set the current position
-//                findNavController().navigate(R.id.action_onboardingFragment_to_mainFragment)
-//            }
         }
+
 
     })
 
