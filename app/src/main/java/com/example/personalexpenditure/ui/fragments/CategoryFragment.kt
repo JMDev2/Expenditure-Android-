@@ -63,7 +63,15 @@ class CategoryFragment : Fragment() {
         postExpenditure()
         observeExpenditure()
         displayDate()
+        dismiss()
 
+    }
+
+    private fun dismiss() {
+        binding.dismiss.setOnClickListener {
+            val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun displayDate() {
@@ -82,8 +90,8 @@ class CategoryFragment : Fragment() {
 
                 if (expenditure != null){
                     viewModel.postExpenditure(userId = auth.currentUser!!.uid, expenditure)
-                    val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
-                    findNavController().navigate(action)
+//                    val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
+//                    findNavController().navigate(action)
                     Log.d("NewExpensesCategoryFragment", "Posting${expenditure}")
                     Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
 
@@ -98,18 +106,18 @@ class CategoryFragment : Fragment() {
     }
 
     private fun captureExpenditure(): Expenditure? {
-        val transport = binding.transport.text.toString().toIntOrNull() ?: 0
+        val transport = binding.etTransport.text.toString().toIntOrNull() ?: 0
         val entertainment = binding.entertainmentText.text.toString().toIntOrNull() ?: 0
-        val fee = binding.fee.text.toString().toIntOrNull() ?: 0
-        val food = binding.food.text.toString().toIntOrNull() ?: 0
-        val shopping = binding.shopping.text.toString().toIntOrNull() ?: 0
-        val rent = binding.rent.text.toString().toIntOrNull() ?: 0
-        val health = binding.health.text.toString().toIntOrNull() ?: 0
+        val fee = binding.etFee.text.toString().toIntOrNull() ?: 0
+        val food = binding.etFood.text.toString().toIntOrNull() ?: 0
+        val shopping = binding.etShopping.text.toString().toIntOrNull() ?: 0
+        val rent = binding.etRent.text.toString().toIntOrNull() ?: 0
+        val health = binding.etHealth.text.toString().toIntOrNull() ?: 0
 
 
         if (transport == null || transport == 0) {
-            binding.transport.error = "Transport is required and cannot be zero"
-            binding.transport.requestFocus()
+            binding.tilTransport.error = "Transport is required and cannot be zero"
+            binding.tilTransport.requestFocus()
         }
         if (entertainment == null || entertainment == 0) {
             binding.entertainmentText.error = "Entertainment is required and cannot be zero"
@@ -118,31 +126,31 @@ class CategoryFragment : Fragment() {
         }
 
         if (fee == null || fee == 0) {
-            binding.fee.error = "Fee is required and cannot be zero"
-            binding.fee.requestFocus()
+            binding.tilFee.error = "Fee is required and cannot be zero"
+            binding.tilFee.requestFocus()
         }
 
         if (food == null || food == 0) {
-            binding.food.error = "Food is required and cannot be zero"
-            binding.food.requestFocus()
+            binding.tilFood.error = "Food is required and cannot be zero"
+            binding.tilFood.requestFocus()
 
         }
 
         if (shopping == null || shopping == 0) {
-            binding.shopping.error = "Shopping is required and cannot be zero"
-            binding.shopping.requestFocus()
+            binding.tilShopping.error = "Shopping is required and cannot be zero"
+            binding.tilShopping.requestFocus()
 
         }
 
         if (rent == null || rent == 0) {
-            binding.rent.error = "Rent is required and cannot be zero"
-            binding.rent.requestFocus()
+            binding.tilRent.error = "Rent is required and cannot be zero"
+            binding.tilRent.requestFocus()
 
         }
 
         if (health == null || health == 0) {
-            binding.health.error = "Health is required and cannot be zero"
-            binding.health.requestFocus()
+            binding.tilHealth.error = "Health is required and cannot be zero"
+            binding.tilHealth.requestFocus()
 
         }
 

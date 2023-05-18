@@ -23,9 +23,6 @@
         tools:ignore="NotSibling" />
 
 
-
-
-
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
@@ -55,6 +52,7 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:hint="John Doe"
+                android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -92,6 +90,7 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:hint="johndoe@gmail.com"
+                android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -130,6 +129,7 @@
                 android:backgroundTint="@color/white"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -174,6 +174,7 @@
                 android:backgroundTint="@color/white"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
+                android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -185,7 +186,6 @@
 
         </LinearLayout>
     </LinearLayout>
-
 
 
     <TextView
@@ -223,7 +223,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.848" />
-
 
 
     <TextView

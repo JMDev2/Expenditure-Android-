@@ -1,12 +1,15 @@
 package com.example.personalexpenditure.ui.activities
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.ActivityMainBinding
+import com.example.personalexpenditure.utils.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,13 +23,7 @@ class MainActivity : AppCompatActivity() {
     private var mAuthListener: AuthStateListener? = null
     private var mAuth: FirebaseAuth? = null
     val firebaseAuth = FirebaseAuth.getInstance()
-//    override fun onSupportNavigateUp(): Boolean {
-//
-//
-//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-//        val navController = navHostFragment.navController
-//        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-//    }
+
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,61 +37,32 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
              navController = navHostFragment.navController
 
+        val sharedPrefs = SharedPreferences.getOnboardingStatus(this)
+
+        navController.graph = navHostFragment.navController.navInflater.inflate(R.navigation.nav_graph).apply {
+            if (sharedPrefs){
+                setStartDestination(R.id.loginFragment)
+            } else {
+                setStartDestination(R.id.onboardingFragment)
+            }
+        }
+
 
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
-       // mAuth = FirebaseAuth.getInstance();
 
-
-     //   authStateListener()
 
 
     }
 
 
 
-
-    //authestate listener
-//    val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-//        val firebaseUser = firebaseAuth.currentUser
-//        if (firebaseUser == null) {
-//            val signUpFragment = SignUpFragment()
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.fragmentContainerView, signUpFragment)
-//                .addToBackStack(null)
-//                .commit()
-//
-//
-//        }
-//    }
-
-//    override fun onStart() {
-//        super.onStart()
-//        firebaseAuth!!.addAuthStateListener(this.authStateListener!!)
-//    }
-
-
-//    override fun onStop() {
-//        super.onStop()
-//        firebaseAuth!!.removeAuthStateListener(this.authStateListener!!)
-//    }
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        mAuth?.addAuthStateListener(mAuthListener!!)
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        if (mAuthListener != null) {
-//            mAuth?.removeAuthStateListener(mAuthListener!!)
-//        }
-//    }
+
 
 
     //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

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,28 +8,29 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="24dp"
         tools:context=".ui.fragments.CategoryFragment">
 
 
         <TextView
             android:id="@+id/date_text"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="133dp"
+            android:layout_marginTop="16dp"
             android:text="2, Thursadya, 2023"
-            android:textSize="14dp"
             android:textColor="#333333"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/calender_picker"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--        TODO: Remove fixed margin start-->
         <ImageView
             android:id="@+id/calender_picker"
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginStart="123dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:src="@drawable/ic_baseline_calendar_today_24"
             app:layout_constraintBottom_toBottomOf="@+id/date_text"
             app:layout_constraintEnd_toStartOf="@+id/date_text"
@@ -40,245 +40,222 @@
 
         <TextView
             android:id="@+id/textEnter"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="299dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="30dp"
             android:text="Entertainment"
             android:textColor="#333333"
-            app:layout_constraintBottom_toTopOf="@+id/entertainmentText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/date_text"
+            tools:layout_editor_absoluteX="24dp" />
 
-        <EditText
-            android:id="@+id/entertainmentText"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_entertainment"
+            style="@style/CustomTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Enter Entertainment"
-            android:inputType="textPersonName"
-            android:textColor="#333333"
-            android:paddingStart="20dp"
-            android:background="@drawable/cetegoryedittext"
-            app:layout_constraintBottom_toTopOf="@+id/textRent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textEnter" />
+            app:layout_constraintTop_toBottomOf="@+id/textEnter">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entertainmentText"
+                style="@style/CustomEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter Entertainment"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:id="@+id/textTransport"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="326dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:text="Transport"
             android:textColor="#333333"
-            app:layout_constraintBottom_toTopOf="@+id/transport"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rent" />
+            app:layout_constraintTop_toBottomOf="@+id/til_rent" />
 
-        <EditText
-            android:id="@+id/transport"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_transport"
+            style="@style/CustomTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Enter Transport"
-            android:inputType="textPersonName"
-            android:textColor="#333333"
-            android:paddingStart="20dp"
-            android:background="@drawable/cetegoryedittext"
-            app:layout_constraintBottom_toTopOf="@+id/textView14"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTransport" />
+            app:layout_constraintTop_toBottomOf="@+id/textTransport">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_transport"
+                style="@style/CustomEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter Transport"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
             android:id="@+id/textFee"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="311dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:text="School Fees"
             android:textColor="#333333"
-            app:layout_constraintBottom_toTopOf="@+id/fee"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/food" />
+            app:layout_constraintTop_toBottomOf="@+id/til_food" />
 
-        <EditText
-            android:id="@+id/fee"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_fee"
+            style="@style/CustomTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:textColor="#333333"
-            android:paddingStart="20dp"
-            android:background="@drawable/cetegoryedittext"
-            android:hint="Enter School Fees"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/textHealth"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textFee" />
+            app:layout_constraintTop_toBottomOf="@+id/textFee">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_fee"
+                style="@style/CustomEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter School Fees"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textRent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="358dp"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp"
-            android:text="Rent"
-            app:layout_constraintBottom_toTopOf="@+id/rent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/entertainmentText" />
-
-        <EditText
-            android:id="@+id/rent"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Enter Rent"
-            android:inputType="textPersonName"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Rent"
             android:textColor="#333333"
-            android:paddingStart="20dp"
-            android:background="@drawable/cetegoryedittext"
-            app:layout_constraintBottom_toTopOf="@+id/textTransport"
+            app:layout_constraintTop_toBottomOf="@+id/til_entertainment" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_rent"
+            style="@style/CustomTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textRent" />
+            app:layout_constraintTop_toBottomOf="@+id/textRent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_rent"
+                style="@style/CustomEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter Rent"
+                android:inputType="textPersonName"
+                app:layout_constraintTop_toBottomOf="@+id/textRent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="355dp"
-            android:layout_marginBottom="8dp"
-            android:text="Food"
-            android:textColor="#333333"
-            app:layout_constraintBottom_toTopOf="@+id/food"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/transport" />
-
-        <EditText
-            android:id="@+id/food"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Enter Food"
-            android:inputType="textPersonName"
-            android:textColor="#333333"
-            android:paddingStart="20dp"
-            android:background="@drawable/cetegoryedittext"
-            app:layout_constraintBottom_toTopOf="@+id/textFee"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Food"
+            app:layout_constraintTop_toBottomOf="@+id/til_transport" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_food"
+            style="@style/CustomTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+            app:layout_constraintTop_toBottomOf="@+id/textView14">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_food"
+                style="@style/CustomEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter Food"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textHealth"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="346dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:text="Health"
             android:textColor="#333333"
-            app:layout_constraintBottom_toTopOf="@+id/health"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fee" />
+            app:layout_constraintTop_toBottomOf="@+id/til_fee" />
 
-        <EditText
-            android:id="@+id/health"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_health"
+            style="@style/CustomTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:textColor="#333333"
-            android:hint="Enter Health"
-            android:paddingStart="20dp"
-            android:background="@drawable/cetegoryedittext"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/texShopping"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textHealth" />
+            app:layout_constraintTop_toBottomOf="@+id/textHealth">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_health"
+                style="@style/CustomEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Health"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/texShopping"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="328dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:text="Shopping"
             android:textColor="#333333"
-            app:layout_constraintBottom_toTopOf="@+id/shopping"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/health" />
+            app:layout_constraintTop_toBottomOf="@+id/til_health" />
 
-        <EditText
-            android:id="@+id/shopping"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_shopping"
+            style="@style/CustomTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/cetegoryedittext"
-            android:ems="10"
-            android:hint="Enter Shopping"
-            android:inputType="textPersonName"
-            android:paddingStart="20dp"
-            android:textColor="#333333"
-            app:layout_constraintBottom_toTopOf="@+id/sendBtn"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/texShopping" />
+            app:layout_constraintTop_toBottomOf="@+id/texShopping">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_shopping"
+                style="@style/CustomEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter Shopping"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/sendBtn"
+            style="@style/CustomButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="149dp"
-            android:layout_marginEnd="168dp"
-            android:layout_marginBottom="20dp"
-            android:text="Button"
+            android:layout_marginTop="25dp"
+            android:text="Save"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shopping" />
+            app:layout_constraintTop_toBottomOf="@+id/til_shopping" />
+
+        <Button
+            android:id="@+id/dismiss"
+            style="@style/CustomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dismiss"
+            app:layout_constraintBottom_toBottomOf="@+id/sendBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sendBtn" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

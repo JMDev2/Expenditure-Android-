@@ -1,6 +1,7 @@
 package com.example.personalexpenditure.ui.fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -69,6 +70,7 @@ class MainFragment : Fragment() {
 
         openIncome()
         openExpenses()
+        underLine()
 
 
         home()
@@ -93,6 +95,11 @@ class MainFragment : Fragment() {
             getUserData()
         }
 
+    }
+
+    private fun underLine() {
+        binding.incomeTv.paintFlags = binding.incomeTv.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        binding.expensesTv.paintFlags = binding.expensesTv.paintFlags or Paint.UNDERLINE_TEXT_FLAG
     }
 
     private fun getUserData() {
@@ -124,6 +131,51 @@ class MainFragment : Fragment() {
         binding.dateText.text = formattedDate
     }
 
+    private fun observeIncome() {
+        viewModel.observeTotalExpenditureLiveData().observe(
+            viewLifecycleOwner
+        ) { response ->
+            when (response.status) {
+                Status.SUCCESS -> {
+                    // val total = response.data
+                    val totalIncome = response.data?.income
+                    binding.progressBar.visibility = View.GONE
+                    binding.errorText.visibility = View.GONE
+
+                    totalIncome?.let {
+                        binding.constraint.visibility = View.VISIBLE
+
+                        binding.income.text = totalIncome.income.toString()
+
+                        //  Log.d("MainFragment", "incomeId ${it.}")
+                        Log.d("MainFragment", "income ${it.income}")
+
+
+                    }
+                }
+                // if error state
+                Status.ERROR -> {
+                    // TODO Dismiss progress dialog
+                    binding.progressBar.visibility = View.GONE
+                    // TODO Show error message in dialog.
+                    binding.constraint.visibility = View.GONE
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = "set income"
+                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+                        .show()
+
+                }
+                // if still loading
+                Status.LOADING -> {
+                    binding.constraint.visibility = View.GONE
+                    binding.errorText.visibility = View.GONE
+                    binding.progressBar.visibility = View.VISIBLE
+
+                    // TODO Show progress dialog
+                }
+            }
+        }
+    }
     private fun observeExpenditure() {
         viewModel.observeTotalExpenditureLiveData().observe(
             viewLifecycleOwner
@@ -156,9 +208,9 @@ class MainFragment : Fragment() {
                     // TODO Show error message in dialog.
                     binding.constraint.visibility = View.GONE
                     binding.errorText.visibility = View.VISIBLE
-                    binding.errorText.text = "set income"
-                //    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-//                        .show()
+                    binding.errorText.setText("set income")
+                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+                        .show()
                 }
                 // if still loading
                 Status.LOADING -> {
@@ -173,50 +225,7 @@ class MainFragment : Fragment() {
     }
 
 
-    private fun observeIncome() {
-        viewModel.observeTotalExpenditureLiveData().observe(
-            viewLifecycleOwner
-        ) { response ->
-            when (response.status) {
-                Status.SUCCESS -> {
-                   // val total = response.data
-                    val totalIncome = response.data?.income
 
-
-                    binding.progressBar.visibility = View.GONE
-                    binding.errorText.visibility = View.GONE
-
-                    totalIncome?.let {
-                        binding.constraint.visibility = View.VISIBLE
-
-                        binding.income.text = totalIncome.income.toString()
-
-                       //  Log.d("MainFragment", "incomeId ${it.}")
-                       Log.d("MainFragment", "income ${it.income}")
-
-
-                    }
-                }
-                // if error state
-                Status.ERROR -> {
-                    // TODO Dismiss progress dialog
-                    binding.progressBar.visibility = View.GONE
-                    // TODO Show error message in dialog.
-                    binding.constraint.visibility = View.GONE
-                    binding.errorText.visibility = View.VISIBLE
-
-                }
-                // if still loading
-                Status.LOADING -> {
-                    binding.constraint.visibility = View.GONE
-                    binding.errorText.visibility = View.GONE
-                    binding.progressBar.visibility = View.VISIBLE
-
-                    // TODO Show progress dialog
-                }
-            }
-        }
-    }
 
     private fun setupOnBackPressedCallback() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {

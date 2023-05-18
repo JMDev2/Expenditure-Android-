@@ -5,6 +5,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NewExpensesCategoryFragment : Fragment() {
+
+
+
+
+
 //    private lateinit var binding: FragmentNewExpensesCategoryBinding
 //    private val viewModel: IncomePostViewModel by viewModels()
 //    private val args: NewExpensesCategoryFragmentArgs by navArgs()

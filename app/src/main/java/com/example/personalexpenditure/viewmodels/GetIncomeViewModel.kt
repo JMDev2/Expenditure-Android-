@@ -42,8 +42,8 @@ class GetIncomeViewModel @Inject constructor(private val repository: GetIncomeRe
 //            incomeLiveData.postValue(it)
 //        }
 //    }
-
-
+//
+//
 //        fun observeTotalIncomeLiveData(): LiveData<Resource<Income?>> {
 //            return incomeLiveData
 //        }

@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentLoginBinding
+import com.example.personalexpenditure.utils.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 
@@ -46,8 +47,7 @@ class  LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
 
-
-
+//        SharedPreferences(requireContext()).saveStringData(SharedPreferences.USER_EMAIL, binding.loginEmail.text.toString())
 
 
         //authStateListener()
@@ -77,38 +77,6 @@ class  LoginFragment : Fragment() {
         }
     }
 
-    // authestate listener
-//    val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-//        val firebaseUser = firebaseAuth.currentUser
-//        if (firebaseUser != null) {
-//            val intent = Intent(activity, MainActivity::class.java)
-//            startActivity(intent)
-//
-//        }
-//    }
-
-
-//    override fun onStart() {
-//        super.onStart()
-//        firebaseAuth!!.addAuthStateListener(this.authStateListener!!)
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        firebaseAuth!!.removeAuthStateListener(this.authStateListener!!)
-//    }
-
-    //authestate listener
-//    private fun authStateListener() {
-//        mAuthListener = AuthStateListener { firebaseAuth ->
-//            val user = firebaseAuth.currentUser
-//            if (user != null) {
-//                // Navigate to main fragment
-//                val action = LoginFragmentDirections.actionLoginFragmentToMainFragment()
-//                findNavController().navigate(action)
-//            }
-//        }
-//    }
 
     private fun navigation(){
 //        binding.navogateToSignup.setOnClickListener {
