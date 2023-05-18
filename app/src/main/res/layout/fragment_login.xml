@@ -46,10 +46,9 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:hint="johndoe@gmail.com"
+                android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
-
-
 
 
         </LinearLayout>
@@ -86,16 +85,16 @@
                 android:backgroundTint="@color/white"
                 android:hint="Password"
                 android:inputType="textPassword"
-                app:passwordToggleEnabled="true"
+                android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:passwordToggleEnabled="true" />
 
             <ImageView
                 android:id="@+id/imageToggle3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/baseline_visibility_24" />
-
 
 
         </LinearLayout>

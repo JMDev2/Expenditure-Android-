@@ -1,10 +1,9 @@
 package com.example.personalexpenditure.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.InputType
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentSignUpBinding
 import com.example.personalexpenditure.model.User
-import com.example.personalexpenditure.ui.activities.MainActivity
+import com.example.personalexpenditure.utils.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -49,6 +48,9 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        val email= SharedPreferences(requireContext()).getStringData(SharedPreferences.USER_EMAIL)
+//        Log.e("SignUpFragment",email)
+
         auth = FirebaseAuth.getInstance()
 
         database = FirebaseDatabase.getInstance()
@@ -73,27 +75,6 @@ class SignUpFragment : Fragment() {
         }
     }
 
-
-    // authestate listener
-//    val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-//        val firebaseUser = firebaseAuth.currentUser
-//        if (firebaseUser != null) {
-//            val intent = Intent(activity, MainActivity::class.java)
-//            startActivity(intent)
-//
-//        }
-//    }
-
-
-//    override fun onStart() {
-//        super.onStart()
-//        firebaseAuth!!.addAuthStateListener(this.authStateListener!!)
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        firebaseAuth!!.removeAuthStateListener(this.authStateListener!!)
-//    }
 
    // validating the inputs
    private fun registerUser() {

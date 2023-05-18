@@ -1,6 +1,7 @@
 package com.example.personalexpenditure.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.navigation.fragment.findNavController
-import com.example.personalexpenditure.R
-import com.example.personalexpenditure.databinding.FragmentOnboardingBinding
 import com.example.personalexpenditure.databinding.FragmentVerificationBinding
+import com.example.personalexpenditure.utils.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -44,6 +43,8 @@ class VerificationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         navigateToVerificationCode()
+//        val email= SharedPreferences(requireContext()).getStringData(SharedPreferences.USER_EMAIL)
+//        Log.e("",email)
     }
 
 

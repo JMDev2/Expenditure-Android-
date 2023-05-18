@@ -51,6 +51,8 @@ class ProfileFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser!!.uid
 
+        imageClicks()
+
         databaseReference = FirebaseDatabase
             .getInstance()
             .getReference("users")

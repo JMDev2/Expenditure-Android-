@@ -1,5 +1,6 @@
 package com.example.personalexpenditure.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import com.example.personalexpenditure.R
 import com.example.personalexpenditure.adapter.OnBoardingViewPagerAdapter
 import com.example.personalexpenditure.databinding.FragmentOnboardingBinding
 import com.example.personalexpenditure.model.OnBoardingData
+import com.example.personalexpenditure.utils.SharedPreferences
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 
@@ -45,6 +47,7 @@ class OnboardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.setTitle("")
         onboardingData()
         moveNext()
         skipNext()
@@ -53,27 +56,22 @@ class OnboardingFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false) //remove the onback stack arrow
 
 
+
+//        val email= sharedPreferences(requireContext()).getStringData(SharedPreferences.USER_EMAIL)
+//        Log.e("SignUpFragment",email)
+//
+//        val isFirstTimeUser = sharedPreferences.getIsFirstTimeUser()
+//        if (isFirstTimeUser){
+//            //navigate to login
+//            onboardingData()
+//
+//        }else{
+//            val action = OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment()
+//            findNavController().navigate(action)
+//        }
+
     }
 
-    //authestate listener
-//    val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-//        val firebaseUser = firebaseAuth.currentUser
-//        if (firebaseUser != null) {
-//            val intent = Intent(activity, MainActivity::class.java)
-//            startActivity(intent)
-//        }
-//    }
-//
-//
-//    override fun onStart() {
-//        super.onStart()
-//        firebaseAuth!!.addAuthStateListener(this.authStateListener!!)
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        firebaseAuth!!.removeAuthStateListener(this.authStateListener!!)
-//    }
 
 
     //disable the onback ack
@@ -86,6 +84,8 @@ class OnboardingFragment : Fragment() {
     }
     private fun skipNext() {
         binding.skipText.setOnClickListener {
+            SharedPreferences.setOnboardingStatus(requireActivity(), true)
+            Log.d("skip button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
             val action = OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment()
             findNavController().navigate(action)
 
@@ -108,12 +108,16 @@ class OnboardingFragment : Fragment() {
             if (position == onBoardingViewPagerAdapter!!.count - 1) {
                 binding.moveNext.text = "Get Started"
                 binding.moveNext.setOnClickListener {
+                    Log.d("get started button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
+                    SharedPreferences.setOnboardingStatus(requireActivity(), true)
                     val action = OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment()
                     findNavController().navigate(action)
                 }
             } else {
                 binding.moveNext.text = "Next"
                 binding.moveNext.setOnClickListener {
+                    Log.d("next button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
+                    SharedPreferences.setOnboardingStatus(requireActivity(), true)
                     binding.viewpager.currentItem += 1
                 }
             }
@@ -121,17 +125,8 @@ class OnboardingFragment : Fragment() {
 
         override fun onPageScrollStateChanged(state: Int) {
 
-//            if (state == ViewPager.SCROLL_STATE_DRAGGING) {
-//                settled = false
-//            }
-//            if (state == ViewPager.SCROLL_STATE_SETTLING) {
-//                settled = true
-//            }
-//            if (state == ViewPager.SCROLL_STATE_IDLE && !settled) {
-//                // set the current position
-//                findNavController().navigate(R.id.action_onboardingFragment_to_mainFragment)
-//            }
         }
+
 
     })
 
