@@ -42,15 +42,15 @@ interface IncomePostApiService {
 
 
 
-//    @GET("users/{userId}")
-//    suspend fun getTotalIncome(
-//        @Path("userId") userId: String
-//    ): Response<PostIncomeResponse>
+    @GET("users/{userId}/income")
+    suspend fun getTotalIncome(
+        @Path("userId") userId: String
+    ): Response<TotalResponse>
 
-//    @GET("expenditure/{expenditureId}")
-//    suspend fun getExpenditure(
-//        @Path("expenditureId") expenditureId: String
-//    ): Response<Expenditure>
+    @GET("users/{userId}/expenditure")
+    suspend fun getExpenditure(
+        @Path("userId") userId: String
+    ): Response<Expenditure>
 
 
 

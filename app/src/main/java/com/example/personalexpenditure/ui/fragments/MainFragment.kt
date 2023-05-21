@@ -83,7 +83,9 @@ class MainFragment : Fragment() {
        // viewModel.getExpenditure(args.expenditureId.toString())
 
         viewModel.getTotalExpenditure(auth.currentUser!!.uid) //call this when no init method in viewmodel
-        Log.d("MainFragment","incomeIdToHome mainaF:${args.incomeIdToHome}")
+       // viewModel.getExpenditure(auth.currentUser!!.uid)
+       // viewModel.getTotalIncome(auth.currentUser!!.uid)
+        Log.d("MainFragment - sabsabsa","incomeIdToHome mainaF:${args.incomeIdToHome}")
 
        // viewModel.getTotalIncome(auth.currentUser!!.uid)
 
@@ -139,18 +141,19 @@ class MainFragment : Fragment() {
                 Status.SUCCESS -> {
                     // val total = response.data
                     val totalIncome = response.data?.income
+
+
                     binding.progressBar.visibility = View.GONE
                     binding.errorText.visibility = View.GONE
 
-                    totalIncome?.let {
+                    if (totalIncome != null) {
                         binding.constraint.visibility = View.VISIBLE
-
                         binding.income.text = totalIncome.income.toString()
-
-                        //  Log.d("MainFragment", "incomeId ${it.}")
-                        Log.d("MainFragment", "income ${it.income}")
-
-
+                        Log.d("MainFragment", "income ${totalIncome.income}")
+                    } else {
+                        binding.constraint.visibility = View.GONE
+                        binding.errorText.visibility = View.VISIBLE
+                        binding.errorText.text = "Set income"
                     }
                 }
                 // if error state
@@ -159,10 +162,7 @@ class MainFragment : Fragment() {
                     binding.progressBar.visibility = View.GONE
                     // TODO Show error message in dialog.
                     binding.constraint.visibility = View.GONE
-                    binding.errorText.visibility = View.VISIBLE
-                    binding.errorText.text = "set income"
-                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG).show()
 
                 }
                 // if still loading
@@ -176,13 +176,14 @@ class MainFragment : Fragment() {
             }
         }
     }
+
     private fun observeExpenditure() {
         viewModel.observeTotalExpenditureLiveData().observe(
             viewLifecycleOwner
         ) { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                   val res = response.data?.expenditure
+                    val res = response.data?.expenditure
                     binding.progressBar.visibility = View.GONE
                     binding.errorText.visibility = View.GONE
 
@@ -196,7 +197,7 @@ class MainFragment : Fragment() {
                         binding.transportPercentage.text = String.format("%.2f", res.transportPercentage)
                         binding.feePercentage.text = String.format("%.2f", res.schoolFeePercentage)
                         binding.shoppingPercentage.text = String.format("%.2f", res.shoppingPercentage)
-                       // Log.d("MainFragment", "expendureId ${it.id}")
+                        // Log.d("MainFragment", "expendureId ${it.id}")
                         Log.d("MainFragment11", "totalExpenditure ${res.total}")
 
                     }
@@ -207,10 +208,9 @@ class MainFragment : Fragment() {
                     binding.progressBar.visibility = View.GONE
                     // TODO Show error message in dialog.
                     binding.constraint.visibility = View.GONE
-                    binding.errorText.visibility = View.VISIBLE
-                    binding.errorText.setText("set income")
-                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-                        .show()
+
+                        Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+//                        .show()
                 }
                 // if still loading
                 Status.LOADING -> {

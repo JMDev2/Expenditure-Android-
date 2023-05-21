@@ -81,24 +81,19 @@ class NewBudgetFragment : Fragment() {
     private fun postBudget(userId: String, income: Int) {
         binding.setBudget.setOnClickListener {
             val budget = binding.budgetText.text.toString()
-            if (budget.isNotBlank()){
-                Log.d("NewBudgetFragment","budget:${budget}")
-                Log.d("NewBudgetFragment","income:${income}")
+            if (budget.isNotBlank() && budget.toInt() <= income) {
+                Log.d("NewBudgetFragment", "budget: $budget")
+                Log.d("NewBudgetFragment", "income: $income")
                 viewModel.postIncome(userId, Income(income, budget.toInt()))
 
                 val action = NewBudgetFragmentDirections.actionNewBudgetFragmentToMainFragment()
                 findNavController().navigate(action)
-                //Toast.makeText(requireContext(), "saved Succesfully", Toast.LENGTH_LONG).show()
-
-            }else{
-                Toast.makeText(requireContext(), "Put accurate data", Toast.LENGTH_LONG).show()
-
+            } else {
+                Toast.makeText(requireContext(), "Invalid budget value", Toast.LENGTH_LONG).show()
             }
-           // Log.d("NewBudgetFragment","id:${args.income}")
-
         }
-
     }
+
 
 
     private fun observeExpenditurePost() {
