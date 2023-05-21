@@ -11,7 +11,7 @@ import com.example.personalexpenditure.utils.Resource
 interface IncomePostApi {
 
     suspend fun getTotal(userId: String): Resource<TotalResponse?>
-   // suspend fun getTotalIncome(userId: String): Resource<Income?>
+    suspend fun getTotalIncome(userId: String): Resource<TotalResponse?>
 
-   // suspend fun postExpenditure(): Resource<Expenditure?>
+    suspend fun getTotalExpenditure(userId: String): Resource<Expenditure?>
 }

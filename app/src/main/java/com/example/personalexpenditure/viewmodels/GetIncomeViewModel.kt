@@ -20,7 +20,11 @@ import javax.inject.Inject
 class GetIncomeViewModel @Inject constructor(private val repository: GetIncomeRepository): ViewModel() {
 
     private var totalLiveData = MutableLiveData<Resource<TotalResponse?>>()
-    private var incomeLiveData = MutableLiveData<Resource<Income?>>()
+    private var incomeLiveData = MutableLiveData<Resource<TotalResponse?>>()
+    private var expenditureLiveData = MutableLiveData<Resource<Expenditure?>>()
+
+    private val totalExpenditureLiveData: LiveData<Resource<Expenditure>> = MutableLiveData()
+
 
 
 
@@ -37,15 +41,29 @@ class GetIncomeViewModel @Inject constructor(private val repository: GetIncomeRe
 
 
 
-//    fun getTotalIncome(userId: String) = viewModelScope.launch {
-//        repository.getTotalIncome(userId).collect() {
-//            incomeLiveData.postValue(it)
+    fun getTotalIncome(userId: String) = viewModelScope.launch {
+        repository.getTotalIncome(userId).collect() {
+            incomeLiveData.postValue(it)
+        }
+    }
+
+
+        fun observeTotalIncomeLiveData(): LiveData<Resource<TotalResponse?>> {
+            return incomeLiveData
+        }
+
+    //expenditure
+//    fun getExpenditure(userId: String) = viewModelScope.launch {
+//        repository.getTotalExpenditure(userId).collect() {
+//            expenditureLiveData.postValue(it)
 //        }
 //    }
-//
-//
-//        fun observeTotalIncomeLiveData(): LiveData<Resource<Income?>> {
-//            return incomeLiveData
+//        fun observeExpenditure():LiveData<Resource<Expenditure?>>{
+//            return expenditureLiveData
 //        }
+
+
+
+
 
 }

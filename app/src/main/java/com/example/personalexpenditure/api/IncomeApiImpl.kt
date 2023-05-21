@@ -31,6 +31,8 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
         }
     }
 
+
+
     //get total
      override suspend fun getTotal(userId: String): Resource<TotalResponse?> {
         val response = api.getTotal(userId)
@@ -42,26 +44,27 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
         }
     }
 
-//    override suspend fun getTotalIncome(userId: String): Resource<Income?> {
-//        val response = api.getTotalIncome(userId)
-//        return if (response.isSuccessful){
-//            Resource.success(response.body())
-//        }else{
-//
-//            Resource.error("Not not Found", null)
-//        }
-//    }
+    override suspend fun getTotalIncome(userId: String): Resource<TotalResponse?> {
+        val response = api.getTotalIncome(userId)
+        return if (response.isSuccessful){
+            Resource.success(response.body())
+        }else{
+
+            Resource.error("Not not Found", null)
+        }
+    }
 
 
-    //get total expenditure
-//    override suspend fun getTotalExpenditure(expenditureId: String): Resource<Expenditure?> {
-//        val response = api.getExpenditure(expenditureId)
-//        return if (response.isSuccessful){
-//            Resource.success(response.body())
-//        }else{
-//            Resource.error("no expenditure", null)
-//        }
-//    }
+
+    // get total expenditure
+    override suspend fun getTotalExpenditure(expenditureId: String): Resource<Expenditure?> {
+        val response = api.getExpenditure(expenditureId)
+        return if (response.isSuccessful){
+            Resource.success(response.body())
+        }else{
+            Resource.error("no expenditure", null)
+        }
+    }
 
 
 }

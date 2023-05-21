@@ -163,7 +163,8 @@ class CategoryFragment : Fragment() {
                 rent = rent,
                 schoolFee = fee,
                 shopping = shopping,
-                transport = transport
+                transport = transport,
+
             )
         }
 
