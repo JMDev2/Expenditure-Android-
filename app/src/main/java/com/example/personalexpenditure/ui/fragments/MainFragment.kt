@@ -18,7 +18,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.model.User
-import com.example.personalexpenditure.testfragment.BlankFragment
+
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.GetIncomeViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -33,7 +33,7 @@ import java.util.*
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
-   // private lateinit var navController: NavController
+    // private lateinit var navController: NavController
 
     private lateinit var binding: FragmentMainBinding
     private val viewModel: GetIncomeViewModel by viewModels()
@@ -50,7 +50,7 @@ class MainFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+                              savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMainBinding.inflate(inflater, container, false)
@@ -79,15 +79,15 @@ class MainFragment : Fragment() {
         setupOnBackPressedCallback()
 
 
-       // Log.d("MainFragment","checkexpenditureId:${args.expenditureId}")
-       // viewModel.getExpenditure(args.expenditureId.toString())
+        // Log.d("MainFragment","checkexpenditureId:${args.expenditureId}")
+        // viewModel.getExpenditure(args.expenditureId.toString())
 
         viewModel.getTotalExpenditure(auth.currentUser!!.uid) //call this when no init method in viewmodel
-       // viewModel.getExpenditure(auth.currentUser!!.uid)
-       // viewModel.getTotalIncome(auth.currentUser!!.uid)
+        // viewModel.getExpenditure(auth.currentUser!!.uid)
+        // viewModel.getTotalIncome(auth.currentUser!!.uid)
         Log.d("MainFragment - sabsabsa","incomeIdToHome mainaF:${args.incomeIdToHome}")
 
-       // viewModel.getTotalIncome(auth.currentUser!!.uid)
+        // viewModel.getTotalIncome(auth.currentUser!!.uid)
 
         observeIncome()
         observeExpenditure()
@@ -209,7 +209,7 @@ class MainFragment : Fragment() {
                     // TODO Show error message in dialog.
                     binding.constraint.visibility = View.GONE
 
-                        Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
 //                        .show()
                 }
                 // if still loading
@@ -245,7 +245,7 @@ class MainFragment : Fragment() {
                 transaction.commit()
 //                    val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
 //                    findNavController().navigate(action)
-                }
+            }
             hospital.setOnClickListener {
                 val blankFragment = BlankFragment()
                 val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
@@ -308,7 +308,7 @@ class MainFragment : Fragment() {
             }
         }
 
-        }
+    }
 
 
     private fun openIncome() {
@@ -323,7 +323,7 @@ class MainFragment : Fragment() {
         binding.expenseLinearLayout.setOnClickListener {
             val action = MainFragmentDirections.actionMainFragmentToTestCategoryFragment()
             findNavController().navigate(action)
-           // Toast.makeText(activity, "Error logging in", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(activity, "Error logging in", Toast.LENGTH_SHORT).show()
 
         }
 

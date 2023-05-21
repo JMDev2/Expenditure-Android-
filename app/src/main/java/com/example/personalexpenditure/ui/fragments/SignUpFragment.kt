@@ -55,7 +55,7 @@ class SignUpFragment : Fragment() {
 
         database = FirebaseDatabase.getInstance()
 
-      // authStateListener()
+        // authStateListener()
         registerUser()
         eyeToggle()
         eyeOffToggle()
@@ -76,92 +76,92 @@ class SignUpFragment : Fragment() {
     }
 
 
-   // validating the inputs
-   private fun registerUser() {
+    // validating the inputs
+    private fun registerUser() {
 
-       binding.signButton.setOnClickListener {
-           val name = binding.signUpUsername.text.toString().trim()
-           val email = binding.signUpemail.text.toString().trim()
-           val password = binding.signUpPassword.text.toString().trim()
-           val confirmPassword = binding.confirmPassword.text.toString().trim()
-
-
-           if (name.isEmpty()) {
-               binding.signUpUsername.error = "Name is required"
-               binding.signUpUsername.requestFocus()
-               return@setOnClickListener
-           }
-
-           if (email.isEmpty()) {
-               binding.signUpemail.error = "Email is required"
-               binding.signUpemail.requestFocus()
-               return@setOnClickListener
-           }
-           if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-               binding.signUpemail.error = "Please provide a valid email address"
-               binding.signUpemail.requestFocus()
-               return@setOnClickListener
-           }
-
-           if (password.isEmpty()) {
-               binding.signUpPassword.error = "Password is required"
-               binding.signUpPassword.requestFocus()
-               return@setOnClickListener
-           }
-
-           if (password.length < 6) {
-               binding.signUpPassword.error = "Minimum password length should be 6 characters"
-               binding.signUpPassword.requestFocus()
-               return@setOnClickListener
-           }
-
-           if (confirmPassword != password) {
-               binding.confirmPassword.error = "Passwords do not match"
-               binding.confirmPassword.requestFocus()
-               return@setOnClickListener
-           }
+        binding.signButton.setOnClickListener {
+            val name = binding.signUpUsername.text.toString().trim()
+            val email = binding.signUpemail.text.toString().trim()
+            val password = binding.signUpPassword.text.toString().trim()
+            val confirmPassword = binding.confirmPassword.text.toString().trim()
 
 
-           binding.progressBar3.visibility = View.VISIBLE
-           auth.createUserWithEmailAndPassword(email, password)
-               .addOnCompleteListener { task ->
-                   if (task.isSuccessful) {
-                       val databaseRef =
-                           database.reference.child("users").child(auth.currentUser!!.uid)
-                       val users = User(name, email, auth.currentUser!!.uid)
+            if (name.isEmpty()) {
+                binding.signUpUsername.error = "Name is required"
+                binding.signUpUsername.requestFocus()
+                return@setOnClickListener
+            }
 
-                       databaseRef.setValue(users).addOnCompleteListener { dbTask ->
-                           if (dbTask.isSuccessful) {
-                               Toast.makeText(
-                                   activity,
-                                   "User registered successfully",
-                                   Toast.LENGTH_SHORT
-                               ).show()
+            if (email.isEmpty()) {
+                binding.signUpemail.error = "Email is required"
+                binding.signUpemail.requestFocus()
+                return@setOnClickListener
+            }
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                binding.signUpemail.error = "Please provide a valid email address"
+                binding.signUpemail.requestFocus()
+                return@setOnClickListener
+            }
 
-                               // Navigate to verification fragment
-                               val action =
-                                   SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
-                               findNavController().navigate(action)
+            if (password.isEmpty()) {
+                binding.signUpPassword.error = "Password is required"
+                binding.signUpPassword.requestFocus()
+                return@setOnClickListener
+            }
 
-                           } else {
-                               Toast.makeText(
-                                   activity,
-                                   "Failed to save user data to database",
-                                   Toast.LENGTH_SHORT
-                               ).show()
-                               binding.progressBar3.visibility = View.GONE
-                           }
-                       }
-                   } else {
-                       Toast.makeText(
-                           activity,
-                           "Failed to register user: ${task.exception?.message}",
-                           Toast.LENGTH_SHORT
-                       ).show()
-                   }
-               }
-       }
-   }
+            if (password.length < 6) {
+                binding.signUpPassword.error = "Minimum password length should be 6 characters"
+                binding.signUpPassword.requestFocus()
+                return@setOnClickListener
+            }
+
+            if (confirmPassword != password) {
+                binding.confirmPassword.error = "Passwords do not match"
+                binding.confirmPassword.requestFocus()
+                return@setOnClickListener
+            }
+
+
+            binding.progressBar3.visibility = View.VISIBLE
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val databaseRef =
+                            database.reference.child("users").child(auth.currentUser!!.uid)
+                        val users = User(name, email, auth.currentUser!!.uid)
+
+                        databaseRef.setValue(users).addOnCompleteListener { dbTask ->
+                            if (dbTask.isSuccessful) {
+                                Toast.makeText(
+                                    activity,
+                                    "User registered successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                                // Navigate to verification fragment
+                                val action =
+                                    SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+                                findNavController().navigate(action)
+
+                            } else {
+                                Toast.makeText(
+                                    activity,
+                                    "Failed to save user data to database",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                binding.progressBar3.visibility = View.GONE
+                            }
+                        }
+                    } else {
+                        Toast.makeText(
+                            activity,
+                            "Failed to register user: ${task.exception?.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+        }
+    }
     private fun eyeToggle() {
         var isPasswordVisible = false
         binding.imageToggle.setOnClickListener {

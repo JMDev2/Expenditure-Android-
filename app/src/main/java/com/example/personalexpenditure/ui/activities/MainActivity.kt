@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-             navController = navHostFragment.navController
+        navController = navHostFragment.navController
 
         val sharedPrefs = SharedPreferences.getOnboardingStatus(this)
 

@@ -1,5 +1,6 @@
 package com.example.personalexpenditure.ui.fragments
 
+
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentNewBudgetBinding
 import com.example.personalexpenditure.model.Income
+
 
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.IncomePostViewModel
@@ -54,13 +56,13 @@ class NewBudgetFragment : Fragment() {
 
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-       // Log.d("NewBudgetFragment","passedIncome:${args.income}")
+        // Log.d("NewBudgetFragment","passedIncome:${args.income}")
 
 
         displayDate()
 
         postBudget(userId = auth.currentUser!!.uid, args.income)
-        observeExpenditurePost()
+        //observeExpenditurePost()
         cancelBtn()
 
 
@@ -96,34 +98,34 @@ class NewBudgetFragment : Fragment() {
 
 
 
-    private fun observeExpenditurePost() {
-        viewModel.observePostIncomeLiveData().observe(
-            viewLifecycleOwner
-        ){ response ->
-            when (response.status) {
-                Status.SUCCESS ->{
-                    val response = response.data
-
-                    if (response != null){
-
-                    }
-
-                        Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-                        Log.d("NewBudgetFragment","incomeIdToHomeId: ${response}")
-
-
-                }
-                Status.ERROR ->{
-                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-                        .show()
-
-                }
-                Status.LOADING ->{
-
-                }
-
-            }
-        }
-
-    }
+//    private fun observeExpenditurePost() {
+//        viewModel.observePostIncomeLiveData().observe(
+//            viewLifecycleOwner
+//        ){ response ->
+//            when (response.status) {
+//                Status.SUCCESS ->{
+//                    val response = response.data
+//
+//                    if (response != null){
+//
+//                    }
+//
+//                    Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+//                    Log.d("NewBudgetFragment","incomeIdToHomeId: ${response}")
+//
+//
+//                }
+//                Status.ERROR ->{
+//                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+//                        .show()
+//
+//                }
+//                Status.LOADING ->{
+//
+//                }
+//
+//            }
+//        }
+//
+//    }
 }

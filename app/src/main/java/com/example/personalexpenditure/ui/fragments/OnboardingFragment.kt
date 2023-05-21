@@ -42,7 +42,7 @@ class OnboardingFragment : Fragment() {
         binding = FragmentOnboardingBinding.inflate(inflater, container, false )
 
         return binding.root
-        }
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -93,44 +93,44 @@ class OnboardingFragment : Fragment() {
     }
 
     private fun moveNext() {
-            // set page change listener
-    binding.viewpager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
-        private var settled = false
-        override fun onPageScrolled(
-            position: Int,
-            positionOffset: Float,
-            positionOffsetPixels: Int
-        ) {
+        // set page change listener
+        binding.viewpager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
+            private var settled = false
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
 
-        }
+            }
 
-        override fun onPageSelected(position: Int) {
-            if (position == onBoardingViewPagerAdapter!!.count - 1) {
-                binding.moveNext.text = "Get Started"
-                binding.moveNext.setOnClickListener {
-                    Log.d("get started button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
-                    SharedPreferences.setOnboardingStatus(requireActivity(), true)
-                    val action = OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment()
-                    findNavController().navigate(action)
-                }
-            } else {
-                binding.moveNext.text = "Next"
-                binding.moveNext.setOnClickListener {
-                    Log.d("next button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
-                    SharedPreferences.setOnboardingStatus(requireActivity(), true)
-                    binding.viewpager.currentItem += 1
+            override fun onPageSelected(position: Int) {
+                if (position == onBoardingViewPagerAdapter!!.count - 1) {
+                    binding.moveNext.text = "Get Started"
+                    binding.moveNext.setOnClickListener {
+                        Log.d("get started button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
+                        SharedPreferences.setOnboardingStatus(requireActivity(), true)
+                        val action = OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment()
+                        findNavController().navigate(action)
+                    }
+                } else {
+                    binding.moveNext.text = "Next"
+                    binding.moveNext.setOnClickListener {
+                        Log.d("next button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
+                        SharedPreferences.setOnboardingStatus(requireActivity(), true)
+                        binding.viewpager.currentItem += 1
+                    }
                 }
             }
-        }
 
-        override fun onPageScrollStateChanged(state: Int) {
+            override fun onPageScrollStateChanged(state: Int) {
 
-        }
+            }
 
 
-    })
+        })
 
-        }
+    }
 
     private fun onboardingData() {
         val onBoardingData: MutableList<OnBoardingData> = ArrayList()

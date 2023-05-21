@@ -1,3 +1,4 @@
+
 package com.example.personalexpenditure.model
 
 class TotalResponse(
@@ -32,4 +33,5 @@ data class Income(
     val income: Int,
     val budget: Int,
     val createdDate: String? = null
+
 )

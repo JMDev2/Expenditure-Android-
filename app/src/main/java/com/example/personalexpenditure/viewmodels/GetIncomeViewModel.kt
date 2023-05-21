@@ -1,15 +1,13 @@
+
 package com.example.personalexpenditure.viewmodels
+
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.personalexpenditure.model.Expenditure
-import com.example.personalexpenditure.model.Income
-
 import com.example.personalexpenditure.model.TotalResponse
-
-
 import com.example.personalexpenditure.repository.GetIncomeRepository
 import com.example.personalexpenditure.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -61,8 +59,6 @@ class GetIncomeViewModel @Inject constructor(private val repository: GetIncomeRe
 //        fun observeExpenditure():LiveData<Resource<Expenditure?>>{
 //            return expenditureLiveData
 //        }
-
-
 
 
 

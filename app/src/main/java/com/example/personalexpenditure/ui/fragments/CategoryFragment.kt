@@ -1,5 +1,6 @@
 package com.example.personalexpenditure.ui.fragments
 
+
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -61,7 +62,7 @@ class CategoryFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         postExpenditure()
-        observeExpenditure()
+       // observeExpenditure()
         displayDate()
         dismiss()
 
@@ -85,19 +86,19 @@ class CategoryFragment : Fragment() {
     private fun postExpenditure() {
         binding.sendBtn.setOnClickListener {
 
-                val expenditure = captureExpenditure()
+            val expenditure = captureExpenditure()
 
 
-                if (expenditure != null){
-                    viewModel.postExpenditure(userId = auth.currentUser!!.uid, expenditure)
+            if (expenditure != null){
+                viewModel.postExpenditure(userId = auth.currentUser!!.uid, expenditure)
 //                    val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
 //                    findNavController().navigate(action)
-                    Log.d("NewExpensesCategoryFragment", "Posting${expenditure}")
-                    Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+                Log.d("NewExpensesCategoryFragment", "Posting${expenditure}")
+                Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
 
 
-                }else{
-                    Toast.makeText(requireActivity(), "invalid", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(requireActivity(), "invalid", Toast.LENGTH_SHORT).show()
 
 
             }
@@ -165,47 +166,47 @@ class CategoryFragment : Fragment() {
                 shopping = shopping,
                 transport = transport,
 
-            )
+                )
         }
 
 
         return null
     }
-
-    private fun observeExpenditure() {
-        viewModel.observePostExpenditureLiveData().observe(
-            viewLifecycleOwner
-        ) { response ->
-            when (response.status) {
-                Status.SUCCESS -> {
-                    val expenditureId = response.data
-
-                    if (expenditureId != null){
-//                        val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
-//                        findNavController().navigate(action)
-
-                    }
-                }
-                // if error state
-                Status.ERROR -> {
-//                    // TODO Dismiss progress dialog
-//                    binding.progressBar.visibility = View.GONE
-//                    // TODO Show error message in dialog.
-//                    binding.constraint.visibility = View.GONE
-//                    binding.errorText.visibility = View.VISIBLE
-//                    binding.errorText.text = "set income"
-                }
-                // if still loading
-                Status.LOADING -> {
-//                    binding.constraint.visibility = View.GONE
-//                    binding.errorText.visibility = View.GONE
-//                    binding.progressBar.visibility = View.VISIBLE
-
-                    // TODO Show progress dialog
-                }
-            }
-        }
-    }
+//
+//    private fun observeExpenditure() {
+//        viewModel.observePostExpenditureLiveData().observe(
+//            viewLifecycleOwner
+//        ) { response ->
+//            when (response.status) {
+//                Status.SUCCESS -> {
+//                    val expenditureId = response.data
+//
+//                    if (expenditureId != null){
+////                        val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
+////                        findNavController().navigate(action)
+//
+//                    }
+//                }
+//                // if error state
+//                Status.ERROR -> {
+////                    // TODO Dismiss progress dialog
+////                    binding.progressBar.visibility = View.GONE
+////                    // TODO Show error message in dialog.
+////                    binding.constraint.visibility = View.GONE
+////                    binding.errorText.visibility = View.VISIBLE
+////                    binding.errorText.text = "set income"
+//                }
+//                // if still loading
+//                Status.LOADING -> {
+////                    binding.constraint.visibility = View.GONE
+////                    binding.errorText.visibility = View.GONE
+////                    binding.progressBar.visibility = View.VISIBLE
+//
+//                    // TODO Show progress dialog
+//                }
+//            }
+//        }
+//    }
 
 }
 

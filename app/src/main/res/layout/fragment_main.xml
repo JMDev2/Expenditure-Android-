@@ -185,65 +185,65 @@
 
                 </LinearLayout>
             </LinearLayout>
-                    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:id="@+id/constraint"-->
-<!--                android:layout_width="88dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="bottom"-->
-<!--                android:orientation="horizontal"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/textView13"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/textView13">-->
+            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--                android:id="@+id/constraint"-->
+            <!--                android:layout_width="88dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="bottom"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/textView13"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/textView13">-->
 
 
-<!--                <TextView-->
-<!--                    android:id="@+id/income"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/circle_income"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/textView13"-->
-<!--                    app:layout_constraintStart_toEndOf="@+id/textView13"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/textView13" />-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/income"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="0"-->
+            <!--                    android:textColor="@color/circle_income"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/textView13"-->
+            <!--                    app:layout_constraintStart_toEndOf="@+id/textView13"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/textView13" />-->
 
-<!--                <TextView-->
-<!--                    android:id="@+id/textView13"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="8dp"-->
-<!--                    android:text="Ksh."-->
-<!--                    android:textColor="@color/circle_income"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toTopOf="@+id/textView12"-->
-<!--                    app:layout_constraintEnd_toStartOf="@+id/income"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/textView13"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginEnd="8dp"-->
+            <!--                    android:text="Ksh."-->
+            <!--                    android:textColor="@color/circle_income"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    app:layout_constraintBottom_toTopOf="@+id/textView12"-->
+            <!--                    app:layout_constraintEnd_toStartOf="@+id/income"-->
+            <!--                    app:layout_constraintStart_toStartOf="parent"-->
+            <!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--                <TextView-->
-<!--                    android:id="@+id/textView12"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="8dp"-->
-<!--                    android:text="Ksh."-->
-<!--                    android:textColor="@color/circle_expenses"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintEnd_toStartOf="@+id/expenses"-->
-<!--                    app:layout_constraintStart_toStartOf="@+id/textView13"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/textView13" />-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/textView12"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginEnd="8dp"-->
+            <!--                    android:text="Ksh."-->
+            <!--                    android:textColor="@color/circle_expenses"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    app:layout_constraintEnd_toStartOf="@+id/expenses"-->
+            <!--                    app:layout_constraintStart_toStartOf="@+id/textView13"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/textView13" />-->
 
-<!--                <TextView-->
-<!--                    android:id="@+id/expenses"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/circle_expenses"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/textView12"-->
-<!--                    app:layout_constraintStart_toEndOf="@+id/textView12"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/textView13" />-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/expenses"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="0"-->
+            <!--                    android:textColor="@color/circle_expenses"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/textView12"-->
+            <!--                    app:layout_constraintStart_toEndOf="@+id/textView12"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/textView13" />-->
 
 
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+            <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
             <TextView
                 android:id="@+id/errorText"

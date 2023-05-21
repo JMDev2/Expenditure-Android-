@@ -6,6 +6,7 @@ import com.example.personalexpenditure.api.IncomePostApiService
 
 import com.example.personalexpenditure.constant.cConstants.BASE_URL
 import com.example.personalexpenditure.repository.PostRepository
+
 import com.example.personalexpenditure.utils.NetworkInterceptor
 import dagger.Module
 import dagger.Provides
@@ -44,9 +45,11 @@ object AppModule  {
 
     @Singleton
     @Provides
-    fun getIncomeRepository(incomeApiImpl: IncomeApiImpl): PostRepository{
+
+    fun getIncomeRepository(incomeApiImpl: IncomeApiImpl): PostRepository {
         return PostRepository((incomeApiImpl))
     }
+
 
     @Singleton
     @Provides

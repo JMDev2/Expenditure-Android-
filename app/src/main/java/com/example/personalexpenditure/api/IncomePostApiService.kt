@@ -1,11 +1,11 @@
 package com.example.personalexpenditure.api
 
 
+
+
 import com.example.personalexpenditure.model.Expenditure
 import com.example.personalexpenditure.model.Income
-
 import com.example.personalexpenditure.model.TotalResponse
-
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

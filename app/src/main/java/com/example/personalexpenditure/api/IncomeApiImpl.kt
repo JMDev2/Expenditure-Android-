@@ -1,17 +1,17 @@
 package com.example.personalexpenditure.api
 
 
+
+
+
 import com.example.personalexpenditure.model.Expenditure
 import com.example.personalexpenditure.model.Income
-
-
 import com.example.personalexpenditure.model.TotalResponse
-
 import com.example.personalexpenditure.utils.Resource
 import javax.inject.Inject
 
 class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): IncomePostApi {
-   suspend fun postIncome(userId: String, postIncomeResponse: Income): Resource<Income?> {
+    suspend fun postIncome(userId: String, postIncomeResponse: Income): Resource<Income?> {
         val response = api.postIncome(userId, postIncomeResponse)
         return if (response.isSuccessful){
             val success = Resource.success(response.body())
@@ -34,7 +34,7 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
 
 
     //get total
-     override suspend fun getTotal(userId: String): Resource<TotalResponse?> {
+    override suspend fun getTotal(userId: String): Resource<TotalResponse?> {
         val response = api.getTotal(userId)
         return if (response.isSuccessful){
             Resource.success(response.body())

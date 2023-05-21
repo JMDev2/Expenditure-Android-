@@ -126,11 +126,11 @@ class  LoginFragment : Fragment() {
                     binding.progressBar2.visibility = View.GONE
                 }
             }
-                    .addOnFailureListener { e ->
-                        Log.e("LoginFragment", "Error logging in", e)
-                        Toast.makeText(activity, "Error logging in: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
-            }
+                .addOnFailureListener { e ->
+                    Log.e("LoginFragment", "Error logging in", e)
+                    Toast.makeText(activity, "Error logging in: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
 
     }
 
