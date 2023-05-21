@@ -52,6 +52,4 @@ interface IncomePostApiService {
         @Path("userId") userId: String
     ): Response<Expenditure>
 
-
-
 }

@@ -31,8 +31,6 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
         }
     }
 
-
-
     //get total
     override suspend fun getTotal(userId: String): Resource<TotalResponse?> {
         val response = api.getTotal(userId)
