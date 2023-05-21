@@ -1,10 +1,14 @@
 package com.example.personalexpenditure.api
 
 import com.example.personalexpenditure.MockFileReader
+<<<<<<< HEAD
+import com.example.personalexpenditure.utils.Status
+=======
 import com.example.personalexpenditure.model.PostData
 import com.example.personalexpenditure.utils.Resource
 import com.example.personalexpenditure.utils.Status
 import kotlinx.coroutines.runBlocking
+>>>>>>> develop
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
@@ -16,10 +20,15 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+<<<<<<< HEAD
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+=======
 import org.mockito.Mock
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+>>>>>>> develop
 import java.net.HttpURLConnection
 
 @RunWith(JUnit4::class)

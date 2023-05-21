@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.personalexpenditure.R
 
+import com.example.personalexpenditure.databinding.FragmentVerifyCodeBinding
 
-class VerificationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+class VerifyCodeFragment : Fragment() {
+    private lateinit var binding: FragmentVerifyCodeBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,9 @@ class VerificationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_verification, container, false)
+        binding = FragmentVerifyCodeBinding.inflate(inflater, container, false )
+
+        return binding.root
     }
 
 

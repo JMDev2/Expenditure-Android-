@@ -1,5 +1,6 @@
 package com.example.personalexpenditure.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,17 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.adapter.OnBoardingViewPagerAdapter
 import com.example.personalexpenditure.databinding.FragmentOnboardingBinding
 import com.example.personalexpenditure.model.OnBoardingData
+import com.example.personalexpenditure.utils.SharedPreferences
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
 
 class OnboardingFragment : Fragment() {
     private lateinit var binding: FragmentOnboardingBinding
+
+    val firebaseAuth = FirebaseAuth.getInstance()
+
 
     var onBoardingViewPagerAdapter : OnBoardingViewPagerAdapter? = null
     val tabLayout : TabLayout? = null
@@ -37,11 +42,12 @@ class OnboardingFragment : Fragment() {
         binding = FragmentOnboardingBinding.inflate(inflater, container, false )
 
         return binding.root
-        }
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.setTitle("")
         onboardingData()
         moveNext()
         skipNext()
@@ -50,7 +56,24 @@ class OnboardingFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false) //remove the onback stack arrow
 
 
+
+//        val email= sharedPreferences(requireContext()).getStringData(SharedPreferences.USER_EMAIL)
+//        Log.e("SignUpFragment",email)
+//
+//        val isFirstTimeUser = sharedPreferences.getIsFirstTimeUser()
+//        if (isFirstTimeUser){
+//            //navigate to login
+//            onboardingData()
+//
+//        }else{
+//            val action = OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment()
+//            findNavController().navigate(action)
+//        }
+
     }
+
+
+
     //disable the onback ack
     private fun setupOnBackPressedCallback() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -61,6 +84,8 @@ class OnboardingFragment : Fragment() {
     }
     private fun skipNext() {
         binding.skipText.setOnClickListener {
+            SharedPreferences.setOnboardingStatus(requireActivity(), true)
+            Log.d("skip button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
             val action = OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment()
             findNavController().navigate(action)
 
@@ -68,49 +93,44 @@ class OnboardingFragment : Fragment() {
     }
 
     private fun moveNext() {
-            // set page change listener
-    binding.viewpager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
-        private var settled = false
-        override fun onPageScrolled(
-            position: Int,
-            positionOffset: Float,
-            positionOffsetPixels: Int
-        ) {
+        // set page change listener
+        binding.viewpager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
+            private var settled = false
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
 
-        }
+            }
 
-        override fun onPageSelected(position: Int) {
-            if (position == onBoardingViewPagerAdapter!!.count - 1) {
-                binding.moveNext.text = "Get Started"
-                binding.moveNext.setOnClickListener {
-                    val action = OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment()
-                    findNavController().navigate(action)
-                }
-            } else {
-                binding.moveNext.text = "Next"
-                binding.moveNext.setOnClickListener {
-                    binding.viewpager.currentItem += 1
+            override fun onPageSelected(position: Int) {
+                if (position == onBoardingViewPagerAdapter!!.count - 1) {
+                    binding.moveNext.text = "Get Started"
+                    binding.moveNext.setOnClickListener {
+                        Log.d("get started button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
+                        SharedPreferences.setOnboardingStatus(requireActivity(), true)
+                        val action = OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment()
+                        findNavController().navigate(action)
+                    }
+                } else {
+                    binding.moveNext.text = "Next"
+                    binding.moveNext.setOnClickListener {
+                        Log.d("next button click", SharedPreferences.getOnboardingStatus(requireActivity()).toString())
+                        SharedPreferences.setOnboardingStatus(requireActivity(), true)
+                        binding.viewpager.currentItem += 1
+                    }
                 }
             }
-        }
 
-        override fun onPageScrollStateChanged(state: Int) {
+            override fun onPageScrollStateChanged(state: Int) {
 
-//            if (state == ViewPager.SCROLL_STATE_DRAGGING) {
-//                settled = false
-//            }
-//            if (state == ViewPager.SCROLL_STATE_SETTLING) {
-//                settled = true
-//            }
-//            if (state == ViewPager.SCROLL_STATE_IDLE && !settled) {
-//                // set the current position
-//                findNavController().navigate(R.id.action_onboardingFragment_to_mainFragment)
-//            }
-        }
+            }
 
-    })
 
-        }
+        })
+
+    }
 
     private fun onboardingData() {
         val onBoardingData: MutableList<OnBoardingData> = ArrayList()
@@ -137,5 +157,7 @@ class OnboardingFragment : Fragment() {
         viewPager?.adapter = onBoardingViewPagerAdapter
         binding.tabIndicator.setupWithViewPager(binding.viewpager)
     }
+
+
 
 }

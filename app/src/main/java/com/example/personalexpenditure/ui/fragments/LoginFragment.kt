@@ -1,6 +1,8 @@
 package com.example.personalexpenditure.ui.fragments
 
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -9,7 +11,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentLoginBinding
+import com.example.personalexpenditure.utils.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 
@@ -18,6 +22,9 @@ class  LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var auth : FirebaseAuth
     private var mAuthListener: AuthStateListener? = null
+
+
+    val firebaseAuth = FirebaseAuth.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,31 +47,42 @@ class  LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
 
+//        SharedPreferences(requireContext()).saveStringData(SharedPreferences.USER_EMAIL, binding.loginEmail.text.toString())
 
 
-        authStateListener()
+        //authStateListener()
 
         navigation()
         validateUser()
+        eyeToggle()
     }
 
-    //authestate listener
-    private fun authStateListener() {
-        mAuthListener = AuthStateListener { firebaseAuth ->
-            val user = firebaseAuth.currentUser
-            if (user != null) {
-                // Navigate to main fragment
-                val action = LoginFragmentDirections.actionLoginFragmentToMainFragment()
-                findNavController().navigate(action)
+    private fun eyeToggle() {
+        var isPasswordVisible = false
+        binding.imageToggle3.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+                // Show password
+                binding.loginPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.imageToggle3.setImageResource(R.drawable.baseline_visibility_off_24)
+            } else {
+                // Hide password
+                binding.loginPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.imageToggle3.setImageResource(R.drawable.baseline_visibility_24)
             }
+
+            // Move the cursor to the end of the text
+            binding.loginPassword.setSelection(binding.loginPassword.text.length)
         }
     }
+
 
     private fun navigation(){
-        binding.navogateToSignup.setOnClickListener {
-            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
-            findNavController().navigate(action)
-        }
+//        binding.navogateToSignup.setOnClickListener {
+//            val action = LoginFragmentDirections.
+//            findNavController().navigate(action)
+//        }
 
     }
 
@@ -108,11 +126,11 @@ class  LoginFragment : Fragment() {
                     binding.progressBar2.visibility = View.GONE
                 }
             }
-                    .addOnFailureListener { e ->
-                        Log.e("LoginFragment", "Error logging in", e)
-                        Toast.makeText(activity, "Error logging in: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
-            }
+                .addOnFailureListener { e ->
+                    Log.e("LoginFragment", "Error logging in", e)
+                    Toast.makeText(activity, "Error logging in: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
 
     }
 

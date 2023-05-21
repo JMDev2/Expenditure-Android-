@@ -8,14 +8,20 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class GetIncomeRepository @Inject constructor(private val api: IncomePostApi) {
-    suspend fun getIncome(incomeId: String)= flow {
+    suspend fun getTotal(userId: String)= flow {
         emit(Resource.loading(null))
-        emit(api.getIncomes(incomeId))
+        emit(api.getTotal(userId))
     }.flowOn(Dispatchers.IO)
 
 
-    suspend fun getExpenditure(expenditureId: String)= flow {
+    suspend fun getTotalIncome(userId: String)= flow {
         emit(Resource.loading(null))
-        emit(api.getTotalExpenditure(expenditureId))
+        emit(api.getTotalIncome(userId))
+    }.flowOn(Dispatchers.IO)
+
+    //expenditure
+    suspend fun getTotalExpenditure(userId: String) = flow {
+        emit(Resource.loading(null))
+        emit(api.getTotalExpenditure(userId))
     }.flowOn(Dispatchers.IO)
 }

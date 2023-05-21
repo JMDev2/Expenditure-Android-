@@ -5,7 +5,10 @@ import com.example.personalexpenditure.MockFileReader
 import com.example.personalexpenditure.TestCoroutineRule
 import com.example.personalexpenditure.model.IncomeResponse
 import com.example.personalexpenditure.repository.GetIncomeRepository
+<<<<<<< HEAD
+=======
 import com.example.personalexpenditure.repository.IncomeRepository
+>>>>>>> develop
 import com.example.personalexpenditure.utils.Resource
 import com.google.gson.Gson
 import io.mockk.coEvery
@@ -14,7 +17,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import org.junit.Assert.*
 
+<<<<<<< HEAD
+=======
 import org.junit.After
+>>>>>>> develop
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

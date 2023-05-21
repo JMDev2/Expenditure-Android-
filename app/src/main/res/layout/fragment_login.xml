@@ -46,6 +46,7 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:hint="johndoe@gmail.com"
+                android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -79,14 +80,21 @@
 
             <EditText
                 android:id="@+id/loginPassword"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:hint="Password"
                 android:inputType="textPassword"
-                app:passwordToggleEnabled="true"
+                android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:passwordToggleEnabled="true" />
+
+            <ImageView
+                android:id="@+id/imageToggle3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_visibility_24" />
 
 
         </LinearLayout>
@@ -138,14 +146,20 @@
 
     <ProgressBar
         android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="19dp"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/pb"
+        android:progress="0"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="invisible"
+        app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.688" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

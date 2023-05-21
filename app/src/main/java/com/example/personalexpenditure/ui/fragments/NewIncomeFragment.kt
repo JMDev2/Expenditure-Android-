@@ -8,19 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.personalexpenditure.R
 import com.example.personalexpenditure.databinding.FragmentNewIncomeBinding
-import com.example.personalexpenditure.model.PostData
-import com.example.personalexpenditure.repository.IncomeRepository
-import com.example.personalexpenditure.utils.Resource
 import com.example.personalexpenditure.utils.Status
 import com.example.personalexpenditure.viewmodels.IncomePostViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,7 +51,7 @@ class NewIncomeFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         postData()
-        observeIncomePost()
+       // observeIncomePost()
         cancelBtn()
         displayDate()
 
@@ -117,29 +110,29 @@ class NewIncomeFragment : Fragment() {
         }
     }
 
-    private fun observeIncomePost() {
-        viewModel.observePostIncomeLiveData()
-            .observe(
-            viewLifecycleOwner
-        ){ response ->
-            when (response.status) {
-                Status.SUCCESS ->{
-                    Log.d("NewIncomeFragment", "income ${id}")
-                    Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-
-                }
-                Status.ERROR ->{
-                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-                        .show()
-
-                }
-                Status.LOADING ->{
-
-                }
-
-            }
-        }
-    }
+//    private fun observeIncomePost() {
+//        viewModel.observePostIncomeLiveData()
+//            .observe(
+//                viewLifecycleOwner
+//            ){ response ->
+//                when (response.status) {
+//                    Status.SUCCESS ->{
+//                        Log.d("NewIncomeFragment", "income ${id}")
+//                        Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
+//
+//                    }
+//                    Status.ERROR ->{
+//                        Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
+//                            .show()
+//
+//                    }
+//                    Status.LOADING ->{
+//
+//                    }
+//
+//                }
+//            }
+//    }
 
 
 }

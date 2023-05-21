@@ -1,16 +1,17 @@
 package com.example.personalexpenditure.api
 
+
+
+
 import com.example.personalexpenditure.model.Expenditure
-
-import com.example.personalexpenditure.model.IncomeResponseItem
-
+import com.example.personalexpenditure.model.TotalResponse
 import com.example.personalexpenditure.utils.Resource
-import okhttp3.ResponseBody
+
 
 interface IncomePostApi {
 
-    suspend fun getIncomes(incomeId: String): Resource<IncomeResponseItem?>
-    suspend fun getTotalExpenditure(expenditureId: String): Resource<Expenditure?>
+    suspend fun getTotal(userId: String): Resource<TotalResponse?>
+    suspend fun getTotalIncome(userId: String): Resource<TotalResponse?>
 
-   // suspend fun postExpenditure(): Resource<Expenditure?>
+    suspend fun getTotalExpenditure(userId: String): Resource<Expenditure?>
 }
