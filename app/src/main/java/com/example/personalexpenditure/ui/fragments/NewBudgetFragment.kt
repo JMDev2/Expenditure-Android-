@@ -97,35 +97,4 @@ class NewBudgetFragment : Fragment() {
     }
 
 
-
-//    private fun observeExpenditurePost() {
-//        viewModel.observePostIncomeLiveData().observe(
-//            viewLifecycleOwner
-//        ){ response ->
-//            when (response.status) {
-//                Status.SUCCESS ->{
-//                    val response = response.data
-//
-//                    if (response != null){
-//
-//                    }
-//
-//                    Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-//                    Log.d("NewBudgetFragment","incomeIdToHomeId: ${response}")
-//
-//
-//                }
-//                Status.ERROR ->{
-//                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-//                        .show()
-//
-//                }
-//                Status.LOADING ->{
-//
-//                }
-//
-//            }
-//        }
-//
-//    }
 }

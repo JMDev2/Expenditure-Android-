@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.personalexpenditure.model.Expenditure
+import com.example.personalexpenditure.model.Income
 import com.example.personalexpenditure.model.TotalResponse
 import com.example.personalexpenditure.repository.GetIncomeRepository
 import com.example.personalexpenditure.utils.Resource
@@ -18,14 +19,14 @@ import javax.inject.Inject
 class GetIncomeViewModel @Inject constructor(private val repository: GetIncomeRepository): ViewModel() {
 
     private var totalLiveData = MutableLiveData<Resource<TotalResponse?>>()
-    private var incomeLiveData = MutableLiveData<Resource<TotalResponse?>>()
+    private var incomeLiveData = MutableLiveData<Resource<Income?>>()
     private var expenditureLiveData = MutableLiveData<Resource<Expenditure?>>()
 
     private val totalExpenditureLiveData: LiveData<Resource<Expenditure>> = MutableLiveData()
 
 
 
-
+//all
     fun getTotalExpenditure(userId: String) = viewModelScope.launch {
         repository.getTotal(userId).collect(){
             totalLiveData.postValue(it)
@@ -38,7 +39,7 @@ class GetIncomeViewModel @Inject constructor(private val repository: GetIncomeRe
     }
 
 
-
+//income
     fun getTotalIncome(userId: String) = viewModelScope.launch {
         repository.getTotalIncome(userId).collect() {
             incomeLiveData.postValue(it)
@@ -46,19 +47,19 @@ class GetIncomeViewModel @Inject constructor(private val repository: GetIncomeRe
     }
 
 
-        fun observeTotalIncomeLiveData(): LiveData<Resource<TotalResponse?>> {
+        fun observeTotalIncomeLiveData(): LiveData<Resource<Income?>> {
             return incomeLiveData
         }
 
     //expenditure
-//    fun getExpenditure(userId: String) = viewModelScope.launch {
-//        repository.getTotalExpenditure(userId).collect() {
-//            expenditureLiveData.postValue(it)
-//        }
-//    }
-//        fun observeExpenditure():LiveData<Resource<Expenditure?>>{
-//            return expenditureLiveData
-//        }
+    fun getExpenditure(userId: String) = viewModelScope.launch {
+        repository.getTotalExpenditure(userId).collect() {
+            expenditureLiveData.postValue(it)
+        }
+    }
+        fun observeExpenditure():LiveData<Resource<Expenditure?>>{
+            return expenditureLiveData
+        }
 
 
 

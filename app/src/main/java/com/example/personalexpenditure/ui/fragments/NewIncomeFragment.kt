@@ -110,29 +110,5 @@ class NewIncomeFragment : Fragment() {
         }
     }
 
-//    private fun observeIncomePost() {
-//        viewModel.observePostIncomeLiveData()
-//            .observe(
-//                viewLifecycleOwner
-//            ){ response ->
-//                when (response.status) {
-//                    Status.SUCCESS ->{
-//                        Log.d("NewIncomeFragment", "income ${id}")
-//                        Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-//
-//                    }
-//                    Status.ERROR ->{
-//                        Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG)
-//                            .show()
-//
-//                    }
-//                    Status.LOADING ->{
-//
-//                    }
-//
-//                }
-//            }
-//    }
-
 
 }

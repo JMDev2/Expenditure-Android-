@@ -64,16 +64,11 @@ class CategoryFragment : Fragment() {
         postExpenditure()
        // observeExpenditure()
         displayDate()
-        dismiss()
+
 
     }
 
-    private fun dismiss() {
-        binding.dismiss.setOnClickListener {
-            val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
-            findNavController().navigate(action)
-        }
-    }
+
 
     private fun displayDate() {
         val currentDate = Date()
@@ -85,25 +80,19 @@ class CategoryFragment : Fragment() {
 
     private fun postExpenditure() {
         binding.sendBtn.setOnClickListener {
-
             val expenditure = captureExpenditure()
 
-
-            if (expenditure != null){
-                viewModel.postExpenditure(userId = auth.currentUser!!.uid, expenditure)
-//                    val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
-//                    findNavController().navigate(action)
-                Log.d("NewExpensesCategoryFragment", "Posting${expenditure}")
-                Toast.makeText(requireContext(), "saved", Toast.LENGTH_LONG).show()
-
-
-            }else{
-                Toast.makeText(requireActivity(), "invalid", Toast.LENGTH_SHORT).show()
-
-
+            if (isExpenditureValid(expenditure)) {
+                if (expenditure != null) {
+                    viewModel.postExpenditure(userId = auth.currentUser!!.uid, expenditure)
+                }
+                val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
+                findNavController().navigate(action)
+                Log.d("NewExpensesCategoryFragment", "Posting $expenditure")
+            } else {
+                Toast.makeText(requireActivity(), "Please fill all the required fields.", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 
     private fun captureExpenditure(): Expenditure? {
@@ -115,98 +104,64 @@ class CategoryFragment : Fragment() {
         val rent = binding.etRent.text.toString().toIntOrNull() ?: 0
         val health = binding.etHealth.text.toString().toIntOrNull() ?: 0
 
-
-        if (transport == null || transport == 0) {
+        if (transport == 0) {
             binding.tilTransport.error = "Transport is required and cannot be zero"
             binding.tilTransport.requestFocus()
+            return null
         }
-        if (entertainment == null || entertainment == 0) {
+
+        if (entertainment == 0) {
             binding.entertainmentText.error = "Entertainment is required and cannot be zero"
             binding.entertainmentText.requestFocus()
-
+            return null
         }
 
-        if (fee == null || fee == 0) {
+        if (fee == 0) {
             binding.tilFee.error = "Fee is required and cannot be zero"
             binding.tilFee.requestFocus()
+            return null
         }
 
-        if (food == null || food == 0) {
+        if (food == 0) {
             binding.tilFood.error = "Food is required and cannot be zero"
             binding.tilFood.requestFocus()
-
+            return null
         }
 
-        if (shopping == null || shopping == 0) {
+        if (shopping == 0) {
             binding.tilShopping.error = "Shopping is required and cannot be zero"
             binding.tilShopping.requestFocus()
-
+            return null
         }
 
-        if (rent == null || rent == 0) {
+        if (rent == 0) {
             binding.tilRent.error = "Rent is required and cannot be zero"
             binding.tilRent.requestFocus()
-
+            return null
         }
 
-        if (health == null || health == 0) {
+        if (health == 0) {
             binding.tilHealth.error = "Health is required and cannot be zero"
             binding.tilHealth.requestFocus()
-
+            return null
         }
 
-        if (transport != null && entertainment != null && fee != null && food != null && shopping != null
-            && rent != null && health != null) {
-            return Expenditure(
-                entertainment = entertainment,
-                food = food,
-                health = health,
-                rent = rent,
-                schoolFee = fee,
-                shopping = shopping,
-                transport = transport,
-
-                )
-        }
-
-
-        return null
+        return Expenditure(
+            entertainment = entertainment,
+            food = food,
+            health = health,
+            rent = rent,
+            schoolFee = fee,
+            shopping = shopping,
+            transport = transport
+        )
     }
-//
-//    private fun observeExpenditure() {
-//        viewModel.observePostExpenditureLiveData().observe(
-//            viewLifecycleOwner
-//        ) { response ->
-//            when (response.status) {
-//                Status.SUCCESS -> {
-//                    val expenditureId = response.data
-//
-//                    if (expenditureId != null){
-////                        val action = CategoryFragmentDirections.actionTestCategoryFragmentToMainFragment()
-////                        findNavController().navigate(action)
-//
-//                    }
-//                }
-//                // if error state
-//                Status.ERROR -> {
-////                    // TODO Dismiss progress dialog
-////                    binding.progressBar.visibility = View.GONE
-////                    // TODO Show error message in dialog.
-////                    binding.constraint.visibility = View.GONE
-////                    binding.errorText.visibility = View.VISIBLE
-////                    binding.errorText.text = "set income"
-//                }
-//                // if still loading
-//                Status.LOADING -> {
-////                    binding.constraint.visibility = View.GONE
-////                    binding.errorText.visibility = View.GONE
-////                    binding.progressBar.visibility = View.VISIBLE
-//
-//                    // TODO Show progress dialog
-//                }
-//            }
-//        }
-//    }
+
+    private fun isExpenditureValid(expenditure: Expenditure?): Boolean {
+        return expenditure != null
+    }
+
+
 
 }
 
