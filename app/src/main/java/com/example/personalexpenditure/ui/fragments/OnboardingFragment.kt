@@ -56,20 +56,6 @@ class OnboardingFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false) //remove the onback stack arrow
 
 
-
-//        val email= sharedPreferences(requireContext()).getStringData(SharedPreferences.USER_EMAIL)
-//        Log.e("SignUpFragment",email)
-//
-//        val isFirstTimeUser = sharedPreferences.getIsFirstTimeUser()
-//        if (isFirstTimeUser){
-//            //navigate to login
-//            onboardingData()
-//
-//        }else{
-//            val action = OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment()
-//            findNavController().navigate(action)
-//        }
-
     }
 
 

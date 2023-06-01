@@ -21,7 +21,9 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
         }
     }
 
-    //post expenditure
+    /**
+     * post expenditure
+     */
     suspend fun postExpenditure(userId: String, expenditure: Expenditure): Resource<Expenditure?> {
         val response = api.postExpenditure(userId, expenditure)
         return if (response.isSuccessful){
@@ -32,8 +34,9 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
     }
 
 
-
-    //get total
+    /**
+     * get total
+     */
     override suspend fun getTotal(userId: String): Resource<TotalResponse?> {
         val response = api.getTotal(userId)
         return if (response.isSuccessful){
@@ -44,7 +47,7 @@ class IncomeApiImpl @Inject constructor(private val api: IncomePostApiService): 
         }
     }
 
-    override suspend fun getTotalIncome(userId: String): Resource<TotalResponse?> {
+    override suspend fun getTotalIncome(userId: String): Resource<Income?> {
         val response = api.getTotalIncome(userId)
         return if (response.isSuccessful){
             Resource.success(response.body())

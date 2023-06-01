@@ -20,6 +20,7 @@ interface IncomePostApiService {
 //        @Body postData: PostData
 //    ): Response<PostData>
 
+    //post income
     @POST("users/{userId}/income")
     suspend fun postIncome(
         @Path("userId") userId: String,
@@ -34,19 +35,26 @@ interface IncomePostApiService {
     ): Response<Expenditure>
 
 
-
+    /**
+     * get all
+     */
     @GET("users/{userId}")
     suspend fun getTotal(
         @Path("userId") userId: String
     ): Response<TotalResponse>
 
 
-
+    /**
+     * get income
+     */
     @GET("users/{userId}/income")
     suspend fun getTotalIncome(
         @Path("userId") userId: String
-    ): Response<TotalResponse>
+    ): Response<Income>
 
+    /**
+     * get expenditure
+     */
     @GET("users/{userId}/expenditure")
     suspend fun getExpenditure(
         @Path("userId") userId: String

@@ -79,10 +79,10 @@ class  LoginFragment : Fragment() {
 
 
     private fun navigation(){
-//        binding.navogateToSignup.setOnClickListener {
-//            val action = LoginFragmentDirections.
-//            findNavController().navigate(action)
-//        }
+        binding.navogateToSignup.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+            findNavController().navigate(action)
+        }
 
     }
 

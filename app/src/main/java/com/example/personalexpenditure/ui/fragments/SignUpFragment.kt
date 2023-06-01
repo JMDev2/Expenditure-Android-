@@ -48,9 +48,6 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val email= SharedPreferences(requireContext()).getStringData(SharedPreferences.USER_EMAIL)
-//        Log.e("SignUpFragment",email)
-
         auth = FirebaseAuth.getInstance()
 
         database = FirebaseDatabase.getInstance()
@@ -59,7 +56,6 @@ class SignUpFragment : Fragment() {
         registerUser()
         eyeToggle()
         eyeOffToggle()
-
         navigateToLigin()
 
     }

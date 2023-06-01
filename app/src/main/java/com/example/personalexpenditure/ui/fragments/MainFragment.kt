@@ -83,8 +83,8 @@ class MainFragment : Fragment() {
         // viewModel.getExpenditure(args.expenditureId.toString())
 
         viewModel.getTotalExpenditure(auth.currentUser!!.uid) //call this when no init method in viewmodel
-        // viewModel.getExpenditure(auth.currentUser!!.uid)
-        // viewModel.getTotalIncome(auth.currentUser!!.uid)
+        viewModel.getExpenditure(auth.currentUser!!.uid)
+        viewModel.getTotalIncome(auth.currentUser!!.uid)
         Log.d("MainFragment - sabsabsa","incomeIdToHome mainaF:${args.incomeIdToHome}")
 
         // viewModel.getTotalIncome(auth.currentUser!!.uid)
@@ -134,13 +134,13 @@ class MainFragment : Fragment() {
     }
 
     private fun observeIncome() {
-        viewModel.observeTotalExpenditureLiveData().observe(
+        viewModel.observeTotalIncomeLiveData().observe(
             viewLifecycleOwner
         ) { response ->
             when (response.status) {
                 Status.SUCCESS -> {
                     // val total = response.data
-                    val totalIncome = response.data?.income
+                    val totalIncome = response.data
 
 
                     binding.progressBar.visibility = View.GONE
@@ -148,7 +148,7 @@ class MainFragment : Fragment() {
 
                     if (totalIncome != null) {
                         binding.constraint.visibility = View.VISIBLE
-                        binding.income.text = totalIncome.income.toString()
+                        binding.income.text = totalIncome.budget.toString()
                         Log.d("MainFragment", "income ${totalIncome.income}")
                     } else {
                         binding.constraint.visibility = View.GONE
@@ -162,7 +162,9 @@ class MainFragment : Fragment() {
                     binding.progressBar.visibility = View.GONE
                     // TODO Show error message in dialog.
                     binding.constraint.visibility = View.GONE
-                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG).show()
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = "Set income"
+               //     Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG).show()
 
                 }
                 // if still loading
@@ -178,12 +180,12 @@ class MainFragment : Fragment() {
     }
 
     private fun observeExpenditure() {
-        viewModel.observeTotalExpenditureLiveData().observe(
+        viewModel.observeExpenditure().observe(
             viewLifecycleOwner
         ) { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                    val res = response.data?.expenditure
+                    val res = response.data
                     binding.progressBar.visibility = View.GONE
                     binding.errorText.visibility = View.GONE
 

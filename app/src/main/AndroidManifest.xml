@@ -25,9 +25,6 @@
             android:name=".ui.activities.OnboardingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.SplashActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
