@@ -217,12 +217,9 @@
         android:indeterminateDrawable="@drawable/pb"
         android:progress="0"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.669"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848" />
+         app:layout_constraintTop_toTopOf="@+id/sign_button"
+        app:layout_constraintBottom_toBottomOf="@+id/sign_button"
+        app:layout_constraintEnd_toEndOf="@+id/sign_button"/>
 
 
     <TextView
